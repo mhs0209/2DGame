@@ -5,41 +5,112 @@ using UnityEngine.UI;
 public class MinimapManager : MonoBehaviour
 {
     public static MinimapManager Instance;
-    public GameObject iconPrefab; // 미니맵에 표시될 UI 이미지 프리팹
-    public Transform minimapContainer;
+
+    [Header("UI References")]
+    public RectTransform minimapFrame;     // 최상위 프레임
+    public RectTransform minimapWindow;    // 마스크 창 (배경 Image 포함)
+    public RectTransform minimapContainer; // 아이콘 부모
+    public GameObject iconPrefab;
+    private Image windowImage;             // 배경 투명도 조절용
+
+    [Header("Small Map Settings")]
+    public Vector2 smallWindowSize = new Vector2(300, 300);
+    public Vector2 smallFramePos = new Vector2(750, 400); 
+    public float smallScale = 1.0f;
+
+    [Header("Large Map Settings")]
+    public Vector2 largeWindowSize = new Vector2(1920, 1080); // 화면 전체 크기 (해상도에 맞게)
+    public Vector2 largeFramePos = Vector2.zero;             // 화면 중앙
+    public float largeScale = 1.5f;                          // 전체보기 시 적절한 배율
+
+    [Header("Movement Settings")]
     public float minimapSpacing = 50f;
-    
+    public float smoothSpeed = 10f;
+
     private Dictionary<Vector2Int, Image> minimapIcons = new Dictionary<Vector2Int, Image>();
+    private HashSet<Vector2Int> visitedRooms = new HashSet<Vector2Int>();
+    private Vector2Int currentRoomPos = new Vector2Int(-999, -999);
+    private bool isLargeMap = false;
 
-    void Awake() => Instance = this;
-
-    // MinimapManager.cs (핵심 로직)
-    public void UpdateRoomIcon(Vector2Int pos, bool isVisited)
+    void Awake()
     {
-        // 맵 데이터에 없는 좌표면 무시
+        Instance = this;
+        if (minimapWindow != null) windowImage = minimapWindow.GetComponent<Image>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab)) isLargeMap = !isLargeMap;
+        UpdateMapTransform();
+    }
+
+    private void UpdateMapTransform()
+    {
+        // 1. 목표 설정
+        Vector2 targetWinSize = isLargeMap ? largeWindowSize : smallWindowSize;
+        Vector2 targetFramePos = isLargeMap ? largeFramePos : smallFramePos;
+        float targetScale = isLargeMap ? largeScale : smallScale;
+        float targetAlpha = isLargeMap ? 0f : 0.6f; // 전체보기일 때 배경 투명하게 (평소엔 0.6)
+
+        // 2. 부드러운 전환
+        minimapFrame.anchoredPosition = Vector2.Lerp(minimapFrame.anchoredPosition, targetFramePos, Time.deltaTime * smoothSpeed);
+        minimapWindow.sizeDelta = Vector2.Lerp(minimapWindow.sizeDelta, targetWinSize, Time.deltaTime * smoothSpeed);
+        minimapContainer.localScale = Vector3.Lerp(minimapContainer.localScale, Vector3.one * targetScale, Time.deltaTime * smoothSpeed);
+
+        // 배경 알파값 조절
+        if (windowImage != null)
+        {
+            Color color = windowImage.color;
+            color.a = Mathf.Lerp(color.a, targetAlpha, Time.deltaTime * smoothSpeed);
+            windowImage.color = color;
+        }
+
+        // 3. 중심점 결정 (중요!)
+        // 소형일 때는 현재 방(currentRoomPos), 대형일 때는 시작 방(0, 0) 기준
+        Vector2 focusPos = isLargeMap ? Vector2.zero : (Vector2)currentRoomPos;
+
+        if (currentRoomPos.x != -999)
+        {
+            Vector2 targetContainerPos = -focusPos * minimapSpacing;
+            minimapContainer.anchoredPosition = Vector2.Lerp(minimapContainer.anchoredPosition, targetContainerPos, Time.deltaTime * smoothSpeed);
+        }
+    }
+
+    // --- 이하 UpdateRoomIcon 및 RefreshAllIcons 코드는 기존과 동일 ---
+    public void UpdateRoomIcon(Vector2Int pos, bool isCurrent)
+    {
         if (!MapGenerator.Instance.DungeonMap.ContainsKey(pos)) return;
 
         if (!minimapIcons.ContainsKey(pos))
         {
-            // 처음 발견 시 아이콘 생성
             GameObject icon = Instantiate(iconPrefab, minimapContainer);
             icon.GetComponent<RectTransform>().anchoredPosition = (Vector2)pos * minimapSpacing;
             minimapIcons.Add(pos, icon.GetComponent<Image>());
+            
+            RoomType type = MapGenerator.Instance.DungeonMap[pos];
+            var data = MapGenerator.Instance.allRoomSO.Find(so => so.roomType == type);
+            if (data != null && data.minimapIcon != null) icon.GetComponent<Image>().sprite = data.minimapIcon;
         }
 
-        Image targetImage = minimapIcons[pos];
-        RoomType type = MapGenerator.Instance.DungeonMap[pos];
-
-        if (isVisited)
+        if (isCurrent)
         {
-            // 방문한 방: 밝은 색 + 실제 아이콘 표시 (보스, 상점 등)
-            targetImage.color = Color.white;
-            // targetImage.sprite = GetSpriteByType(type); // SO에서 아이콘 가져오기
+            currentRoomPos = pos;
+            visitedRooms.Add(pos);
         }
-        else
+        RefreshAllIcons();
+    }
+
+    private void RefreshAllIcons()
+    {
+        foreach (var pair in minimapIcons)
         {
-            // 인접한 방(발견만 됨): 어두운 색 또는 물음표
-            targetImage.color = new Color(0.5f, 0.5f, 0.5f, 0.8f); 
+            Vector2Int pos = pair.Key;
+            Image img = pair.Value;
+            RoomType type = MapGenerator.Instance.DungeonMap[pos];
+
+            if (pos == currentRoomPos) img.color = Color.white;
+            else if (visitedRooms.Contains(pos)) img.color = Color.gray;
+            else img.color = (type == RoomType.Normal || type == RoomType.Base) ? Color.black : new Color(0.3f, 0.3f, 0.3f, 1f);
         }
     }
 }

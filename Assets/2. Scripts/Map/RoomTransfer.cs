@@ -6,7 +6,6 @@ public class RoomTransfer : MonoBehaviour
 {
     public DoorDirection direction;
     // 문에서 플레이어가 소환될 거리 (방 크기에 맞춰 조절)
-    // 상하 간격과 좌우 간격이 다르다면 이 값을 인스펙터에서 개별 조절할 수 있습니다.
     private float verticalEntryOffset = 7f; 
     private float horizontalEntryOffset = 2.5f; 
 
@@ -60,12 +59,16 @@ public class RoomTransfer : MonoBehaviour
                 break;
         }
 
-        // 3. 카메라 즉시 이동 (부드러운 이동 삭제)
+        // 3. 카메라 및 플레이어 즉시 이동 (부드러운 이동 삭제)
         Vector3 targetRoomCenter = new Vector3(targetGrid.x * spacing, targetGrid.y * spacing, -10);
         CameraManager.Instance.ImmediateMove(targetRoomCenter);
-
-        // 4. 플레이어 위치 즉시 이동
         player.position = spawnPosition;
+        
+        // 4. [추가] 이동한 방의 미니맵 강제 업데이트
+        if (MapGenerator.Instance.GetRoomAt(targetGrid) != null)
+        {
+            MapGenerator.Instance.GetRoomAt(targetGrid).OnPlayerEnter();
+        }
 
         // 5. 쿨타임 (연쇄 이동 방지)
         Invoke("ResetTransferFlag", 0.2f);

@@ -79,6 +79,12 @@ public class MapGenerator : MonoBehaviour
 
         // 5. 문/벽 상태 업데이트 (모든 생성이 끝난 직후 호출)
         SetupAllRoomDoors();
+
+        // [중요] 시작 방(0,0)의 미니맵과 인접 방을 강제로 활성화
+        if (spawnedRooms.ContainsKey(Vector2Int.zero))
+        {
+            spawnedRooms[Vector2Int.zero].OnPlayerEnter();
+        }
     }
 
     private void CreateNormalRooms()
@@ -200,15 +206,33 @@ public class MapGenerator : MonoBehaviour
             room.SetupDoors(pos => dungeonMap.ContainsKey(pos));
         }
     }
+    
+    // MapGenerator.cs 에 추가
+    public BaseRoom GetRoomAt(Vector2Int pos)
+    {
+        if (spawnedRooms.ContainsKey(pos)) return spawnedRooms[pos];
+        return null;
+    }
     #endregion
     // =================================================================================
 
     
     // =================================================================================
     #region Utility
+    // MapGenerator.cs 내부 수정
     private BaseRoomData GetRoomDataByType(RoomType type)
     {
-        return allRoomSO.Find(so => so.roomType == type);
+        // 1. 해당 타입에 맞는 모든 SO를 리스트로 추출
+        var matchingData = allRoomSO.FindAll(so => so.roomType == type);
+
+        if (matchingData.Count == 0)
+        {
+            Debug.LogError($"{type} 타입의 RoomData가 allRoomSO에 없습니다!");
+            return null;
+        }
+
+        // 2. 그중 하나를 랜덤하게 반환
+        return matchingData[Random.Range(0, matchingData.Count)];
     }
     
     public List<string[]> ReadStageDataFromTSV(string fileName)
