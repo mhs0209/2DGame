@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum ItemCategory { Passive, Active, Consumable }
+public enum ItemCategory { Passive, Active, PickUp }
 
 [CreateAssetMenu(fileName = "ItemData", menuName = "ItemData")]
 public abstract class BaseItemData : ScriptableObject

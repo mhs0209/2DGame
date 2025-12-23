@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb7f3a74b42f7640a5893b71064b86c, type: 3}
+  m_Name: Boss Room Data
+  m_EditorClassIdentifier: 
+  roomID: 0
+  roomType: 1
+  roomPrefab: {fileID: 6357370181545346471, guid: bec895d2e255dc34b98d4443541a17bc, type: 3}
+  minimapIcon: {fileID: 891942287, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
