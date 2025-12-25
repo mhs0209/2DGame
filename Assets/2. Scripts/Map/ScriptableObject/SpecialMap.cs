@@ -2,18 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SpecialType { Roulette, Augment, ItemGamble }
 [CreateAssetMenu(fileName = "Special Room Data", menuName = "RoomData/SpecialRoomData")]
 public class SpecialMap : BaseRoomData
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public SpecialType specialType;
+    public float winChance = 0.3f; // 룰렛/아이템 획득 확률
 }

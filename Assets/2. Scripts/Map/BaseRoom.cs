@@ -41,6 +41,12 @@ public class BaseRoom : MonoBehaviour
         {
             MinimapManager.Instance.UpdateRoomIcon(gridPos + dir, false);
         }
+        
+        // [이 부분만 추가] 로직 분리 컴포넌트가 있다면 실행
+        if (GetComponent<RoomController>() != null)
+        {
+            GetComponent<RoomController>().ActivateRoomLogic();
+        }
     }
 
     private void SetDoorState(DoorSet doorSet, bool exists)
