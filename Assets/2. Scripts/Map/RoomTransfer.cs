@@ -64,6 +64,8 @@ public class RoomTransfer : MonoBehaviour
         CameraManager.Instance.ImmediateMove(targetRoomCenter);
         player.position = spawnPosition;
         
+        AstarPath.active.Scan();
+        
         // 4. [추가] 이동한 방의 미니맵 강제 업데이트
         if (MapGenerator.Instance.GetRoomAt(targetGrid) != null)
         {

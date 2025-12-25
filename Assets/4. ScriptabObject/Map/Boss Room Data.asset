@@ -16,3 +16,5 @@ MonoBehaviour:
   roomType: 1
   roomPrefab: {fileID: 6357370181545346471, guid: bec895d2e255dc34b98d4443541a17bc, type: 3}
   minimapIcon: {fileID: 891942287, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+  boosPrefab:
+  - {fileID: 5318162772108871024, guid: f89ac02e5b7d27940890f3d5565bde68, type: 3}

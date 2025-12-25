@@ -16,3 +16,7 @@ MonoBehaviour:
   roomType: 0
   roomPrefab: {fileID: 2849013273550924103, guid: 6c2558b737605a045a92471d78e87bde, type: 3}
   minimapIcon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  enemyPrefabs:
+  - {fileID: 1755821105750360422, guid: 1dd060f6d3e0dc442ad4750a6fd5ce6b, type: 3}
+  minEnemies: 2
+  maxEnemies: 5

@@ -85,6 +85,10 @@ public class MapGenerator : MonoBehaviour
         {
             spawnedRooms[Vector2Int.zero].OnPlayerEnter();
         }
+        
+        SetupAllDoorLocks();
+        
+        AstarPath.active.Scan();
     }
 
     private void CreateNormalRooms()
@@ -159,6 +163,50 @@ public class MapGenerator : MonoBehaviour
             dungeonMap.Add(bestPos, type);
             roomPositions.Add(bestPos); // 이제 다른 방이 이 옆에 붙지 않도록 위치 리스트에 추가
         }
+    }
+    
+    // MapGenerator.cs 의 SetupAllDoorLocks 내부 수정
+    private void SetupAllDoorLocks()
+    {
+        foreach (var roomPos in spawnedRooms.Keys)
+        {
+            // 1. 현재 방의 RoomController 가져오기
+            RoomController currentRoom = spawnedRooms[roomPos].GetComponent<RoomController>();
+            if (currentRoom == null) continue;
+
+            Vector2Int[] dirs = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
+            foreach (Vector2Int d in dirs)
+            {
+                // 2. 이웃 방 오브젝트를 먼저 GameObject로 찾기
+                if (spawnedRooms.TryGetValue(roomPos + d, out BaseRoom neighborObj))
+                {
+                    // 3. 해당 오브젝트에서 RoomController 가져오기
+                    RoomController neighbor = neighborObj.GetComponent<RoomController>();
+                    if (neighbor == null) continue;
+
+                    // 옆방이 특수방이라면 양쪽 문 마킹
+                    if (IsSpecialRoom(neighbor.baseRoom.type))
+                    {
+                        var myDoor = currentRoom.GetDoorPhysics(d);
+                        if (myDoor != null) {
+                            myDoor.isSpecialLock = true;
+                            myDoor.SetLock(true);
+                        }
+                    
+                        var neighborDoor = neighbor.GetDoorPhysics(-d);
+                        if (neighborDoor != null) {
+                            neighborDoor.isSpecialLock = true;
+                            neighborDoor.SetLock(true);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private bool IsSpecialRoom(RoomType type) 
+    {
+        return type == RoomType.Shop || type == RoomType.Treasure || type == RoomType.Special;
     }
     
     /// <summary>
