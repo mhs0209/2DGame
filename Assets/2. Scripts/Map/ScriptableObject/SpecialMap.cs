@@ -7,5 +7,6 @@ public enum SpecialType { Roulette, Augment, ItemGamble }
 public class SpecialMap : BaseRoomData
 {
     public SpecialType specialType;
-    public float winChance = 0.3f; // 룰렛/아이템 획득 확률
+    public float winChance = 0.3f;
+    public GameObject gimmickPrefab; // 룰렛이나 도박기계 프리팹
 }
