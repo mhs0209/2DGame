@@ -897,6 +897,7 @@ GameObject:
   - component: {fileID: 6449510675546448803}
   - component: {fileID: 1067363823898369381}
   - component: {fileID: 7706718407557468973}
+  - component: {fileID: 4918537295878990466}
   m_Layer: 0
   m_Name: Stage01_Boss
   m_TagString: Untagged
@@ -979,9 +980,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed15b54ca3b9f3458f43e47bb27ed32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseRoom: {fileID: 0}
   roomData: {fileID: 11400000, guid: a4b47f383b076e84489af889bf255fc9, type: 2}
   currentState: 0
-  activeDoors: []
+--- !u!114 &4918537295878990466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6357370181545346471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16845abbff5b5d408ee3e9ce0251fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stagePortalPrefab: {fileID: 5147909626668972415, guid: 95f23d63db1e8c84985d51edff847d25, type: 3}
+  stagePortalName: Stage01
 --- !u!1 &8276505150619008086
 GameObject:
   m_ObjectHideFlags: 0

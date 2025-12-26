@@ -1,19 +1,14 @@
 using UnityEngine;
 
-public class ShopRoom : ItemRoom
+public class ShopRoom : ItemRoom 
 {
-    public override void SpawnItems()
-    {
-        // 상점은 지정된 여러 좌표(spawnPoints)에 아이템 생성
-        foreach (Transform t in spawnPoints)
-        {
-            CreatePedestal(t.position, RoomType.Shop);
-            // 상점 전용 추가 로직 (가격표 표시 등)이 여기 추가될 예정
+    public Transform[] shopSpots; // 인스펙터에서 설정하거나 스크립트로 지정
+    private void Start() {
+        if (controller.roomData is ShopMap data) {
+            foreach(var spot in shopSpots) {
+                // 상점 제단 및 가격 설정 로직
+            }
         }
     }
-
-    private void Start()
-    {
-        SpawnItems();
-    }
+    public override void OnRoomCleared() { }
 }

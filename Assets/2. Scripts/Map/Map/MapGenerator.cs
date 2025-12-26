@@ -192,12 +192,6 @@ public class MapGenerator : MonoBehaviour
                             myDoor.isSpecialLock = true;
                             myDoor.SetLock(true);
                         }
-                    
-                        var neighborDoor = neighbor.GetDoorPhysics(-d);
-                        if (neighborDoor != null) {
-                            neighborDoor.isSpecialLock = true;
-                            neighborDoor.SetLock(true);
-                        }
                     }
                 }
             }

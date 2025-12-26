@@ -1,24 +1,26 @@
 using UnityEngine;
 
-public class NormalRoom : ItemRoom {
-    
+public class NormalRoom : ItemRoom 
+{
     public override void OnRoomCleared() {
-        NormalMap data = roomController.roomData as NormalMap;
-        if (data == null || data.lootTables == null) return;
+        if (controller.roomData is NormalMap data) {
+            SpawnLoot(data.lootTable);
+        }
+    }
 
-        // 확률 로직 (0~100 사이 랜덤)
-        float randomValue = Random.Range(0f, 100f);
-        float currentWeight = 0;
-
-        foreach (var loot in data.lootTables) {
-            currentWeight += loot.dropWeight;
-            if (randomValue <= currentWeight) {
-                if (loot.rewardPrefab != null) {
-                    Instantiate(loot.rewardPrefab, transform.position, Quaternion.identity);
-                }
-                break; // 하나만 드랍하고 종료
+    private void SpawnLoot(LootEntry[] table) {
+        if (table == null || table.Length == 0) return;
+        float totalWeight = 0;
+        foreach (var entry in table) totalWeight += entry.weight;
+        
+        float roll = Random.Range(0, totalWeight);
+        float current = 0;
+        foreach (var entry in table) {
+            current += entry.weight;
+            if (roll <= current) {
+                if (entry.prefab != null) Instantiate(entry.prefab, transform.position, Quaternion.identity);
+                break;
             }
         }
-        Debug.Log("노말 방 전투 보상 생성 시도 완료");
     }
 }

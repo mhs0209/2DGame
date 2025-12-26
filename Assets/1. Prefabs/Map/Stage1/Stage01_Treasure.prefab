@@ -2861,6 +2861,7 @@ GameObject:
   - component: {fileID: 6209707883886479710}
   - component: {fileID: 8390352731696667071}
   - component: {fileID: -6312206987904488158}
+  - component: {fileID: 3461912713013683537}
   m_Layer: 0
   m_Name: Stage01_Treasure
   m_TagString: Untagged
@@ -2943,9 +2944,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed15b54ca3b9f3458f43e47bb27ed32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseRoom: {fileID: 0}
   roomData: {fileID: 11400000, guid: 0dc422e0eee690941b0cfd10c9cfef71, type: 2}
   currentState: 0
-  activeDoors: []
+--- !u!114 &3461912713013683537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5814717178472064678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc0f63a79ab6a24ab6582e8fbb53565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &77593111587382000
 PrefabInstance:
   m_ObjectHideFlags: 0

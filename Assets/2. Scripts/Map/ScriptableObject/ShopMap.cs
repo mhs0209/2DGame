@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Shop Room Data", menuName = "RoomData/ShopRoomData")]
-public class ShopMap : BaseRoomData
+[CreateAssetMenu(fileName = "Shop Map", menuName = "Map/Shop")]
+public class ShopMap : BaseRoomData 
 {
-    public int shopItemCount = 3; // 상점에서 팔 아이템 개수
-    public int pickupCount = 2; // 소모품(픽업) 개수
-    public Vector2 priceRange; // 가격 범위 (x: 최소, y: 최대)
+    public GameObject pedestalPrefab;
+    public GameObject[] shopItemPool;
+    public GameObject[] pickupPool;   // 소모품(하트, 열쇠 등)
+    public Vector2Int priceRange = new Vector2Int(5, 15);
 }

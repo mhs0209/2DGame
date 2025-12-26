@@ -2901,6 +2901,7 @@ GameObject:
   - component: {fileID: 1852451760134378307}
   - component: {fileID: 7680759319761081069}
   - component: {fileID: 895094243932827902}
+  - component: {fileID: 2053812772873364998}
   m_Layer: 0
   m_Name: Stage01_Normal01
   m_TagString: Untagged
@@ -2983,9 +2984,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed15b54ca3b9f3458f43e47bb27ed32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseRoom: {fileID: 0}
   roomData: {fileID: 11400000, guid: 861fee7a898bbed4693d0f1032764c13, type: 2}
   currentState: 0
-  activeDoors: []
+--- !u!114 &2053812772873364998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8379377125937068608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73298f3a122cb3e49a7ce1a61493a5ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &988538758013214995
 PrefabInstance:
   m_ObjectHideFlags: 0

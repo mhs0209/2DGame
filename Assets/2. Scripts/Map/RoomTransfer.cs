@@ -11,7 +11,7 @@ public class RoomTransfer : MonoBehaviour
 
     private static bool isTransferring = false;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !isTransferring)
         {
