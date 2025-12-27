@@ -9,9 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65cd187e1b39bfc4091bd64344aad7e3, type: 3}
-  m_Name: Base Room Data
+  m_Script: {fileID: 11500000, guid: 666937adb3c45b2489b89ad2a20e460e, type: 3}
+  m_Name: Health
   m_EditorClassIdentifier: 
-  roomType: 5
-  roomPrefab: {fileID: 2675069900397640051, guid: e98b4a202b82a6a47974a23cc305efb5, type: 3}
-  minimapIcon: {fileID: 0}
+  itemID: 0
+  itemName: Health
+  description: 
+  category: 0
+  itemIcon: {fileID: 0}
+  type: 0
+  itemPrefab: {fileID: 0}
+  pickupType: 0
+  value: 1

@@ -19,4 +19,4 @@ MonoBehaviour:
   bossPrefabs:
   - {fileID: 5318162772108871024, guid: f89ac02e5b7d27940890f3d5565bde68, type: 3}
   rewardPool:
-  - {fileID: 0}
+  - {fileID: 1840628138364783918, guid: aa62bffe634d4fd4e83d21832d851c32, type: 3}

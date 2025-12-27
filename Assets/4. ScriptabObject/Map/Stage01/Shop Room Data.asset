@@ -16,3 +16,11 @@ MonoBehaviour:
   roomType: 2
   roomPrefab: {fileID: 1445626755724596177, guid: c90cc307e74896841a2ab6011f3e2e92, type: 3}
   minimapIcon: {fileID: -1997803578, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  pedestalPrefab: {fileID: 0}
+  shopItemPool:
+  - {fileID: 1840628138364783918, guid: aa62bffe634d4fd4e83d21832d851c32, type: 3}
+  - {fileID: 1840628138364783918, guid: aa62bffe634d4fd4e83d21832d851c32, type: 3}
+  pickupPool:
+  - {fileID: 970238832080264603, guid: 7fc9ddb23ac7ee94d89a2e04445425ae, type: 3}
+  - {fileID: 970238832080264603, guid: 7fc9ddb23ac7ee94d89a2e04445425ae, type: 3}
+  priceRange: {x: 5, y: 15}

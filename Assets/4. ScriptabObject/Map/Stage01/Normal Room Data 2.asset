@@ -20,3 +20,6 @@ MonoBehaviour:
   - {fileID: 1755821105750360422, guid: 1dd060f6d3e0dc442ad4750a6fd5ce6b, type: 3}
   minEnemies: 2
   maxEnemies: 5
+  lootTable:
+  - prefab: {fileID: 970238832080264603, guid: 7fc9ddb23ac7ee94d89a2e04445425ae, type: 3}
+    weight: 100

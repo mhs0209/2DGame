@@ -283,10 +283,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopSpots:
-  - {fileID: 4117953210283874973}
-  - {fileID: 7671853216666122652}
-  - {fileID: 8284903147718245326}
-  - {fileID: 207553654602701312}
+  - {fileID: 1289691692709480345}
+  - {fileID: 9050053369840070667}
+  - {fileID: 663848617627316463}
+  - {fileID: 7817570380587506717}
 --- !u!1 &2657115734351512766
 GameObject:
   m_ObjectHideFlags: 0

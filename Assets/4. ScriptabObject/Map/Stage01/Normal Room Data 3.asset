@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 180f1c3c31e896544a0c6f7dbc12c6bf, type: 3}
-  m_Name: Normal Room Data 5
+  m_Name: Normal Room Data 3
   m_EditorClassIdentifier: 
   roomID: 0
   roomType: 0
-  roomPrefab: {fileID: 8133342749456461190, guid: a514140d3de820b46bed058496f0b908, type: 3}
+  roomPrefab: {fileID: 8358462875783598561, guid: c8e6970d170a0954b86848445764e13b, type: 3}
   minimapIcon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   enemyPrefabs:
   - {fileID: 1755821105750360422, guid: 1dd060f6d3e0dc442ad4750a6fd5ce6b, type: 3}
   minEnemies: 2
   maxEnemies: 5
+  lootTable:
+  - prefab: {fileID: 970238832080264603, guid: 7fc9ddb23ac7ee94d89a2e04445425ae, type: 3}
+    weight: 100

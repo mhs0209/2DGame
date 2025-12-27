@@ -94,6 +94,13 @@ public class RoomController : MonoBehaviour
             if (pair.Value.isSpecialLock) continue; 
             pair.Value.SetLock(false);
         }
+        
+        // 자식 방 스크립트(NormalRoom, BossRoom 등)를 찾아 즉시 실행
+        ItemRoom handler = GetComponent<ItemRoom>();
+        if (handler != null) 
+        {
+            handler.OnRoomCleared(); 
+        }
     }
 
     public void OnEnemyDeath(GameObject enemy) {
