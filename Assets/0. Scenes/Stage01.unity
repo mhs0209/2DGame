@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 88809224}
   - component: {fileID: 88809223}
   - component: {fileID: 88809225}
-  - component: {fileID: 88809226}
+  - component: {fileID: 88809227}
   m_Layer: 0
   m_Name: HelathUp
   m_TagString: Untagged
@@ -284,7 +284,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &88809226
+--- !u!114 &88809227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -293,9 +293,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 88809222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 559a1a767664f724d8bf7d6e05896251, type: 3}
+  m_Script: {fileID: 11500000, guid: 79a29f8a873fc3e42a8729636a8b4a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statData: {fileID: 0}
 --- !u!1 &131977415
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7041323183d15c3498a4043c76d537c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
 --- !u!61 &131977419
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -637,6 +639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7041323183d15c3498a4043c76d537c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
 --- !u!61 &367105764
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1502,9 +1505,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1113801086}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 559a1a767664f724d8bf7d6e05896251, type: 3}
+  m_Script: {fileID: 11500000, guid: 79a29f8a873fc3e42a8729636a8b4a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statData: {fileID: 0}
 --- !u!1 &1196649394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,6 +1737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7041323183d15c3498a4043c76d537c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
 --- !u!61 &1208947660
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1876,6 +1881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7041323183d15c3498a4043c76d537c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
 --- !u!61 &1305566615
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2121,6 +2127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7041323183d15c3498a4043c76d537c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
 --- !u!61 &1465103040
 BoxCollider2D:
   m_ObjectHideFlags: 0
