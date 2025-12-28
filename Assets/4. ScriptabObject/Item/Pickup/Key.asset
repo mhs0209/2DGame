@@ -18,6 +18,6 @@ MonoBehaviour:
   category: 0
   itemIcon: {fileID: 0}
   type: 0
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 4657406614078668465, guid: f8bfd47085b7ac64d8bb6f99d6adc6c4, type: 3}
   pickupType: 2
   value: 1
