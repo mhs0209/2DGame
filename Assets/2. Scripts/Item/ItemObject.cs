@@ -9,7 +9,10 @@ public abstract class ItemObject : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             OnPickup(collision.gameObject);
-            Destroy(gameObject); // 획득 후 오브젝트 파괴
+            if ((this is Active) == false)
+            {
+                Destroy(gameObject); // 액티브가 아닐 때만 파괴
+            }
         }
     }
 }

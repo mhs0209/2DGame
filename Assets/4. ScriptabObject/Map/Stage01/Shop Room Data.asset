@@ -20,18 +20,6 @@ MonoBehaviour:
   - {fileID: 3245274530865790539, guid: 218dbca93c6f2dc45b127e8acfeaf749, type: 3}
   - {fileID: 8998467462421772295, guid: 04925f68ebd5b844391d21438fc9502b, type: 3}
   - {fileID: 4924589597735250505, guid: 99cd7f8ecbf67a8418015b6c7be24c0d, type: 3}
-  - {fileID: 568828487779610558, guid: 027668cb74a7fbc4689adbc97b5be03a, type: 3}
-  - {fileID: 4768142269013001446, guid: d59dd3f4f2b6f3b4583ed7b6560b8ba4, type: 3}
-  - {fileID: 7111142367656870260, guid: eb84aa2afbd83bc4cbb5495c1b624e27, type: 3}
-  - {fileID: 4506946141960022650, guid: ce7d4ed94370b7b4ca522884f3e0cef8, type: 3}
-  - {fileID: 3595901474293502991, guid: 7c777eef9bc233741af3cc1dbf510da8, type: 3}
-  - {fileID: 9023916971330622403, guid: 44e1d169e473f074593011c299d72500, type: 3}
-  - {fileID: 7603628619268925383, guid: b1ac73e7f2cb689478892cb8e54f0734, type: 3}
-  - {fileID: 806996352712994855, guid: 963a5803c793b384bb510c4b08023d8c, type: 3}
   pickupPool:
-  - {fileID: 4996672782179067208, guid: e4a0ecc8e1fdd3046b48e8d58dbd12ad, type: 3}
-  - {fileID: 8894514571849619967, guid: 85a6afe33b93d8a47bea71af50968a3e, type: 3}
   - {fileID: 4351717276026924117, guid: 5291cd7890a4916439e041ca918b0d3c, type: 3}
-  - {fileID: 8705105654712594198, guid: de8b06a505c1b104483b75e623b8221b, type: 3}
   - {fileID: 4657406614078668465, guid: f8bfd47085b7ac64d8bb6f99d6adc6c4, type: 3}
-  priceRange: {x: 5, y: 15}

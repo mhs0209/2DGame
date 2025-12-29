@@ -5,9 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Active Item", menuName = "Items/Active")]
 public class ActiveItemData : ItemData
 {
-    public int maxCharges; // 최대 충전량 (아이작 방식)
-    public GameObject activeEffectPrefab; // 사용 시 발생할 이펙트/투사체
-    public float duration; // 지속 시간
+    public int maxCharges; 
+    public float duration; 
+    public bool isDecaying; // true면 서서히 감소, false면 지속 시간 후 한 번에 원래대로
+
+    [Header("Stat Boost")]
+    public StatModifier[] modifiers;
 
     private void OnEnable() => type = ItemType.Active;
 }

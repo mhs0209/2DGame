@@ -39,41 +39,23 @@ public class RoomController : MonoBehaviour
     }
 
     public DoorPhysics GetDoorPhysics(Vector2Int dir) => doorMap.ContainsKey(dir) ? doorMap[dir] : null;
-
-    void Update()
+    
+    public void OnPlayerTryEntry(DoorPhysics door)
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) TryUnlock();
-    }
-
-    private void TryUnlock()
-    {
-        foreach (var pair in doorMap)
+        PlayerStat pStat = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStat>();
+        
+        // GetKey가 아닌 GetKeyDown을 사용하여 프레임 입력 보장
+        if (Input.GetKeyDown(KeyCode.Alpha1) || (pStat.keys > 0)) 
         {
-            Vector2Int dir = pair.Key;
-            DoorPhysics myDoor = pair.Value;
-
-            if (myDoor.isSpecialLock)
+            if (!Input.GetKeyDown(KeyCode.Alpha1)) 
             {
-                float dist = Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, myDoor.transform.position);
-                if (dist < 2.5f)
-                {
-                    // 1. 내 방의 문 해제
-                    UnlockSpecificDoor(dir);
-
-                    Debug.Log("열쇠를 사용하여 문을 열었습니다. 이제 자유롭게 드나들 수 있습니다.");
-                    return;
-                }
+                pStat.keys--;
+                Debug.Log($"열쇠 사용! 남은 열쇠: {pStat.keys}");
             }
-        }
-    }
 
-    // 특정 문을 완전히 여는 함수
-    public void UnlockSpecificDoor(Vector2Int dir)
-    {
-        if (doorMap.TryGetValue(dir, out DoorPhysics door))
-        {
-            door.isSpecialLock = false; // 특수 잠금 해제 (전투 종료 후에도 영향 안 받음)
-            door.SetLock(false);       // 물리 해제 및 흰색 변경
+            door.isSpecialLock = false;
+            door.SetLock(false);
+            Debug.Log("잠긴 문을 열었습니다!");
         }
     }
 
@@ -101,6 +83,8 @@ public class RoomController : MonoBehaviour
         {
             handler.OnRoomCleared(); 
         }
+        
+        GameObject.FindGameObjectWithTag("Player").GetComponent<ActiveInventory>()?.AddChargeAll(1);
     }
 
     public void OnEnemyDeath(GameObject enemy) {

@@ -10,15 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3895bde3a8706a54ea8b977b6f4cbb94, type: 3}
-  m_Name: New Active Item
+  m_Name: BoostStat
   m_EditorClassIdentifier: 
   itemID: 0
   itemName: 
   description: 
-  category: 0
   itemIcon: {fileID: 0}
   type: 2
   itemPrefab: {fileID: 0}
-  cooldown: 0
-  maxCharges: 0
-  activeEffectPrefab: {fileID: 0}
+  maxCharges: 3
+  duration: 5
+  isDecaying: 1
+  modifiers:
+  - statType: 2
+    value: 5
+  - statType: 3
+    value: 2
+  - statType: 4
+    value: -1
+  - statType: 6
+    value: 1
+  - statType: 5
+    value: 5
