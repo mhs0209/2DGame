@@ -8,7 +8,7 @@ public abstract class ItemData : ScriptableObject
     public int itemID;
     public string itemName;
     [TextArea] public string description;
-    public RoomType category;
+    //public RoomType category;
     public Sprite itemIcon;
     public ItemType type;
     public GameObject itemPrefab; // 필드에 드랍될 때의 외형
