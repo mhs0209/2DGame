@@ -88,7 +88,7 @@ public class MapGenerator : MonoBehaviour
         
         SetupAllDoorLocks();
         
-        //AstarPath.active.Scan();
+        AstarPath.active.Scan();
     }
 
     private void CreateNormalRooms()

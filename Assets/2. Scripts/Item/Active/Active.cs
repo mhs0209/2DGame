@@ -4,6 +4,7 @@ public abstract class Active : ItemObject
 {
     public ActiveItemData activeData; // SO 데이터
     public int currentCharge;
+    public bool isFirstPickup = true; // 최초 획득 확인용
 
     public override void OnPickup(GameObject player)
     {
@@ -15,7 +16,7 @@ public abstract class Active : ItemObject
         transform.localPosition = Vector3.zero;
 
         // 3. 시각적/물리적 비활성화 (스크립트 컴포넌트는 살아있음)
-        // GetComponent<Renderer>()가 아니라 구체적으로 SpriteRenderer를 꺼야 에러가 안 납니다.
+        // GetComponent<Renderer>()가 아니라 구체적으로 SpriteRenderer를 꺼야 에러 없음.
         if (TryGetComponent(out SpriteRenderer sr)) sr.enabled = false;
         if (TryGetComponent(out Collider2D col)) col.enabled = false;
         

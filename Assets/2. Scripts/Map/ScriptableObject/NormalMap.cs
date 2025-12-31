@@ -12,8 +12,5 @@ public struct LootEntry
 [CreateAssetMenu(fileName = "Normal Map", menuName = "Map/Normal")]
 public class NormalMap : BaseRoomData 
 {
-    public GameObject[] enemyPrefabs;
-    public int minEnemies = 2;
-    public int maxEnemies = 5;
     public LootEntry[] lootTable; // 전투 후 픽업 아이템 보상 목록
 }

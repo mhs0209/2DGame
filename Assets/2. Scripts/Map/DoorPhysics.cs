@@ -8,7 +8,7 @@ public class DoorPhysics : MonoBehaviour
     private Collider2D[] cols;
     public bool isSpecialLock = false;
     public RoomController myRoom;
-    private bool isPlayerTouching = false; // 플레이어 접촉 상태 확인
+    private bool isPlayerTouching; // 플레이어 접촉 상태 확인
     private GameObject player;
 
     void Awake()
