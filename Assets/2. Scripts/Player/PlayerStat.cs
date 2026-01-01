@@ -18,7 +18,6 @@ public class PlayerStat : Stat
         base.Awake();
         // 플레이어는 피격 무적 기능을 항상 사용함
         useHitInvincibility = true; 
-        invincibilityMult = 0.5f; // 예: 받은 데미지 * 0.5초 무적
     }
     
     public override void TakeDamage(float damage)

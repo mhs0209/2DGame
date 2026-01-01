@@ -10,7 +10,6 @@ public class MonsterStat : Stat
     // 기본 스탯 저장용 (풀링 복구용)
     private float originAtk;
     private float originMaxHealth;
-    private Vector3 originScale;
     private float originSpeed;
 
     protected override void Awake()
@@ -19,7 +18,6 @@ public class MonsterStat : Stat
         // 최초 초기 상태 저장
         originAtk = atk;
         originMaxHealth = maxHealth;
-        originScale = transform.localScale;
         originSpeed = speed;
     }
 
@@ -36,7 +34,6 @@ public class MonsterStat : Stat
         atk = originAtk;
         maxHealth = originMaxHealth;
         health = maxHealth;
-        transform.localScale = originScale;
         isInvincible = false;
     }
 
@@ -46,10 +43,9 @@ public class MonsterStat : Stat
         atk = 2;
         maxHealth *= 1.5f;
         health = maxHealth;
-        transform.localScale *= 1.2f;
-        speed *= 1.5f;
+        speed *= 1.2f;
         // 시각적 차이를 위해 색상을 변경할 수도 있습니다.
-        if(spriteRenderer) spriteRenderer.color = new Color(1f, 0.6f, 0.6f); 
+        if(spriteRenderer) spriteRenderer.color = new Color(0f, 0f, 0f); 
     }
     
     private void OnCollisionStay2D(Collision2D collision)

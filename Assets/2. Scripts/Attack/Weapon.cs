@@ -74,7 +74,7 @@ public abstract class Weapon : MonoBehaviour
             return;
         }
         
-        GameObject b = ObjectPoolManager.Instance.SpawnFromPool(bulletPrefab, transform.position, Quaternion.Euler(0, 0, angle));
+        GameObject b = ObjectPoolManager.Instance.SpawnFromPool(bulletPrefab, transform.position + Vector3.up, Quaternion.Euler(0, 0, angle));
         if (b.TryGetComponent(out Bullet bullet))
         {
             bullet.Setup(ownerStat.atk * ownerStat.atkMult, range, ownerStat.isPiercing);

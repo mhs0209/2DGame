@@ -2,32 +2,40 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("이동 설정")]
-    public float moveSpeed = 5f; // 이동 속도
-
     private Rigidbody2D rb;
+    private PlayerStat playerStat; // [추가] 플레이어 스탯 참조
     private Vector2 moveInput;
 
     void Start()
     {
-        // 시작할 때 Rigidbody2D 컴포넌트를 가져옴
         rb = GetComponent<Rigidbody2D>();
+        // [추가] 같은 오브젝트에 있는 PlayerStat 컴포넌트를 가져옴
+        playerStat = GetComponent<PlayerStat>();
     }
 
     void Update()
     {
-        // 1. 키보드 입력 받기 (W, A, S, D 또는 화살표)
-        // GetAxisRaw는 즉각적인 반응(0 아니면 1)을 주어 아이작 같은 느낌에 적합합니다.
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
+        // 1. 화살표 키 입력을 직접 받기 (GetKeyDown/Up 보다 GetKey가 이동에 적합)
+        // Horizontal(좌우) 계산
+        float moveX = 0;
+        if (Input.GetKey(KeyCode.RightArrow)) moveX += 1f;
+        if (Input.GetKey(KeyCode.LeftArrow)) moveX -= 1f;
 
-        // 대각선 이동 시 속도가 빨라지지 않게 정규화(Normalize)
-        moveInput = moveInput.normalized;
+        // Vertical(상하) 계산
+        float moveY = 0;
+        if (Input.GetKey(KeyCode.UpArrow)) moveY += 1f;
+        if (Input.GetKey(KeyCode.DownArrow)) moveY -= 1f;
+
+        moveInput = new Vector2(moveX, moveY).normalized;
     }
 
     void FixedUpdate()
     {
-        // 2. 물리 엔진을 이용해 캐릭터 이동 처리 (프레임 독립적)
-        rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+        // 2. playerStat에 실시간으로 반영된 speed 값을 사용합니다.
+        // 이제 아이템을 먹어서 stat.speed가 변하면 이동 속도도 즉시 변합니다.
+        if (playerStat != null)
+        {
+            rb.MovePosition(rb.position + moveInput * (playerStat.speed * Time.fixedDeltaTime));
+        }
     }
 }

@@ -12,6 +12,7 @@ public class MonsterAI : MonoBehaviour
     private Rigidbody2D rb;
 
     public AIState currentState = AIState.Idle;
+    public bool seeRight;
 
     [Header("AI Settings")]
     public float detectRange = 10f;
@@ -168,14 +169,29 @@ public class MonsterAI : MonoBehaviour
     {
         if (player == null) return;
 
-        // 플레이어가 왼쪽에 있으면 왼쪽을, 오른쪽에 있으면 오른쪽을 보게 함
-        if (player.position.x < transform.position.x)
+        if (seeRight)
         {
-            transform.localScale = new Vector3(1, 1, 1); // 왼쪽
+            // 플레이어가 왼쪽에 있으면 왼쪽을, 오른쪽에 있으면 오른쪽을 보게 함
+            if (player.position.x < transform.position.x)
+            {
+                transform.localScale = new Vector3(-1, 1, 1); // 왼쪽
+            }
+            else
+            {
+                transform.localScale = new Vector3(1, 1, 1); // 오른쪽
+            }
         }
         else
         {
-            transform.localScale = new Vector3(-1, 1, 1); // 오른쪽
+            // 플레이어가 왼쪽에 있으면 왼쪽을, 오른쪽에 있으면 오른쪽을 보게 함
+            if (player.position.x < transform.position.x)
+            {
+                transform.localScale = new Vector3(1, 1, 1); // 왼쪽
+            }
+            else
+            {
+                transform.localScale = new Vector3(-1, 1, 1); // 오른쪽
+            }
         }
     }
 }

@@ -6,8 +6,8 @@ public class RoomTransfer : MonoBehaviour
 {
     public DoorDirection direction;
     // 문에서 플레이어가 소환될 거리 (방 크기에 맞춰 조절)
-    private float verticalEntryOffset = 7f; 
-    private float horizontalEntryOffset = 2.5f; 
+    private float verticalEntryOffset = 6f; 
+    private float horizontalEntryOffset = 2.0f; 
 
     private static bool isTransferring = false;
 
