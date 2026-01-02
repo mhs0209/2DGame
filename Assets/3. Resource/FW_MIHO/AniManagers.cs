@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace FreewrokGame
+namespace FreeworkGame
 {
     public enum targetDirectType { forward = 0, backward = 1 }
     public enum AniType { idle = 0, walk = 1, run = 2, win = 3, lose = 4 }

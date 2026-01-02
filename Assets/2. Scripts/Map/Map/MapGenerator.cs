@@ -108,19 +108,23 @@ public class MapGenerator : MonoBehaviour
             }
         }
     }
-    
+
     private void PlaceSpecialRooms()
     {
-        PlaceSpecialRoomStrict(RoomType.Boss);
-        PlaceSpecialRoomStrict(RoomType.Shop);
-        PlaceSpecialRoomStrict(RoomType.Treasure);
-        if (Random.Range(0, 100) < 20) PlaceSpecialRoomStrict(RoomType.Special);
+        // 보스방과 특수방은 가장 먼 곳으로 (true)
+        PlaceSpecialRoomStrict(RoomType.Boss, true);
+        if (Random.Range(0, 100) < 20) PlaceSpecialRoomStrict(RoomType.Special, true);
+
+        // 상점과 보물방은 랜덤한 위치에 (false)
+        PlaceSpecialRoomStrict(RoomType.Shop, false);
+        PlaceSpecialRoomStrict(RoomType.Treasure, false);
     }
 
     /// <summary>
-    /// [수정] 특수 방 배치: 무조건 인접한 방이 1개인 곳에만 생성
+    /// 특수 방 배치 로직
+    /// findFarthest가 true면 가장 먼 곳, false면 랜덤한 후보지 선택
     /// </summary>
-    private void PlaceSpecialRoomStrict(RoomType type)
+    private void PlaceSpecialRoomStrict(RoomType type, bool findFarthest)
     {
         List<Vector2Int> candidates = new List<Vector2Int>();
 
@@ -129,11 +133,9 @@ public class MapGenerator : MonoBehaviour
             foreach (var dir in directions)
             {
                 Vector2Int potentialPos = pos + dir;
-            
-                // 1. 이미 방이 있는 자리는 제외
+
                 if (dungeonMap.ContainsKey(potentialPos)) continue;
 
-                // 2. 인접한 방 개수 체크 (막다른 길 확인: 오직 1개여야 함)
                 int connectionCount = 0;
                 bool isAdjacentToSpecial = false;
 
@@ -142,7 +144,6 @@ public class MapGenerator : MonoBehaviour
                     if (dungeonMap.TryGetValue(potentialPos + d, out RoomType neighborType))
                     {
                         connectionCount++;
-                        // 주변에 이미 특수 방이 있다면 후보에서 제외 (isolation 핵심)
                         if (neighborType != RoomType.Normal && neighborType != RoomType.Base)
                         {
                             isAdjacentToSpecial = true;
@@ -150,7 +151,7 @@ public class MapGenerator : MonoBehaviour
                     }
                 }
 
-                // 조건: 연결된 방이 1개이고, 주변에 다른 특수방이 없을 때만 후보 등록
+                // 조건: 막다른 길(연결 1개) + 주변에 특수방 없음
                 if (connectionCount == 1 && !isAdjacentToSpecial)
                     candidates.Add(potentialPos);
             }
@@ -158,13 +159,25 @@ public class MapGenerator : MonoBehaviour
 
         if (candidates.Count > 0)
         {
-            // 가장 먼 곳을 선호하되, 랜덤성을 위해 상위 3개 중 하나 선택 가능
-            Vector2Int bestPos = candidates.OrderByDescending(p => Vector2Int.Distance(p, Vector2Int.zero)).First();
-            dungeonMap.Add(bestPos, type);
-            roomPositions.Add(bestPos); // 이제 다른 방이 이 옆에 붙지 않도록 위치 리스트에 추가
+            Vector2Int chosenPos;
+
+            if (findFarthest)
+            {
+                // 가장 먼 곳 찾기 (보스, 특수이벤트용)
+                chosenPos = candidates.OrderByDescending(p => Vector2Int.Distance(p, Vector2Int.zero)).First();
+            }
+            else
+            {
+                // 리스트 중 완전 랜덤 선택 (상점, 보물방용)
+                // 시작점 바로 옆 후보지가 포함되어 있다면 거기에도 생성될 수 있음
+                chosenPos = candidates[Random.Range(0, candidates.Count)];
+            }
+
+            dungeonMap.Add(chosenPos, type);
+            roomPositions.Add(chosenPos);
         }
     }
-    
+
     // MapGenerator.cs 의 SetupAllDoorLocks 내부 수정
     private void SetupAllDoorLocks()
     {

@@ -6,7 +6,15 @@ public class ObjectPoolManager : MonoBehaviour
     public static ObjectPoolManager Instance;
     private Dictionary<string, Queue<GameObject>> poolDict = new Dictionary<string, Queue<GameObject>>();
 
-    void Awake() => Instance = this;
+    void Awake()
+    {
+        if (Instance == null) {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        } else {
+            Destroy(gameObject); // 이미 존재한다면 새로 생긴 녀석을 제거!
+        }
+    }
 
     public GameObject SpawnFromPool(GameObject prefab, Vector3 pos, Quaternion rot)
     {

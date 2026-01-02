@@ -28,7 +28,7 @@ public class PlayerStat : Stat
 
     protected override void Die()
     {
-        Debug.Log("플레이어 사망 - 게임 오버 UI 띄우기");
+        GameManager.Instance.OnPlayerDeath();
     }
     
     public void Heal(float amount)
