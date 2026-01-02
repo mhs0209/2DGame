@@ -8,5 +8,6 @@ public class MonsterWeapon : Weapon
     {
         base.Awake();
         stat = GetComponent<MonsterStat>();
+        lastFireTime = Time.time;
     }
 }

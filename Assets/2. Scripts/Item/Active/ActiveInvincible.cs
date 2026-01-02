@@ -14,13 +14,20 @@ public class ActiveInvincible : Active
         stat.isInvincible = true;
         
         // 액티브 사용 시에는 특별한 색상으로 표시 (예: 황금색)
-        SpriteRenderer sr = stat.GetComponent<SpriteRenderer>();
-        Color originalColor = sr.color;
-        sr.color = Color.yellow; 
+        SpriteRenderer[] renderers = stat.GetComponentsInChildren<SpriteRenderer>(true);
+        foreach (var sr in renderers)
+        {
+            if (sr == null) continue;
+            sr.color = Color.yellow; 
+        }
 
         yield return new WaitForSeconds(activeData.duration); // SO의 지속시간 사용
 
-        sr.color = originalColor;
+        foreach (var sr in renderers)
+        {
+            if (sr == null) continue;
+            sr.color = Color.white; 
+        }
         stat.isInvincible = false;
     }
 }

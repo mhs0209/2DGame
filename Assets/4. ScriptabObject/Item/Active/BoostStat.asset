@@ -23,12 +23,12 @@ MonoBehaviour:
   isDecaying: 1
   modifiers:
   - statType: 2
-    value: 5
+    value: 3
   - statType: 3
-    value: 2
+    value: 1
   - statType: 4
-    value: -1
+    value: -0.1
   - statType: 6
     value: 1
   - statType: 5
-    value: 5
+    value: 3

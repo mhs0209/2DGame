@@ -92,7 +92,7 @@ public class RoomController : MonoBehaviour
             if (enemyStat.monsterType == MonsterType.Boss)
             {
                 // 임시로 Find 사용 (나중엔 Singleton UI Manager 권장)
-                FindObjectOfType<BossHealthUI>().ShowBossBar(enemyStat);
+                FindObjectOfType<BossHealthUI>(true).ShowBossBar(enemyStat);
             }
         }
         

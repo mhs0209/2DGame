@@ -32,11 +32,12 @@ public abstract class Stat : MonoBehaviour
     public bool useHitInvincibility = false; // 피격 시 자동으로 무적 시간을 가질 것인가?
     public float invincibilityMult = 1.0f;  // 무적 시간 계수
     
-    protected SpriteRenderer spriteRenderer;
+    protected SpriteRenderer[] childrenRenderers;
 
     protected virtual void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        // 자식들의 모든 SpriteRenderer를 한 번에 가져옵니다.
+        childrenRenderers = GetComponentsInChildren<SpriteRenderer>(true);
     }
 
     public virtual void TakeDamage(float damage)
@@ -55,21 +56,40 @@ public abstract class Stat : MonoBehaviour
             }
         }
     }
-
+    
+    // Stat.cs 수정본 일부
     protected IEnumerator HitInvincibleRoutine(float duration)
     {
         isInvincible = true;
-        // 깜빡임 연출...
+    
         float elapsed = 0f;
         while (elapsed < duration)
         {
-            spriteRenderer.color = new Color(1, 1, 1, 0.5f);
+            // 모든 자식 스프라이트의 알파값 조절 (투명도 0.5)
+            foreach (var sr in childrenRenderers)
+            {
+                if (sr == null) continue;
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f);
+            }
             yield return new WaitForSeconds(0.1f);
-            spriteRenderer.color = Color.white;
+
+            // 모든 자식 스프라이트 복구 (투명도 1.0)
+            foreach (var sr in childrenRenderers)
+            {
+                if (sr == null) continue;
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+            }
             yield return new WaitForSeconds(0.1f);
             elapsed += 0.2f;
         }
-        spriteRenderer.color = Color.white;
+
+        // 최종 복구 (루프가 끝난 후 확실히 원래대로 돌려놓음)
+        foreach (var sr in childrenRenderers)
+        {
+            if (sr == null) continue;
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+        }
+
         isInvincible = false;
     }
 

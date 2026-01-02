@@ -45,7 +45,7 @@ public class MonsterStat : Stat
         health = maxHealth;
         speed *= 1.2f;
         // 시각적 차이를 위해 색상을 변경할 수도 있습니다.
-        if(spriteRenderer) spriteRenderer.color = new Color(0f, 0f, 0f); 
+        if(childrenRenderers[0]) childrenRenderers[0].color = new Color(0f, 0f, 0f); 
     }
     
     private void OnCollisionStay2D(Collision2D collision)

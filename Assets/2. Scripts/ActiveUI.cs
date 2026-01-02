@@ -9,6 +9,7 @@ public class ActiveUI : MonoBehaviour
     public ActiveInventory inventory;
     [FormerlySerializedAs("itemIcon")] public Image itemDisplayImage;
     public Slider chargeSlider;
+    private Active lastActive; // 이전 아이템 기억용
 
     void Update()
     {
@@ -20,14 +21,17 @@ public class ActiveUI : MonoBehaviour
 
         itemDisplayImage.enabled = true;
 
-        // 1. 실제 월드에 존재하는 아이템의 SpriteRenderer를 가져옵니다.
-        SpriteRenderer itemSR = inventory.currentActive.GetComponent<SpriteRenderer>();
-
-        if (itemSR != null)
+        // 아이템이 바뀌었을 때만 정보를 가져옴 (매 프레임 색상 덮어쓰기 방지)
+        if (inventory.currentActive != lastActive)
         {
-            // 데이터의 아이콘 대신, 현재 렌더러의 스프라이트와 색상을 그대로 UI에 복사
-            itemDisplayImage.sprite = itemSR.sprite;
-            itemDisplayImage.color = itemSR.color; 
+            lastActive = inventory.currentActive;
+            // 1. 실제 월드에 존재하는 아이템의 SpriteRenderer를 가져옵니다.
+            SpriteRenderer itemSR = inventory.currentActive.GetComponent<SpriteRenderer>();
+            if (itemSR != null)
+            {
+                itemDisplayImage.sprite = itemSR.sprite;
+                itemDisplayImage.color = itemSR.color; // 처음 장착할 때의 색상만 복사
+            }
         }
 
         // 충전도 업데이트

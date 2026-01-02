@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace FreewrokGame
 {
@@ -7,6 +9,8 @@ namespace FreewrokGame
 
     public class AniManager : MonoBehaviour
     {
+        public static AniManager Instance { get; private set; }
+        
         [Header("Components")]
         private Rigidbody2D rb;
         private PlayerStat playerStat;
@@ -21,14 +25,29 @@ namespace FreewrokGame
         private targetDirectType targetType;
         private bool isRun = false;
         private bool isPose = false;
+        private bool isCollidingWithMonster = false; // 몬스터와 접촉 중인지 확인용
 
-        void Start()
+        private void Awake()
         {
+            // [추가] 싱글톤 로직: 이미 존재하면 나를 파괴, 없으면 나를 유지
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject); // 씬이 넘어가도 파괴되지 않음
+            }
+            else
+            {
+                Destroy(gameObject); // 이미 존재하므로 새로 생성된 객체 삭제
+                return;
+            }
+
             rb = GetComponent<Rigidbody2D>();
             playerStat = GetComponent<PlayerStat>();
-            
-            // 초기 설정
-            ResetState();
+        }
+
+        private void Start()
+        {
+            transform.localPosition = Vector3.zero;
         }
 
         void Update()
@@ -41,6 +60,28 @@ namespace FreewrokGame
         void FixedUpdate()
         {
             Move();
+        }
+        
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnLevelFinishedLoading;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+        }
+
+        // 씬이 바뀔 때마다 실행되는 함수
+        private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+        {
+            // 포탈을 탔을 때 (씬이 새로 로드됐을 때) 위치를 0,0으로 강제 이동
+            transform.position = Vector3.zero;
+    
+            // Rigidbody가 있다면 물리 위치도 초기화해주는 것이 안전합니다.
+            if(rb != null) rb.position = Vector2.zero;
+    
+            Debug.Log("새로운 씬 로드: 플레이어 위치 초기화 완료");
         }
 
         private void HandleInput()
@@ -91,11 +132,40 @@ namespace FreewrokGame
 
         private void Move()
         {
-            if (playerStat != null && moveInput != Vector2.zero)
+            if (playerStat != null)
             {
-                // 달리 상태일 때 속도 보정 (필요 시)
-                float currentSpeed = isRun ? playerStat.speed * 1.5f : playerStat.speed;
-                rb.MovePosition(rb.position + moveInput * (currentSpeed * Time.fixedDeltaTime));
+                if (moveInput != Vector2.zero)
+                {
+                    float currentSpeed = isRun ? playerStat.speed * 1.5f : playerStat.speed;
+                    rb.MovePosition(rb.position + moveInput * (currentSpeed * Time.fixedDeltaTime));
+                }
+                else
+                {
+                    // [조건 수정] 입력이 없고, 몬스터와 충돌 중이 아닐 때만 물리 속도를 0으로!
+                    if (!isCollidingWithMonster)
+                    {
+                        rb.velocity = Vector2.zero;
+                    }
+                }
+            }
+        }
+
+        // 충돌 체크 로직 추가
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            // 충돌한 대상의 태그가 Monster인 경우
+            if (collision.gameObject.CompareTag("Monster"))
+            {
+                isCollidingWithMonster = true;
+            }
+        }
+
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            // 몬스터와 떨어지는 순간
+            if (collision.gameObject.CompareTag("Monster"))
+            {
+                isCollidingWithMonster = false;
             }
         }
 

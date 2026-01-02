@@ -169,29 +169,13 @@ public class MonsterAI : MonoBehaviour
     {
         if (player == null) return;
 
-        if (seeRight)
-        {
-            // 플레이어가 왼쪽에 있으면 왼쪽을, 오른쪽에 있으면 오른쪽을 보게 함
-            if (player.position.x < transform.position.x)
-            {
-                transform.localScale = new Vector3(-1, 1, 1); // 왼쪽
-            }
-            else
-            {
-                transform.localScale = new Vector3(1, 1, 1); // 오른쪽
-            }
-        }
-        else
-        {
-            // 플레이어가 왼쪽에 있으면 왼쪽을, 오른쪽에 있으면 오른쪽을 보게 함
-            if (player.position.x < transform.position.x)
-            {
-                transform.localScale = new Vector3(1, 1, 1); // 왼쪽
-            }
-            else
-            {
-                transform.localScale = new Vector3(-1, 1, 1); // 오른쪽
-            }
-        }
+        float baseScaleX = Mathf.Abs(transform.localScale.x);
+        bool isPlayerLeft = player.position.x < transform.position.x;
+
+        // seeRight가 true이고 플레이어가 왼쪽이면 -1, 아니면 1
+        // seeRight가 false이고 플레이어가 왼쪽이면 1, 아니면 -1
+        float direction = (seeRight == isPlayerLeft) ? -1f : 1f;
+
+        transform.localScale = new Vector3(baseScaleX * direction, transform.localScale.y, transform.localScale.z);
     }
 }
