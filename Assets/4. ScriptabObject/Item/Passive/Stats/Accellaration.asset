@@ -20,10 +20,10 @@ MonoBehaviour:
   itemPrefab: {fileID: 568828487779610558, guid: 027668cb74a7fbc4689adbc97b5be03a, type: 3}
   modifiers:
   - statType: 4
-    value: -0.1
+    value: -0.05
   - statType: 6
     value: 0.4
   - statType: 2
     value: -1
   - statType: 5
-    value: -1
+    value: -0.5

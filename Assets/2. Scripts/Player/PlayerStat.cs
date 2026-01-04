@@ -9,6 +9,7 @@ public class PlayerStat : Stat
     private const float MAX_HEALTH_LIMIT = 20f;
 
     // 체력 변경 시 UI에 알리기 위한 이벤트
+    public Action OnStatChanged;
     public Action OnHealthChanged;
     public Action OnMaxHealthChanged;
     
@@ -37,16 +38,31 @@ public class PlayerStat : Stat
         OnHealthChanged?.Invoke(); // 회복 시 호출
     }
     
-    public void AddGold(int amount) => gold += amount;
-    public void AddKey(int amount) => keys += amount;
-    public void AddBomb(int amount) => bombs += amount;
+    // 재화 추가 및 이벤트 호출
+    public void AddGold(int amount) { gold += amount; OnStatChanged?.Invoke(); }
+    public void AddKey(int amount) { keys += amount; OnStatChanged?.Invoke(); }
+    public void AddBomb(int amount) { bombs += amount; OnStatChanged?.Invoke(); }
+    
+    // 폭탄 사용 가능 여부 확인 및 차감
+    public bool UseBomb()
+    {
+        if (bombs > 0)
+        {
+            bombs--;
+            OnStatChanged?.Invoke();
+            return true;
+        }
+        return false;
+    }
     
     public override void ApplyStatChange(StatType type, float value)
     {
-        // 1. 부모의 기본 로직을 먼저 실행하여 수치를 변경합니다.
+        // 부모의 기본 로직을 먼저 실행하여 수치를 변경합니다.
         base.ApplyStatChange(type, value);
+        // 수치 변경 후 UI 갱신 이벤트 호출
+        OnStatChanged?.Invoke();
     
-        // 2. 변경된 타입에 따라 후속 처리를 진행합니다.
+        // 변경된 타입에 따라 후속 처리를 진행합니다.
         switch (type)
         {
             case StatType.MaxHealth:

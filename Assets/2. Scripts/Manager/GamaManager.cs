@@ -11,7 +11,23 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel; // 게임 오버 UI (기본 비활성화)
     
     private float restartHoldTime = 0f;
-    private bool isGameOver = false;
+    //private bool isGameOver = false;
+    
+    [Header("Key Bindings")]
+    public KeyCode moveUp = KeyCode.UpArrow;
+    public KeyCode moveDown = KeyCode.DownArrow;
+    public KeyCode moveLeft = KeyCode.LeftArrow;
+    public KeyCode moveRight = KeyCode.RightArrow;
+
+    public KeyCode attackUp = KeyCode.W;
+    public KeyCode attackDown = KeyCode.S;
+    public KeyCode attackLeft = KeyCode.A;
+    public KeyCode attackRight = KeyCode.D;
+
+    public KeyCode useActive = KeyCode.Space;
+    public KeyCode usePickup = KeyCode.E;
+    public KeyCode viewMinimap = KeyCode.Tab;
+    public KeyCode restartKey = KeyCode.R;
 
     private void Awake()
     {
@@ -25,8 +41,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // 2. R키를 2초간 누르면 재시작
+        // R키를 꾹 누르면 재시작
         HandleRestartKey();
+        
+        // [설정창 열기]
+        if(Input.GetKeyDown(KeyCode.Escape)) ToggleSettings();
     }
 
     private void HandleRestartKey()
@@ -44,10 +63,14 @@ public class GameManager : MonoBehaviour
             restartHoldTime = 0f;
         }
     }
+    
+    public void ToggleSettings() {
+        // 설정 UI 끄고 켜는 로직 (Time.timeScale 조절 포함)
+    }
 
     public void OnPlayerDeath()
     {
-        isGameOver = true;
+        //isGameOver = true;
         gameOverPanel.SetActive(true);
         Time.timeScale = 0f; // 게임 일시정지
     }

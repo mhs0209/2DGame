@@ -21,6 +21,9 @@ namespace FreeworkGame
         private float moveYstep = 0.7f;
         private Vector2 moveInput;
         
+        [Header("Bomb Setting")]
+        public GameObject bombPrefab; // 인스펙터에서 ActiveBomb 프리팹 할당
+        
         [Header("State")]
         private targetDirectType targetType;
         private bool isRun = false;
@@ -115,6 +118,21 @@ namespace FreeworkGame
             {
                 moveInput = Vector2.zero;
                 if (!isPose) SetAni(AniType.idle);
+            }
+            
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                TryPlaceBomb();
+            }
+        }
+        
+        private void TryPlaceBomb()
+        {
+            if (playerStat.UseBomb())
+            {
+                // 플레이어 발밑 혹은 약간 앞에 폭탄 생성
+                Instantiate(bombPrefab, transform.position, Quaternion.identity);
+                Debug.Log("폭탄 설치!");
             }
         }
 
