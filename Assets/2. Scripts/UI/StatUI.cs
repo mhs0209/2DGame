@@ -2,7 +2,7 @@ using FreeworkGame;
 using UnityEngine;
 using TMPro;
 
-public class StatUI : MonoBehaviour
+public class StatUI : MonoBehaviour, IInitializable
 {
     public TextMeshProUGUI atkText, speedText, rangeText, delayText;
     public TextMeshProUGUI goldText, keyText, bombText;
@@ -29,7 +29,19 @@ public class StatUI : MonoBehaviour
         if (playerStat != null)
             playerStat.OnStatChanged -= RefreshUI;
     }
-
+    
+    public void OnLevelInit()
+    {
+        // 씬 로드 시마다 새로운 플레이어를 찾아서 이벤트를 다시 연결
+        var player = AniManager.Instance.GetComponent<PlayerStat>();
+        if (player != null)
+        {
+            player.OnStatChanged -= RefreshUI;
+            player.OnStatChanged += RefreshUI;
+            RefreshUI();
+        }
+    }
+        
     // 이벤트가 발생했을 때만 실행됨
     private void RefreshUI()
     {

@@ -170,7 +170,7 @@ MonoBehaviour:
   maxHealth: 30
   atk: 1
   atkMult: 1
-  delay: 3
+  delay: 1
   range: 6
   speed: 2
   fireShape: 0
@@ -194,11 +194,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c9b94cae152cf4aadc1f6d6dee7116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 1
+  currentState: 0
   seeRight: 1
-  detectRange: 5
-  attackRange: 1
-  retreatRange: 10
+  detectRange: 10
+  attackRange: 6
+  retreatRange: 5
 --- !u!114 &3386477358413507867
 MonoBehaviour:
   m_ObjectHideFlags: 0

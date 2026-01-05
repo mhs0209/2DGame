@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MinimapManager : MonoBehaviour
+public class MinimapManager : MonoBehaviour, IInitializable
 {
     public static MinimapManager Instance;
 
@@ -31,10 +32,15 @@ public class MinimapManager : MonoBehaviour
     private HashSet<Vector2Int> visitedRooms = new HashSet<Vector2Int>();
     private Vector2Int currentRoomPos = new Vector2Int(-999, -999);
     private bool isLargeMap = false;
-
+    
     void Awake()
     {
-        Instance = this;
+        if (Instance == null) {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        } else {
+            Destroy(gameObject); // 이미 존재한다면 새로 생긴 녀석을 제거!
+        }
         if (minimapWindow != null) windowImage = minimapWindow.GetComponent<Image>();
     }
 
@@ -99,13 +105,52 @@ public class MinimapManager : MonoBehaviour
         }
         RefreshAllIcons();
     }
+    
+    public void OnLevelInit()
+    {
+        ClearMinimap(); // 기존에 만들었던 초기화 로직 호출
+    }
+    
+    public void ClearMinimap()
+    {
+        // 1. 하이러키에 생성된 모든 아이콘 오브젝트 파괴
+        foreach (var img in minimapIcons.Values)
+        {
+            if (img != null && img.gameObject != null)
+            {
+                Destroy(img.gameObject);
+            }
+        }
 
+        // 2. 내부 데이터 구조 초기화
+        minimapIcons.Clear();
+        visitedRooms.Clear();
+        currentRoomPos = new Vector2Int(-999, -999);
+
+        // 3. 컨테이너 위치 초기화 (0,0으로 복귀)
+        if (minimapContainer != null)
+        {
+            minimapContainer.anchoredPosition = Vector2.zero;
+        }
+
+        Debug.Log("미니맵 초기화 완료 (아이콘 및 데이터 제거)");
+    }
+
+    // [방어 코드 추가] RefreshAllIcons에서 Null 체크
     private void RefreshAllIcons()
     {
+        // 딕셔너리를 순회할 때 이미 파괴된 객체가 있을 수 있으므로 방어 로직 추가
         foreach (var pair in minimapIcons)
         {
             Vector2Int pos = pair.Key;
             Image img = pair.Value;
+
+            // 이미 파괴된 이미지라면 건너뜀
+            if (img == null) continue;
+
+            // MapGenerator의 데이터가 현재 미니맵 데이터와 일치하는지 확인
+            if (!MapGenerator.Instance.DungeonMap.ContainsKey(pos)) continue;
+
             RoomType type = MapGenerator.Instance.DungeonMap[pos];
 
             if (pos == currentRoomPos) img.color = Color.white;
@@ -113,4 +158,5 @@ public class MinimapManager : MonoBehaviour
             else img.color = (type == RoomType.Normal || type == RoomType.Base) ? Color.black : new Color(0.3f, 0.3f, 0.3f, 1f);
         }
     }
+    
 }

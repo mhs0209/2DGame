@@ -8,6 +8,9 @@ public class Bomb : MonoBehaviour
     public float explosionRadius = 2.0f;
     public float monsterDamage = 10.0f;
     public float playerDamage = 2.0f;
+    
+    [Header("Explosion Visuals")]
+    public GameObject explosionPrefab; // 폭발 파티클 프리팹
 
     [Header("Visual Feedback")]
     private SpriteRenderer sr;
@@ -71,6 +74,14 @@ public class Bomb : MonoBehaviour
 
     private void Explode()
     {
+        // 1. 폭발 이펙트 생성
+        if (explosionPrefab != null)
+        {
+            // 폭탄의 위치에 파티클 생성
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        }
+
+        // 2. 범위 내 대상 감지 및 데미지 (기존 로직)
         Collider2D[] hitObjects = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach (var obj in hitObjects)
         {
@@ -81,8 +92,8 @@ public class Bomb : MonoBehaviour
                 targetStat.TakeDamage(damage);
             }
         }
-        
-        // 폭발 파티클이 있다면 여기서 생성
+
+        // 3. 폭탄 오브젝트 제거
         Destroy(gameObject);
     }
 
