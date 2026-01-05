@@ -36,8 +36,7 @@ public class MinimapManager : MonoBehaviour, IInitializable
     void Awake()
     {
         if (Instance == null) {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+            Instance = this;    
         } else {
             Destroy(gameObject); // 이미 존재한다면 새로 생긴 녀석을 제거!
         }

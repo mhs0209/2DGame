@@ -32,12 +32,18 @@ public class StatUI : MonoBehaviour, IInitializable
     
     public void OnLevelInit()
     {
-        // 씬 로드 시마다 새로운 플레이어를 찾아서 이벤트를 다시 연결
-        var player = AniManager.Instance.GetComponent<PlayerStat>();
-        if (player != null)
+        // 씬 로드 시점에 새롭게 생성된(혹은 초기화된) 플레이어를 찾아 이벤트 재구독
+        if (AniManager.Instance != null)
         {
-            player.OnStatChanged -= RefreshUI;
-            player.OnStatChanged += RefreshUI;
+            playerStat = AniManager.Instance.GetComponent<PlayerStat>();
+            
+            // 기존 구독 해제 후 재구독 (중복 방지)
+            playerStat.OnStatChanged -= RefreshUI;
+            playerStat.OnHealthChanged -= RefreshUI;
+            
+            playerStat.OnStatChanged += RefreshUI;
+            playerStat.OnHealthChanged += RefreshUI;
+            
             RefreshUI();
         }
     }

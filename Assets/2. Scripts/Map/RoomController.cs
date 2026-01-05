@@ -51,6 +51,7 @@ public class RoomController : MonoBehaviour
             {
                 pStat.keys--;
                 Debug.Log($"열쇠 사용! 남은 열쇠: {pStat.keys}");
+                pStat.OnStatChanged?.Invoke();
             }
 
             door.isSpecialLock = false;

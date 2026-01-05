@@ -7,7 +7,7 @@ namespace FreeworkGame
     public enum targetDirectType { forward = 0, backward = 1 }
     public enum AniType { idle = 0, walk = 1, run = 2, win = 3, lose = 4 }
 
-    public class AniManager : MonoBehaviour
+    public class AniManager : MonoBehaviour, IInitializable
     {
         public static AniManager Instance { get; private set; }
         
@@ -65,26 +65,15 @@ namespace FreeworkGame
             Move();
         }
         
-        private void OnEnable()
+        // 인터페이스 구현
+        public void OnLevelInit()
         {
-            SceneManager.sceneLoaded += OnLevelFinishedLoading;
-        }
-
-        private void OnDisable()
-        {
-            SceneManager.sceneLoaded -= OnLevelFinishedLoading;
-        }
-
-        // 씬이 바뀔 때마다 실행되는 함수
-        private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
-        {
-            // 포탈을 탔을 때 (씬이 새로 로드됐을 때) 위치를 0,0으로 강제 이동
+            // 포탈을 탔을 때 위치 초기화
             transform.position = Vector3.zero;
-    
-            // Rigidbody가 있다면 물리 위치도 초기화해주는 것이 안전합니다.
-            if(rb != null) rb.position = Vector2.zero;
-    
-            Debug.Log("새로운 씬 로드: 플레이어 위치 초기화 완료");
+            if (rb != null) rb.position = Vector2.zero;
+        
+            isCollidingWithMonster = false; // 상태값 초기화
+            Debug.Log("AniManager: 플레이어 위치 초기화 완료");
         }
 
         private void HandleInput()

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class HeartUI : MonoBehaviour
+public class HeartUI : MonoBehaviour, IInitializable
 {
     public PlayerStat playerStat;
     public GameObject heartPrefab;
@@ -12,20 +12,6 @@ public class HeartUI : MonoBehaviour
     private Color fullColor = Color.green;   // 2 HP
     private Color halfColor = Color.red;     // 1 HP
     private Color emptyColor = Color.black;  // 0 HP
-
-    void Start()
-    {
-        if (playerStat != null)
-        {
-            // 이벤트 구독
-            playerStat.OnMaxHealthChanged += RefreshHeartCount;
-            playerStat.OnHealthChanged += UpdateHeartColors;
-
-            // 초기 설정
-            RefreshHeartCount();
-            UpdateHeartColors();
-        }
-    }
 
     // 1. 최대 체력에 맞춰 하트 오브젝트 생성/삭제
     private void RefreshHeartCount()
@@ -73,6 +59,21 @@ public class HeartUI : MonoBehaviour
         {
             playerStat.OnMaxHealthChanged -= RefreshHeartCount;
             playerStat.OnHealthChanged -= UpdateHeartColors;
+        }
+    }
+
+    public void OnLevelInit()
+    {
+        playerStat = FindObjectOfType<PlayerStat>();
+        if (playerStat != null)
+        {
+            // 이벤트 구독
+            playerStat.OnMaxHealthChanged += RefreshHeartCount;
+            playerStat.OnHealthChanged += UpdateHeartColors;
+
+            // 초기 설정
+            RefreshHeartCount();
+            UpdateHeartColors();
         }
     }
 }
