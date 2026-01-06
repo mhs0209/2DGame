@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public enum DoorDirection { Top, Bottom, Left, Right }
 
@@ -9,17 +10,19 @@ public class RoomTransfer : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        DoorPhysics myDoor = GetComponent<DoorPhysics>();
+
         if (collision.CompareTag("Player") && !isTransferring)
         {
             TransferPlayer(collision.transform);
         }
     }
 
-    private void TransferPlayer(Transform player)
+    public void TransferPlayer(Transform player)
     {
         isTransferring = true;
         float spacing = MapGenerator.Instance.roomSpacing;
-        
+    
         // 1. 목표 격자 좌표 계산
         Vector2Int currentGrid = new Vector2Int(
             Mathf.RoundToInt(player.position.x / spacing),
@@ -35,15 +38,9 @@ public class RoomTransfer : MonoBehaviour
             case DoorDirection.Right: targetGrid += Vector2Int.right; break;
         }
 
-        // 2. 목표 방 데이터 가져오기
         BaseRoom targetRoom = MapGenerator.Instance.GetRoomAt(targetGrid);
-        if (targetRoom == null) 
-        {
-            isTransferring = false;
-            return;
-        }
+        if (targetRoom == null) { isTransferring = false; return; }
 
-        // 3. 지점 이동 (반대 방향 지점으로 소환)
         Transform dest = null;
         switch (direction)
         {
@@ -55,22 +52,17 @@ public class RoomTransfer : MonoBehaviour
 
         if (dest != null)
         {
-            // 카메라 즉시 이동
-            Vector3 cameraPos = new Vector3(targetGrid.x * spacing, targetGrid.y * spacing, -10);
-            CameraManager.Instance.ImmediateMove(cameraPos);
-
-            // 플레이어 위치 고정
+            CameraManager.Instance.ImmediateMove(new Vector3(targetGrid.x * spacing, targetGrid.y * spacing, -10));
             player.position = dest.position;
+        
+            Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.velocity = Vector2.zero;
 
-            // 방 진입 효과 (미니맵 등)
+            // [핵심] 들어간 방의 입성 함수 호출 (이 안에서 잠금 로직이 실행됨)
             targetRoom.OnPlayerEnter();
-            
-            // A* 경로 재계산 (필요 시)
-            if (AstarPath.active != null) AstarPath.active.Scan();
         }
 
-        // 0.5초면 연쇄 이동을 막기에 충분합니다.
-        Invoke(nameof(ResetTransferFlag), 0.5f);
+        Invoke(nameof(ResetTransferFlag), 1.0f);
     }
 
     private void ResetTransferFlag() => isTransferring = false;

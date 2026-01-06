@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -59,20 +60,55 @@ public class RoomController : MonoBehaviour
             Debug.Log("잠긴 문을 열었습니다!");
         }
     }
+    
+    public void LockAllDoorsTemporarily(float duration)
+    {
+        // 이미 전투 중이면 전투 로직이 문을 관리함
+        if (currentState == RoomState.Battle) return;
+
+        StopAllCoroutines();
+        StartCoroutine(TempLockRoutine(duration));
+    }
+
+    private IEnumerator TempLockRoutine(float duration)
+    {
+        // 모든 문 잠금 (빨간색 벽)
+        foreach (var door in doorMap.Values)
+        {
+            if (door != null) door.SetLock(true);
+        }
+
+        yield return new WaitForSeconds(duration);
+
+        // 다시 모든 문 상태 복구
+        foreach (var door in doorMap.Values)
+        {
+            if (door == null) continue;
+
+            // [체크] 열쇠를 아직 안 쓴 특수방 문이 아니라면 문을 열어줌
+            // 이미 열쇠를 써서 isSpecialLock이 false가 된 문은 정상적으로 열립니다.
+            if (!door.isSpecialLock)
+            {
+                door.SetLock(false);
+            }
+        }
+    }
 
     // --- 전투 로직 ---
     
     public void StartBattle()
     {
-        if (currentState == RoomState.Cleared) return;
+        if (currentState == RoomState.Cleared || currentState == RoomState.Battle) return;
 
         currentState = RoomState.Battle;
-        foreach (var d in doorMap.Values) d.SetLock(true);
 
-        // 2-2 요구사항: 맵에 미리 배치된 몬스터들 감지
+        // 모든 문을 잠금 (isTrigger = false)
+        foreach (var d in doorMap.Values) 
+        {
+            d.SetLock(true);
+        }
+
         DetectEnemies();
-
-        // 만약 배치된 적이 없다면 즉시 승리 처리
         if (activeEnemies.Count <= 0) EndBattle();
     }
 
@@ -132,7 +168,15 @@ public class RoomController : MonoBehaviour
     // ActivateRoomLogic 함수는 에러 방지를 위해 유지
     public void ActivateRoomLogic()
     {
-        if (currentState == RoomState.Cleared || currentState == RoomState.Battle) return;
-        if (baseRoom.type == RoomType.Normal || baseRoom.type == RoomType.Boss) StartBattle();
+        // 1. 전투가 필요한 방이고 아직 안 싸웠다면 전투 시작
+        if (currentState != RoomState.Cleared && (baseRoom.type == RoomType.Normal || baseRoom.type == RoomType.Boss)) 
+        {
+            StartBattle();
+            return; // 전투 로직에서 모든 문을 잠그므로 여기서 종료
+        }
+
+        // 2. 이미 클리어했거나 빈 방(Empty)인 경우 -> 역행 방지용 임시 잠금 실행
+        // 전투 중(Battle) 상태가 아닐 때만 실행됩니다.
+        LockAllDoorsTemporarily(1.0f);
     }
 }
