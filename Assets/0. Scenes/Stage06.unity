@@ -432,17 +432,17 @@ MonoBehaviour:
   maxRooms: 10
   roomSpacing: 20
   allRoomSO:
-  - {fileID: 11400000, guid: d5e2200d4384c364780698b2470f82ea, type: 2}
-  - {fileID: 11400000, guid: a4b47f383b076e84489af889bf255fc9, type: 2}
-  - {fileID: 11400000, guid: 861fee7a898bbed4693d0f1032764c13, type: 2}
-  - {fileID: 11400000, guid: 0b5a6d081b0e9a64ba2028829a5137ec, type: 2}
-  - {fileID: 11400000, guid: 46b9cb35915dbd940902c64dd593302f, type: 2}
-  - {fileID: 11400000, guid: d68253fa0f019f446aeca959b9cc5e2b, type: 2}
-  - {fileID: 11400000, guid: cfdcc1c736d553c4b97855544d6643f6, type: 2}
-  - {fileID: 11400000, guid: c0d0baf1d35c88f49a0c6c38c074576b, type: 2}
-  - {fileID: 11400000, guid: 1431011be7d35fe4fa167dcc2928826d, type: 2}
-  - {fileID: 11400000, guid: eebbf45079fe2e0488b0f0774f102ec2, type: 2}
-  - {fileID: 11400000, guid: 0dc422e0eee690941b0cfd10c9cfef71, type: 2}
+  - {fileID: 11400000, guid: c78250ddafaa8894f815b8f0f5039562, type: 2}
+  - {fileID: 11400000, guid: 1a4e3316810c37941b4b62fb522d5e0e, type: 2}
+  - {fileID: 11400000, guid: ee9e9d12894e9164e837ef35eb3c28d2, type: 2}
+  - {fileID: 11400000, guid: 12c1756ec332a2c49a31130e99d805fd, type: 2}
+  - {fileID: 11400000, guid: e23219e1005f889428dc295f1c3318cb, type: 2}
+  - {fileID: 11400000, guid: d00b73b0c80590a4186597a8e4d4382b, type: 2}
+  - {fileID: 11400000, guid: bda1a50b6df2b1d42ad040aed5ec6156, type: 2}
+  - {fileID: 11400000, guid: 25b9a9526fc282f44a51d291c3ba6063, type: 2}
+  - {fileID: 11400000, guid: 5919c3002a5fc324ea00d70e61b0dad0, type: 2}
+  - {fileID: 11400000, guid: 6e7e7f001028b6744a8cf9fe24639236, type: 2}
+  - {fileID: 11400000, guid: 32851c2d9c6107046b0dc31a9b1dc053, type: 2}
 --- !u!1 &939266727
 GameObject:
   m_ObjectHideFlags: 0

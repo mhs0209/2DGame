@@ -10,16 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 180f1c3c31e896544a0c6f7dbc12c6bf, type: 3}
-  m_Name: Normal Room Data 6
+  m_Name: Stage05~06 Normal Room Data 6
   m_EditorClassIdentifier: 
   roomID: 0
   roomType: 0
-  roomPrefab: {fileID: 2849013273550924103, guid: 6c2558b737605a045a92471d78e87bde, type: 3}
+  roomPrefab: {fileID: 8954233086087562156, guid: 6e3f37970319a7c418767026ff2409a7, type: 3}
   minimapIcon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  enemyPrefabs:
-  - {fileID: 1755821105750360422, guid: 1dd060f6d3e0dc442ad4750a6fd5ce6b, type: 3}
-  minEnemies: 2
-  maxEnemies: 5
   lootTable:
   - prefab: {fileID: 4996672782179067208, guid: e4a0ecc8e1fdd3046b48e8d58dbd12ad, type: 3}
     weight: 50

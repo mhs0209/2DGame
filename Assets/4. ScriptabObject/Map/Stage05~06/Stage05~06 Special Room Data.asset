@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36e11bf9cab600e41b101b7838d91ffc, type: 3}
-  m_Name: Special Room Data
+  m_Name: Stage05~06 Special Room Data
   m_EditorClassIdentifier: 
   roomID: 0
   roomType: 4
-  roomPrefab: {fileID: 3329449413779220532, guid: fd658dab124f28946b888ae3d0004037, type: 3}
+  roomPrefab: {fileID: 5369554909019338434, guid: 80b15a2f8f0164743bab089268bcb0fc, type: 3}
   minimapIcon: {fileID: 1997828774, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   type: 0
   gimmickPrefab: {fileID: 7759998093410289461, guid: 5dffa486e74d62445a6a8366c7f61ba8, type: 3}
