@@ -19,20 +19,14 @@ public class DoorPhysics : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         if (myRoom == null) Debug.Log("myRoom is null");
     }
-
-    void Update()
+    
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (!isSpecialLock) return;
+        if (isSpecialLock == false) return;
         
-        if (player != null)
+        if (other.gameObject.tag == "Player")
         {
-            float dist = Vector2.Distance(transform.position, player.transform.position);
-        
-            // 문과 플레이어 거리가 1.5 유닛 이내일 때
-            if (dist < 1f)
-            {
-                myRoom.OnPlayerTryEntry(this);
-            }
+            myRoom.OnPlayerTryEntry(this);
         }
     }
 

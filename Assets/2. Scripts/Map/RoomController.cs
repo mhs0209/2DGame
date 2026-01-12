@@ -46,14 +46,11 @@ public class RoomController : MonoBehaviour
         PlayerStat pStat = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStat>();
         
         // GetKey가 아닌 GetKeyDown을 사용하여 프레임 입력 보장
-        if (Input.GetKeyDown(KeyCode.Alpha1) || (pStat.keys > 0)) 
+        if (pStat.keys > 0) 
         {
-            if (!Input.GetKeyDown(KeyCode.Alpha1)) 
-            {
-                pStat.keys--;
-                Debug.Log($"열쇠 사용! 남은 열쇠: {pStat.keys}");
-                pStat.OnStatChanged?.Invoke();
-            }
+            pStat.keys--;
+            Debug.Log($"열쇠 사용! 남은 열쇠: {pStat.keys}");
+            pStat.OnStatChanged?.Invoke();
 
             door.isSpecialLock = false;
             door.SetLock(false);

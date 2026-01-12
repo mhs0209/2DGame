@@ -157,6 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ee9e3c67228c44e88f97952b24866f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSpecialLock: 0
+  myRoom: {fileID: 0}
 --- !u!1 &7828857282828247191
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,6 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 546610246967055086}
+  - component: {fileID: 5297875671792114266}
   m_Layer: 0
   m_Name: LeftDoor
   m_TagString: Untagged
@@ -190,6 +193,33 @@ Transform:
   - {fileID: 7202558084450458369}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!50 &5297875671792114266
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7828857282828247191}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &8370410349859812278
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,3 +377,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ee9e3c67228c44e88f97952b24866f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSpecialLock: 0
+  myRoom: {fileID: 0}

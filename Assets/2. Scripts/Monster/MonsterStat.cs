@@ -7,8 +7,8 @@ public class MonsterStat : Stat
     public bool isNamed;
     public RoomController myRoom;
 
-    [Header("Scaling Settings")]
-    public float growthRate = 1.3f; // 복리 증가율
+    //[Header("Scaling Settings")]
+    private float growthRate = 1.5f; // 스테이지별 스탯 증가율
 
     private float originAtk;
     private float originMaxHealth;

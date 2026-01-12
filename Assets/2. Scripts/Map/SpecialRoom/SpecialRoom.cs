@@ -2,23 +2,23 @@ using UnityEngine;
 
 public class SpecialRoom : ItemRoom
 {
-    // 1번 에러 해결: 부모의 OnRoomCleared를 반드시 구현(override)해야 함
-    public override void OnRoomCleared()
-    {
-        if (controller.roomData is SpecialMap data)
-        {
-            // 특수 방 기믹(룰렛 등) 생성
-            if (data.gimmickPrefab != null)
-            {
-                Instantiate(data.gimmickPrefab, transform.position, Quaternion.identity, transform);
-                Debug.Log($"{data.type} 기믹이 생성되었습니다.");
-            }
+    private void Start()
+    { // 성장방은 입장 시 바로 생성
+        if (controller.roomData is TreasureMap data) {
+            SpawnPedestal(transform.position, data.itemPool);
         }
     }
+    public override void OnRoomCleared() { /* 이미 클리어 상태 */ }
 
-    private void Start()
-    {
-        // 만약 특수 방이 전투 없이 바로 기믹을 보여줘야 한다면 Start에서 호출
-        OnRoomCleared();
+    private void SpawnPedestal(Vector3 pos, GameObject[] pool) {
+        if (pool.Length == 0) return;
+        TreasureMap data = controller.roomData as TreasureMap;
+        GameObject pedestal = Instantiate(data.pedestalPrefab, pos, Quaternion.identity, transform);
+        // 제단에 랜덤 아이템 올리는 로직 (임시)
+        if (data.itemPool.Length > 0) {
+            GameObject item = data.itemPool[Random.Range(0, data.itemPool.Length)];
+            Instantiate(item, pedestal.transform.position + Vector3.up * 0.5f, Quaternion.identity, pedestal.transform);
+            Debug.Log($"성장방 아이템 생성: {item.name}");  
+        }
     }
 }

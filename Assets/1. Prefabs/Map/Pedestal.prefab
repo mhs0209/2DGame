@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4957577228429016971}
   - component: {fileID: 7793579701788048813}
+  - component: {fileID: -198825847085080270}
   m_Layer: 0
   m_Name: Pedestal
   m_TagString: Untagged
@@ -84,3 +85,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-198825847085080270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7759998093410289461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae85857ac40355447a59bf64c49f82ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkRadius: 0.5
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
