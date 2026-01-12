@@ -2939,7 +2939,7 @@ MonoBehaviour:
   atkMult: 1
   delay: 1
   range: 1
-  speed: 2
+  speed: 3
   fireShape: 0
   projectileCount: 1
   isPiercing: 0
@@ -2949,6 +2949,7 @@ MonoBehaviour:
   monsterType: 0
   isNamed: 0
   myRoom: {fileID: 0}
+  growthRate: 1.3
 --- !u!114 &5657732888198268587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3384,7 +3385,7 @@ MonoBehaviour:
   atkMult: 1
   delay: 1
   range: 1
-  speed: 2
+  speed: 3
   fireShape: 0
   projectileCount: 1
   isPiercing: 0
@@ -3394,6 +3395,7 @@ MonoBehaviour:
   monsterType: 0
   isNamed: 0
   myRoom: {fileID: 0}
+  growthRate: 1.3
 --- !u!114 &47021414724117943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5117,7 +5119,7 @@ MonoBehaviour:
   atkMult: 1
   delay: 1
   range: 1
-  speed: 2
+  speed: 3
   fireShape: 0
   projectileCount: 1
   isPiercing: 0
@@ -5127,6 +5129,7 @@ MonoBehaviour:
   monsterType: 0
   isNamed: 0
   myRoom: {fileID: 0}
+  growthRate: 1.3
 --- !u!114 &3752483828663926425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5399,7 +5402,7 @@ MonoBehaviour:
   atkMult: 1
   delay: 1
   range: 1
-  speed: 2
+  speed: 3
   fireShape: 0
   projectileCount: 1
   isPiercing: 0
@@ -5409,6 +5412,7 @@ MonoBehaviour:
   monsterType: 0
   isNamed: 0
   myRoom: {fileID: 0}
+  growthRate: 1.3
 --- !u!114 &6036652760980010187
 MonoBehaviour:
   m_ObjectHideFlags: 0

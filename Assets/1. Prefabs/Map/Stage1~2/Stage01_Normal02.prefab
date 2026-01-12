@@ -3156,6 +3156,10 @@ MonoBehaviour:
   right:
     door: {fileID: 253157366337501831}
     wall: {fileID: 8177587077314616418}
+  topSpawn: {fileID: 0}
+  bottomSpawn: {fileID: 0}
+  leftSpawn: {fileID: 0}
+  rightSpawn: {fileID: 0}
 --- !u!114 &2111242179517638995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3238,6 +3242,14 @@ PrefabInstance:
     - target: {fileID: 4970646881223211434, guid: 4f967194e12f42648b0be88b1cb64dfd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295797142451297920, guid: 4f967194e12f42648b0be88b1cb64dfd, type: 3}
+      propertyPath: health
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295797142451297920, guid: 4f967194e12f42648b0be88b1cb64dfd, type: 3}
+      propertyPath: maxHealth
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3416,6 +3428,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6295797142451297920, guid: 4f967194e12f42648b0be88b1cb64dfd, type: 3}
+      propertyPath: health
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295797142451297920, guid: 4f967194e12f42648b0be88b1cb64dfd, type: 3}
+      propertyPath: maxHealth
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3592,6 +3612,14 @@ PrefabInstance:
     - target: {fileID: 4970646881223211434, guid: 4f967194e12f42648b0be88b1cb64dfd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295797142451297920, guid: 4f967194e12f42648b0be88b1cb64dfd, type: 3}
+      propertyPath: health
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295797142451297920, guid: 4f967194e12f42648b0be88b1cb64dfd, type: 3}
+      propertyPath: maxHealth
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3856,6 +3884,14 @@ PrefabInstance:
     - target: {fileID: 4970646881223211434, guid: 4f967194e12f42648b0be88b1cb64dfd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295797142451297920, guid: 4f967194e12f42648b0be88b1cb64dfd, type: 3}
+      propertyPath: health
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295797142451297920, guid: 4f967194e12f42648b0be88b1cb64dfd, type: 3}
+      propertyPath: maxHealth
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

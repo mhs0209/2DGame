@@ -929,6 +929,10 @@ MonoBehaviour:
   right:
     door: {fileID: 9136251202268278061}
     wall: {fileID: 4652347873967850565}
+  topSpawn: {fileID: 0}
+  bottomSpawn: {fileID: 0}
+  leftSpawn: {fileID: 0}
+  rightSpawn: {fileID: 0}
 --- !u!114 &7706718407557468973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,7 +961,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stagePortalPrefab: {fileID: 5147909626668972415, guid: 95f23d63db1e8c84985d51edff847d25, type: 3}
-  stagePortalName: Stage01
 --- !u!1 &8276505150619008086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2979,8 +2982,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3677198152965125182, guid: e9176bfb4b9013442861e8dded4b20a6, type: 3}
+      propertyPath: detectRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3677198152965125182, guid: e9176bfb4b9013442861e8dded4b20a6, type: 3}
       propertyPath: currentState
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4376305205716492610, guid: e9176bfb4b9013442861e8dded4b20a6, type: 3}
+      propertyPath: range
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4376305205716492610, guid: e9176bfb4b9013442861e8dded4b20a6, type: 3}
+      propertyPath: health
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4376305205716492610, guid: e9176bfb4b9013442861e8dded4b20a6, type: 3}
+      propertyPath: maxHealth
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

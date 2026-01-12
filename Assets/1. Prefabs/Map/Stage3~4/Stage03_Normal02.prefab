@@ -391,22 +391,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a405db5cca5cbc147af6d673b9a28c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
-  maxHealth: 5
+  health: 7
+  maxHealth: 7
   atk: 1
   atkMult: 1
   delay: 3
-  range: 6
+  range: 8
   speed: 2
-  fireShape: 0
-  projectileCount: 1
+  fireShape: 1
+  projectileCount: 3
   isPiercing: 0
-  isInvincible: 0
+  isInvincible: 1
   useHitInvincibility: 0
   invincibilityMult: 1
   monsterType: 1
   isNamed: 0
   myRoom: {fileID: 0}
+  growthRate: 1.3
 --- !u!114 &3597884733420840328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2549,22 +2550,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a405db5cca5cbc147af6d673b9a28c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
-  maxHealth: 5
+  health: 7
+  maxHealth: 7
   atk: 1
   atkMult: 1
   delay: 3
-  range: 6
+  range: 8
   speed: 2
-  fireShape: 0
-  projectileCount: 1
+  fireShape: 1
+  projectileCount: 3
   isPiercing: 0
-  isInvincible: 0
+  isInvincible: 1
   useHitInvincibility: 0
   invincibilityMult: 1
   monsterType: 1
   isNamed: 0
   myRoom: {fileID: 0}
+  growthRate: 1.3
 --- !u!114 &6982624624130941606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2975,22 +2977,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a405db5cca5cbc147af6d673b9a28c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
-  maxHealth: 5
+  health: 7
+  maxHealth: 7
   atk: 1
   atkMult: 1
   delay: 3
-  range: 6
+  range: 8
   speed: 2
-  fireShape: 0
-  projectileCount: 1
+  fireShape: 1
+  projectileCount: 3
   isPiercing: 0
-  isInvincible: 0
+  isInvincible: 1
   useHitInvincibility: 0
   invincibilityMult: 1
   monsterType: 1
   isNamed: 0
   myRoom: {fileID: 0}
+  growthRate: 1.3
 --- !u!114 &5235932592016304681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4200,22 +4203,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a405db5cca5cbc147af6d673b9a28c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
-  maxHealth: 5
+  health: 7
+  maxHealth: 7
   atk: 1
   atkMult: 1
   delay: 3
-  range: 6
+  range: 8
   speed: 2
-  fireShape: 0
-  projectileCount: 1
+  fireShape: 1
+  projectileCount: 3
   isPiercing: 0
-  isInvincible: 0
+  isInvincible: 1
   useHitInvincibility: 0
   invincibilityMult: 1
   monsterType: 1
   isNamed: 0
   myRoom: {fileID: 0}
+  growthRate: 1.3
 --- !u!114 &8494568785728774733
 MonoBehaviour:
   m_ObjectHideFlags: 0

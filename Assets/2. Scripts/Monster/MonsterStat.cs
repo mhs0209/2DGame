@@ -7,7 +7,9 @@ public class MonsterStat : Stat
     public bool isNamed;
     public RoomController myRoom;
 
-    // 기본 스탯 저장용 (풀링 복구용)
+    [Header("Scaling Settings")]
+    public float growthRate = 1.3f; // 복리 증가율
+
     private float originAtk;
     private float originMaxHealth;
     private float originSpeed;
@@ -15,7 +17,6 @@ public class MonsterStat : Stat
     protected override void Awake()
     {
         base.Awake();
-        // 최초 초기 상태 저장
         originAtk = atk;
         originMaxHealth = maxHealth;
         originSpeed = speed;
@@ -23,8 +24,10 @@ public class MonsterStat : Stat
 
     private void OnEnable()
     {
-        ResetStat();
-        // 10% 확률로 네임드 몬스터화 (원하는 확률로 조정 가능)
+        ResetStat();           // 1. 원본 데이터로 초기화
+        ApplyStageScaling();   // 2. 스테이지에 따른 배율 적용
+        
+        // 3. 10% 확률로 네임드 보너스 (스테이지 스케일링이 끝난 후 추가 보너스)
         if (Random.value < 0.1f) ApplyNamedBonus();
     }
 
@@ -33,19 +36,36 @@ public class MonsterStat : Stat
         isNamed = false;
         atk = originAtk;
         maxHealth = originMaxHealth;
+        speed = originSpeed;
         health = maxHealth;
         isInvincible = false;
+        if(childrenRenderers[0]) childrenRenderers[0].color = Color.white;
+    }
+
+    private void ApplyStageScaling()
+    {
+        string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        // "Stage01"에서 뒤의 숫자 두 자리를 가져옴
+        if (sceneName.Length >= 2 && int.TryParse(sceneName.Substring(sceneName.Length - 2), out int stageNum))
+        {
+            // 체력 복리 계산: Base * (Growth ^ (Stage-1))
+            float hpMultiplier = Mathf.Pow(growthRate, stageNum - 1);
+            maxHealth *= hpMultiplier;
+            health = maxHealth;
+
+            // 공격력 결정: 1~4스테이지는 1, 5스테이지부터는 2 (네임드는 아래에서 별도 처리)
+            atk = (stageNum >= 5) ? 2 : 1;
+        }
     }
 
     private void ApplyNamedBonus()
     {
         isNamed = true;
-        atk = 2;
+        atk = 2; // 네임드는 스테이지 상관없이 무조건 2
         maxHealth *= 1.5f;
         health = maxHealth;
         speed *= 1.2f;
-        // 시각적 차이를 위해 색상을 변경할 수도 있습니다.
-        if(childrenRenderers[0]) childrenRenderers[0].color = new Color(1f, 0f, 0f); 
+        if(childrenRenderers[0]) childrenRenderers[0].color = new Color(1f, 0f, 0f); // 주황색 등
     }
     
     private void OnCollisionStay2D(Collision2D collision)

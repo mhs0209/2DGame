@@ -230,7 +230,7 @@ Transform:
   m_GameObject: {fileID: 925042988745447093}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.13, y: 2.98, z: 0}
+  m_LocalPosition: {x: -4.19, y: 2.15, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -362,15 +362,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a405db5cca5cbc147af6d673b9a28c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
-  maxHealth: 5
+  health: 7
+  maxHealth: 7
   atk: 1
   atkMult: 1
   delay: 3
-  range: 6
+  range: 10
   speed: 2
-  fireShape: 0
-  projectileCount: 1
+  fireShape: 2
+  projectileCount: 6
   isPiercing: 0
   isInvincible: 0
   useHitInvincibility: 0
@@ -378,6 +378,7 @@ MonoBehaviour:
   monsterType: 1
   isNamed: 0
   myRoom: {fileID: 0}
+  growthRate: 1.3
 --- !u!114 &5368443925616230332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2514,7 +2515,7 @@ Transform:
   m_GameObject: {fileID: 1105679832352754489}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.1, y: 3.01, z: 0}
+  m_LocalPosition: {x: 4.16, y: 2.29, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2646,15 +2647,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a405db5cca5cbc147af6d673b9a28c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
-  maxHealth: 5
+  health: 7
+  maxHealth: 7
   atk: 1
   atkMult: 1
   delay: 3
-  range: 6
+  range: 10
   speed: 2
-  fireShape: 0
-  projectileCount: 1
+  fireShape: 2
+  projectileCount: 6
   isPiercing: 0
   isInvincible: 0
   useHitInvincibility: 0
@@ -2662,6 +2663,7 @@ MonoBehaviour:
   monsterType: 1
   isNamed: 0
   myRoom: {fileID: 0}
+  growthRate: 1.3
 --- !u!114 &2490723245846601807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2940,7 +2942,7 @@ Transform:
   m_GameObject: {fileID: 1912853971463626874}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.29, y: -2.85, z: 0}
+  m_LocalPosition: {x: 4.05, y: -2.1, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3072,15 +3074,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a405db5cca5cbc147af6d673b9a28c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
-  maxHealth: 5
+  health: 7
+  maxHealth: 7
   atk: 1
   atkMult: 1
   delay: 3
-  range: 6
+  range: 10
   speed: 2
-  fireShape: 0
-  projectileCount: 1
+  fireShape: 2
+  projectileCount: 6
   isPiercing: 0
   isInvincible: 0
   useHitInvincibility: 0
@@ -3088,6 +3090,7 @@ MonoBehaviour:
   monsterType: 1
   isNamed: 0
   myRoom: {fileID: 0}
+  growthRate: 1.3
 --- !u!114 &1280718648863288025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6613,7 +6616,7 @@ Transform:
   m_GameObject: {fileID: 8796105668887407157}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.04, y: -3.01, z: 0}
+  m_LocalPosition: {x: -4.14, y: -2.11, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6745,15 +6748,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a405db5cca5cbc147af6d673b9a28c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
-  maxHealth: 5
+  health: 7
+  maxHealth: 7
   atk: 1
   atkMult: 1
   delay: 3
-  range: 6
+  range: 10
   speed: 2
-  fireShape: 0
-  projectileCount: 1
+  fireShape: 2
+  projectileCount: 6
   isPiercing: 0
   isInvincible: 0
   useHitInvincibility: 0
@@ -6761,6 +6764,7 @@ MonoBehaviour:
   monsterType: 1
   isNamed: 0
   myRoom: {fileID: 0}
+  growthRate: 1.3
 --- !u!114 &5618756411776615883
 MonoBehaviour:
   m_ObjectHideFlags: 0

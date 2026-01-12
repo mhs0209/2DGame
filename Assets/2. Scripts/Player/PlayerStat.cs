@@ -83,6 +83,11 @@ public class PlayerStat : Stat
                 // 하트 색상을 갱신하라고 신호를 보냅니다.
                 OnHealthChanged?.Invoke();
                 break;
+            
+            case StatType.Delay: 
+                delay += value; 
+                if (delay < 0.05f) delay = 0.05f; 
+                break;
         }
     }
 }
