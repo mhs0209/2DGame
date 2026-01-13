@@ -3315,11 +3315,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6295797142451297920, guid: 4f967194e12f42648b0be88b1cb64dfd, type: 3}
       propertyPath: health
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6295797142451297920, guid: 4f967194e12f42648b0be88b1cb64dfd, type: 3}
       propertyPath: maxHealth
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3587,11 +3587,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6295797142451297920, guid: 4f967194e12f42648b0be88b1cb64dfd, type: 3}
       propertyPath: health
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6295797142451297920, guid: 4f967194e12f42648b0be88b1cb64dfd, type: 3}
       propertyPath: maxHealth
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

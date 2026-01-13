@@ -1094,8 +1094,8 @@ MonoBehaviour:
   delay: 1
   range: 20
   speed: 3
-  fireShape: 0
-  projectileCount: 1
+  fireShape: 1
+  projectileCount: 3
   isPiercing: 0
   isInvincible: 0
   useHitInvincibility: 0
@@ -1103,7 +1103,6 @@ MonoBehaviour:
   monsterType: 3
   isNamed: 0
   myRoom: {fileID: 0}
-  growthRate: 1.3
 --- !u!114 &6141745039488680044
 MonoBehaviour:
   m_ObjectHideFlags: 0

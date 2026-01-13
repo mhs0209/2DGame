@@ -362,8 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a405db5cca5cbc147af6d673b9a28c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 7
-  maxHealth: 7
+  health: 6
+  maxHealth: 6
   atk: 1
   atkMult: 1
   delay: 3
@@ -378,7 +378,6 @@ MonoBehaviour:
   monsterType: 1
   isNamed: 0
   myRoom: {fileID: 0}
-  growthRate: 1.3
 --- !u!114 &5368443925616230332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2647,8 +2646,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a405db5cca5cbc147af6d673b9a28c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 7
-  maxHealth: 7
+  health: 6
+  maxHealth: 6
   atk: 1
   atkMult: 1
   delay: 3
@@ -2663,7 +2662,6 @@ MonoBehaviour:
   monsterType: 1
   isNamed: 0
   myRoom: {fileID: 0}
-  growthRate: 1.3
 --- !u!114 &2490723245846601807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3074,8 +3072,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a405db5cca5cbc147af6d673b9a28c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 7
-  maxHealth: 7
+  health: 6
+  maxHealth: 6
   atk: 1
   atkMult: 1
   delay: 3
@@ -3090,7 +3088,6 @@ MonoBehaviour:
   monsterType: 1
   isNamed: 0
   myRoom: {fileID: 0}
-  growthRate: 1.3
 --- !u!114 &1280718648863288025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6748,8 +6745,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a405db5cca5cbc147af6d673b9a28c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 7
-  maxHealth: 7
+  health: 6
+  maxHealth: 6
   atk: 1
   atkMult: 1
   delay: 3
@@ -6764,7 +6761,6 @@ MonoBehaviour:
   monsterType: 1
   isNamed: 0
   myRoom: {fileID: 0}
-  growthRate: 1.3
 --- !u!114 &5618756411776615883
 MonoBehaviour:
   m_ObjectHideFlags: 0
