@@ -35,7 +35,7 @@ public class DoorPhysics : MonoBehaviour
     {
         if (srs != null)
         {
-            foreach (var sr in srs) sr.color = lockState ? Color.black : new Color (1,1,1,0);
+            foreach (var sr in srs) sr.color = lockState ? Color.white : new Color (1,1,1,0);
         }
         if (cols != null)
         {
