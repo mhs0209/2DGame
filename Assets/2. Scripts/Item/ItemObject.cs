@@ -8,6 +8,7 @@ public abstract class ItemObject : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            collision.GetComponent<PlayerSoundController>()?. PlayItemGetSound();
             OnPickup(collision.gameObject);
             if ((this is Active) == false)
             {

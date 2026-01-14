@@ -23,7 +23,9 @@ public class PlayerStat : Stat
     
     public override void TakeDamage(float damage)
     {
+        if (isInvincible) return;
         base.TakeDamage(damage);
+        GetComponent<PlayerSoundController>()?.PlayHitSound();
         OnHealthChanged?.Invoke(); // 피격 시 호출
     }
 
