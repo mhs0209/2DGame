@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     [Header("UI Panels")]
     public GameObject gameOverPanel; // 게임 오버 UI (기본 비활성화)
+    public GameObject settingsPanel; // 셋팅 UI
     
     private float restartHoldTime = 0f;
     //private bool isGameOver = false;
@@ -28,6 +29,8 @@ public class GameManager : MonoBehaviour
     public KeyCode usePickup = KeyCode.E;
     public KeyCode viewMinimap = KeyCode.Tab;
     public KeyCode restartKey = KeyCode.R;
+    
+    public KeyCode settingsKey = KeyCode.Escape;
 
     private void Awake()
     {
@@ -50,7 +53,7 @@ public class GameManager : MonoBehaviour
 
     private void HandleRestartKey()
     {
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKey(restartKey))
         {
             restartHoldTime += Time.deltaTime;
             if (restartHoldTime >= 3.0f)
@@ -64,8 +67,10 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    public void ToggleSettings() {
-        // 설정 UI 끄고 켜는 로직 (Time.timeScale 조절 포함)
+    public void ToggleSettings()
+    {
+        settingsPanel.SetActive(!settingsPanel.activeSelf);
+        Time.timeScale = settingsPanel.activeSelf ? 0f : 1f;
     }
 
     public void OnPlayerDeath()
