@@ -3078,6 +3078,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 6545988785259114959, guid: 067f444852175ea4e8a731bdb5c35593, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6787959231002012909, guid: 067f444852175ea4e8a731bdb5c35593, type: 3}
       propertyPath: m_Name
       value: BottomDoor
@@ -3101,6 +3105,10 @@ PrefabInstance:
     - target: {fileID: 7852080083900205696, guid: 067f444852175ea4e8a731bdb5c35593, type: 3}
       propertyPath: horizontalEntryOffset
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176747812542761763, guid: 067f444852175ea4e8a731bdb5c35593, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3140,6 +3148,10 @@ PrefabInstance:
     - target: {fileID: 820720558192239252, guid: c3f59bd714a43a5469539cabc0785286, type: 3}
       propertyPath: m_TagString
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6523875759505738292, guid: c3f59bd714a43a5469539cabc0785286, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6600548478947449104, guid: c3f59bd714a43a5469539cabc0785286, type: 3}
       propertyPath: horizontalEntryOffset
@@ -3201,6 +3213,10 @@ PrefabInstance:
       propertyPath: horizontalEntryOffset
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8890157557824120078, guid: c3f59bd714a43a5469539cabc0785286, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8893411835429015306, guid: c3f59bd714a43a5469539cabc0785286, type: 3}
       propertyPath: m_Name
       value: TopDoor
@@ -3236,6 +3252,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7272622900076325700}
     m_Modifications:
+    - target: {fileID: 904374800637086006, guid: 6cf7cacf447f8ca4a8af30ca29357b22, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 947536300786626097, guid: 6cf7cacf447f8ca4a8af30ca29357b22, type: 3}
       propertyPath: m_Name
       value: RightDoor
@@ -3267,6 +3287,10 @@ PrefabInstance:
     - target: {fileID: 2115057179101202979, guid: 6cf7cacf447f8ca4a8af30ca29357b22, type: 3}
       propertyPath: m_TagString
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 3482033532029099779, guid: 6cf7cacf447f8ca4a8af30ca29357b22, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3867692446576442132, guid: 6cf7cacf447f8ca4a8af30ca29357b22, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3949,6 +3973,10 @@ PrefabInstance:
       propertyPath: horizontalEntryOffset
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3919919626507825511, guid: 7442d1486582200428e46fe46af14375, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6983414547336837013, guid: 7442d1486582200428e46fe46af14375, type: 3}
       propertyPath: m_Name
       value: LeftDoor
@@ -3988,6 +4016,10 @@ PrefabInstance:
     - target: {fileID: 8370410349859812278, guid: 7442d1486582200428e46fe46af14375, type: 3}
       propertyPath: m_TagString
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685112333002183427, guid: 7442d1486582200428e46fe46af14375, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

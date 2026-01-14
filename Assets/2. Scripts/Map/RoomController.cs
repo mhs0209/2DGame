@@ -45,7 +45,7 @@ public class RoomController : MonoBehaviour
     {
         PlayerStat pStat = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStat>();
         
-        // GetKey가 아닌 GetKeyDown을 사용하여 프레임 입력 보장
+        // 플레이어 열쇠 사용. 1개 이상일 때만 문을 열 수 있음
         if (pStat.keys > 0) 
         {
             pStat.keys--;

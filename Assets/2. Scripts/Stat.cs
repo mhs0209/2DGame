@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public enum StatType { Health, MaxHealth, Atk, AtkMult, Delay, Range, Speed }
+public enum StatType { Health, MaxHealth, Atk, AtkMult, Delay, Range, Speed, Gold, Key, Bomb }
 public enum FireShape { Base, Multi, Radial, Shotgun }
 
 [System.Serializable]
@@ -102,7 +102,7 @@ public abstract class Stat : MonoBehaviour
             case StatType.Health: health += value; break;
             case StatType.MaxHealth: maxHealth += value; break;
             case StatType.Atk: atk += value; break;
-            case StatType.AtkMult: atkMult *= value; break;
+            case StatType.AtkMult: atkMult += value; break;
             case StatType.Delay: delay += value; break;
             case StatType.Range: range += value; break;
             case StatType.Speed: speed += value; break;

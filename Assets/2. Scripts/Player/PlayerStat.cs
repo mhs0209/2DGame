@@ -39,9 +39,9 @@ public class PlayerStat : Stat
     }
     
     // 재화 추가 및 이벤트 호출
-    public void AddGold(int amount) { gold += amount; OnStatChanged?.Invoke(); }
-    public void AddKey(int amount) { keys += amount; OnStatChanged?.Invoke(); }
-    public void AddBomb(int amount) { bombs += amount; OnStatChanged?.Invoke(); }
+    public void AddGold(int amount) { gold += amount; if (gold > 99) gold = 99; OnStatChanged?.Invoke(); }
+    public void AddKey(int amount) { keys += amount; if (keys > 99) keys = 99; OnStatChanged?.Invoke(); }
+    public void AddBomb(int amount) { bombs += amount; if (bombs > 99) bombs = 99; OnStatChanged?.Invoke(); }
     
     // 폭탄 사용 가능 여부 확인 및 차감
     public bool UseBomb()
@@ -79,14 +79,35 @@ public class PlayerStat : Stat
             case StatType.Health:
                 // 현재 체력 제한 적용
                 health = Mathf.Min(health, maxHealth);
+
+                if (health < 1) health = 1;
             
                 // 하트 색상을 갱신하라고 신호를 보냅니다.
                 OnHealthChanged?.Invoke();
                 break;
             
             case StatType.Delay: 
-                delay += value; 
                 if (delay < 0.05f) delay = 0.05f; 
+                break;
+            
+            case StatType.Speed:
+                if (speed < 1f) speed = 1f;
+                break;
+            
+            case StatType.Range:
+                if (range < 1f) range = 1f;
+                break;
+            
+            case StatType.Gold:
+                AddGold((int)value);
+                break;
+            
+            case StatType.Key:
+                AddKey((int)value);
+                break;
+            
+            case StatType.Bomb:
+                AddBomb((int)value);
                 break;
         }
     }

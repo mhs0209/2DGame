@@ -23,6 +23,7 @@ public class DoorPhysics : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (isSpecialLock == false) return;
+        if (myRoom.currentState == RoomState.Battle) return;
         
         if (other.gameObject.tag == "Player")
         {
@@ -34,7 +35,7 @@ public class DoorPhysics : MonoBehaviour
     {
         if (srs != null)
         {
-            foreach (var sr in srs) sr.color = lockState ? Color.red : Color.white;
+            foreach (var sr in srs) sr.color = lockState ? Color.black : new Color (1,1,1,0);
         }
         if (cols != null)
         {

@@ -21,12 +21,10 @@ MonoBehaviour:
   modifiers:
   - statType: 1
     value: 2
-  - statType: 0
-    value: 2
   - statType: 2
-    value: 1.5
+    value: 1
   - statType: 4
-    value: -0.03
+    value: -0.02
   - statType: 5
     value: 0.5
   - statType: 6

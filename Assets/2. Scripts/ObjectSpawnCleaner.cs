@@ -3,7 +3,7 @@ using UnityEngine.Tilemaps;
 
 public class ObjectSpawnCleaner : MonoBehaviour
 {
-    [SerializeField] private float checkRadius = 1.0f; // 타일을 검사할 반경
+    [SerializeField] private float checkRadius = 0.5f; // 타일을 검사할 반경
     [SerializeField] private LayerMask wallLayer;      // 인스펙터에서 'Wall' 레이어 선택 필수
 
     void Start()
