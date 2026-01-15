@@ -33,6 +33,7 @@ public class ShopItem : MonoBehaviour
             if (pStat.gold >= price)
             {
                 pStat.gold -= price;
+                pStat.OnStatChanged?.Invoke();
                 item.OnPickup(collision.gameObject); // 원래 아이템의 효과 실행
                 Destroy(gameObject); // 구매 완료 후 제거
             }
