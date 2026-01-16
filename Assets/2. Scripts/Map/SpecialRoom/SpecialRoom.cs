@@ -4,7 +4,7 @@ public class SpecialRoom : ItemRoom
 {
     private void Start()
     { // 성장방은 입장 시 바로 생성
-        if (controller.roomData is TreasureMap data) {
+        if (controller.roomData is SpecialMap data) {
             SpawnPedestal(transform.position, data.itemPool);
         }
     }
@@ -12,13 +12,16 @@ public class SpecialRoom : ItemRoom
 
     private void SpawnPedestal(Vector3 pos, GameObject[] pool) {
         if (pool.Length == 0) return;
-        TreasureMap data = controller.roomData as TreasureMap;
+        SpecialMap data = controller.roomData as SpecialMap;
         GameObject pedestal = Instantiate(data.pedestalPrefab, pos, Quaternion.identity, transform);
-        // 제단에 랜덤 아이템 올리는 로직 (임시)
+        // 랜덤 아이템 생성
         if (data.itemPool.Length > 0) {
-            GameObject item = data.itemPool[Random.Range(0, data.itemPool.Length)];
-            Instantiate(item, pedestal.transform.position + Vector3.up * 0.5f, Quaternion.identity, pedestal.transform);
-            //Debug.Log($"특수방 아이템 생성: {item.name}");  
+            GameObject itemPrefab = data.itemPool[Random.Range(0, data.itemPool.Length)];
+            GameObject spawnedItem = Instantiate(itemPrefab, pedestal.transform.position + Vector3.up * 0.5f, Quaternion.identity, pedestal.transform);
+            
+            // [핵심] 특수방 전용 구매 스크립트 부착 및 초기화 (열쇠 1개 소모)
+            SpecialItem specialLogic = spawnedItem.AddComponent<SpecialItem>();
+            specialLogic.Initialize(1); 
         }
     }
 }
