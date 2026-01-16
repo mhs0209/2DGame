@@ -85,10 +85,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         
         // 중요: 싱글톤 플레이어를 파괴해야 스탯이 초기화된 새 플레이어가 생성됨
-        if (AniManager.Instance != null)
-        {
-            Destroy(AniManager.Instance.gameObject);
-        }
+        if (AniManager.Instance != null) Destroy(AniManager.Instance.gameObject);
+        if (InGameUICanvasDDOL.Instance != null) Destroy(InGameUICanvasDDOL.Instance.gameObject);
+        
 
         // 1스테이지 재로드
         SceneManager.LoadScene("Stage01");
@@ -97,7 +96,10 @@ public class GameManager : MonoBehaviour
     public void GoToMenu()
     {
         Time.timeScale = 1f;
-        // 메인 메뉴 씬 이름이 "MainMenu"라고 가정
+        if (AniManager.Instance != null) Destroy(AniManager.Instance.gameObject);
+        if (InGameUICanvasDDOL.Instance != null) Destroy(InGameUICanvasDDOL.Instance.gameObject);
+        
+        // 메인 메뉴 씬 이동
         SceneManager.LoadScene("MainMenu");
     }
 }
