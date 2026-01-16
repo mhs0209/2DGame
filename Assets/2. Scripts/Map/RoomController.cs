@@ -49,12 +49,12 @@ public class RoomController : MonoBehaviour
         if (pStat.keys > 0) 
         {
             pStat.keys--;
-            Debug.Log($"열쇠 사용! 남은 열쇠: {pStat.keys}");
+            //Debug.Log($"열쇠 사용! 남은 열쇠: {pStat.keys}");
             pStat.OnStatChanged?.Invoke();
 
             door.isSpecialLock = false;
             door.SetLock(false);
-            Debug.Log("잠긴 문을 열었습니다!");
+            //Debug.Log("잠긴 문을 열었습니다!");
         }
     }
     
@@ -130,7 +130,7 @@ public class RoomController : MonoBehaviour
             }
         }
         
-        Debug.Log($"{gameObject.name} 방에서 {activeEnemies.Count}마리의 적 감지!");
+        //Debug.Log($"{gameObject.name} 방에서 {activeEnemies.Count}마리의 적 감지!");
     }
 
     public void OnEnemyDeath(GameObject enemy) 

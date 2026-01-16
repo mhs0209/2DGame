@@ -18,7 +18,7 @@ public class SpecialRoom : ItemRoom
         if (data.itemPool.Length > 0) {
             GameObject item = data.itemPool[Random.Range(0, data.itemPool.Length)];
             Instantiate(item, pedestal.transform.position + Vector3.up * 0.5f, Quaternion.identity, pedestal.transform);
-            Debug.Log($"성장방 아이템 생성: {item.name}");  
+            //Debug.Log($"특수방 아이템 생성: {item.name}");  
         }
     }
 }
