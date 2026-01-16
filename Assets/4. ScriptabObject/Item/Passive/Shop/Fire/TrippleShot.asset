@@ -15,10 +15,9 @@ MonoBehaviour:
   itemID: 0
   itemName: 
   description: 
-  category: 4
   itemIcon: {fileID: 0}
   type: 1
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 5349330595101862726, guid: 80ce32684130cff41a8360cb879777cd, type: 3}
   shapeChange: 1
   addProjectileCount: 2
   setPiercing: 0

@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 666937adb3c45b2489b89ad2a20e460e, type: 3}
-  m_Name: Health
+  m_Name: 2 Health
   m_EditorClassIdentifier: 
   itemID: 0
   itemName: Health
   description: 
-  category: 0
   itemIcon: {fileID: 0}
   type: 0
-  itemPrefab: {fileID: 8705105654712594198, guid: de8b06a505c1b104483b75e623b8221b, type: 3}
+  itemPrefab: {fileID: 8705105654712594198, guid: 0c6a494aefeb7a847895e6f32ab546b1, type: 3}
   pickupType: 0
   value: 1

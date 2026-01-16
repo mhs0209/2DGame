@@ -17,7 +17,7 @@ MonoBehaviour:
   description: 
   itemIcon: {fileID: 0}
   type: 1
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 5351495845241639051, guid: 7ab26ee1e7e10954385b810eee9441b9, type: 3}
   modifiers:
   - statType: 3
     value: 3
