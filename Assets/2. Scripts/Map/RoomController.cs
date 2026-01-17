@@ -15,6 +15,8 @@ public class RoomController : MonoBehaviour
     private List<GameObject> activeEnemies = new List<GameObject>();
     private Dictionary<Vector2Int, DoorPhysics> doorMap = new Dictionary<Vector2Int, DoorPhysics>();
 
+    public static RoomController CurrentRoom; 
+
     void Awake()
     {
         baseRoom = GetComponent<BaseRoom>();
@@ -165,6 +167,8 @@ public class RoomController : MonoBehaviour
     // ActivateRoomLogic 함수는 에러 방지를 위해 유지
     public void ActivateRoomLogic()
     {
+        CurrentRoom = this; 
+        
         // 1. 전투가 필요한 방이고 아직 안 싸웠다면 전투 시작
         if (currentState != RoomState.Cleared && (baseRoom.type == RoomType.Normal || baseRoom.type == RoomType.Boss)) 
         {
