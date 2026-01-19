@@ -39,7 +39,7 @@ public class MonsterStat : Stat
         speed = originSpeed;
         health = maxHealth;
         isInvincible = false;
-        if(childrenRenderers[0]) childrenRenderers[0].color = Color.white;
+        if(childrenRenderers[0]) childrenRenderers[0].color = new Color(1,1,1, childrenRenderers[0].color.a);
     }
 
     private void ApplyStageScaling()
@@ -65,7 +65,7 @@ public class MonsterStat : Stat
         maxHealth *= 1.5f;
         health = maxHealth;
         speed *= 1.2f;
-        if(childrenRenderers[0]) childrenRenderers[0].color = new Color(1f, 0f, 0f); // 주황색 등
+        if(childrenRenderers[0]) childrenRenderers[0].color = new Color(1f, 0f, 0f,childrenRenderers[0].color.a); // 네임드는 색깔 표시
     }
     
     private void OnCollisionStay2D(Collision2D collision)

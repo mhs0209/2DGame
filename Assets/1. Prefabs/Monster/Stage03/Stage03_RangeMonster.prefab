@@ -176,7 +176,7 @@ MonoBehaviour:
   fireShape: 1
   projectileCount: 3
   isPiercing: 0
-  isInvincible: 1
+  isInvincible: 0
   useHitInvincibility: 0
   invincibilityMult: 1
   monsterType: 1
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 1
-  seeRight: 0
+  seeRight: 1
   detectRange: 5
   attackRange: 1
   retreatRange: 10
