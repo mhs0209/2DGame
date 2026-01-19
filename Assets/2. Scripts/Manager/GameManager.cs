@@ -1,19 +1,18 @@
 using FreeworkGame;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
     [Header("UI Panels")]
-    public GameObject gameOverPanel; // 게임 오버 UI (기본 비활성화)
-    public GameObject settingsPanel; // 셋팅 UI
+    public GameObject gameOverPanel;
+    public GameObject settingsPanel;
     
     private float restartHoldTime = 0f;
-    //private bool isGameOver = false;
-    
+
     [Header("Key Bindings")]
     public KeyCode moveUp = KeyCode.UpArrow;
     public KeyCode moveDown = KeyCode.DownArrow;
@@ -29,7 +28,6 @@ public class GameManager : MonoBehaviour
     public KeyCode usePickup = KeyCode.E;
     public KeyCode viewMinimap = KeyCode.Tab;
     public KeyCode restartKey = KeyCode.R;
-    
     public KeyCode settingsKey = KeyCode.Escape;
 
     private void Awake()
@@ -37,18 +35,16 @@ public class GameManager : MonoBehaviour
         if (Instance == null) {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            LoadAllKeys(); // 게임 시작 시 저장된 키 불러오기
         } else {
-            Destroy(gameObject); // 이미 존재한다면 새로 생긴 녀석을 제거!
+            Destroy(gameObject);
         }
     }
 
     private void Update()
     {
-        // R키를 꾹 누르면 재시작
         HandleRestartKey();
-        
-        // [설정창 열기]
-        if(Input.GetKeyDown(KeyCode.Escape)) ToggleSettings();
+        if(Input.GetKeyDown(settingsKey)) ToggleSettings();
     }
 
     private void HandleRestartKey()
@@ -73,23 +69,67 @@ public class GameManager : MonoBehaviour
         Time.timeScale = settingsPanel.activeSelf ? 0f : 1f;
     }
 
+    // --- 키 저장 및 로드 로직 ---
+
+    public void UpdateKey(string actionName, KeyCode newKey)
+    {
+        switch (actionName)
+        {
+            case "MoveUp": moveUp = newKey; break;
+            case "MoveDown": moveDown = newKey; break;
+            case "MoveLeft": moveLeft = newKey; break;
+            case "MoveRight": moveRight = newKey; break;
+            case "AttackUp": attackUp = newKey; break;
+            case "AttackDown": attackDown = newKey; break;
+            case "AttackLeft": attackLeft = newKey; break;
+            case "AttackRight": attackRight = newKey; break;
+            case "UseActive": useActive = newKey; break;
+            case "UsePickup": usePickup = newKey; break;
+            case "ViewMinimap": viewMinimap = newKey; break;
+            case "Restart": restartKey = newKey; break;
+            case "Settings": settingsKey = newKey; break;
+        }
+        // 문자열로 저장
+        PlayerPrefs.SetString(actionName, newKey.ToString());
+        PlayerPrefs.Save();
+    }
+
+    private void LoadAllKeys()
+    {
+        moveUp = LoadSingleKey("MoveUp", KeyCode.UpArrow);
+        moveDown = LoadSingleKey("MoveDown", KeyCode.DownArrow);
+        moveLeft = LoadSingleKey("MoveLeft", KeyCode.LeftArrow);
+        moveRight = LoadSingleKey("MoveRight", KeyCode.RightArrow);
+        attackUp = LoadSingleKey("AttackUp", KeyCode.W);
+        attackDown = LoadSingleKey("AttackDown", KeyCode.S);
+        attackLeft = LoadSingleKey("AttackLeft", KeyCode.A);
+        attackRight = LoadSingleKey("AttackRight", KeyCode.D);
+        useActive = LoadSingleKey("UseActive", KeyCode.Space);
+        usePickup = LoadSingleKey("UsePickup", KeyCode.E);
+        viewMinimap = LoadSingleKey("ViewMinimap", KeyCode.Tab);
+        restartKey = LoadSingleKey("Restart", KeyCode.R);
+        settingsKey = LoadSingleKey("Settings", KeyCode.Escape);
+    }
+
+    private KeyCode LoadSingleKey(string actionName, KeyCode defaultValue)
+    {
+        string keyStr = PlayerPrefs.GetString(actionName, defaultValue.ToString());
+        return (KeyCode)Enum.Parse(typeof(KeyCode), keyStr);
+    }
+
+    // --- 기존 게임 상태 로직 ---
+
     public void OnPlayerDeath()
     {
-        //isGameOver = true;
         gameOverPanel.SetActive(true);
-        Time.timeScale = 0f; // 게임 일시정지
+        Time.timeScale = 0f;
     }
 
     public void RestartGame()
     {
         Time.timeScale = 1f;
-        
-        // 중요: 싱글톤 플레이어를 파괴해야 스탯이 초기화된 새 플레이어가 생성됨
         if (AniManager.Instance != null) Destroy(AniManager.Instance.gameObject);
         if (InGameUICanvasDDOL.Instance != null) Destroy(InGameUICanvasDDOL.Instance.gameObject);
-        
-
-        // 1스테이지 재로드
         SceneManager.LoadScene("Stage01");
     }
 
@@ -98,8 +138,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         if (AniManager.Instance != null) Destroy(AniManager.Instance.gameObject);
         if (InGameUICanvasDDOL.Instance != null) Destroy(InGameUICanvasDDOL.Instance.gameObject);
-        
-        // 메인 메뉴 씬 이동
         SceneManager.LoadScene("MainMenu");
     }
 }

@@ -45,7 +45,7 @@ public class MinimapManager : MonoBehaviour, IInitializable
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab)) isLargeMap = !isLargeMap;
+        if (Input.GetKeyDown(GameManager.Instance.viewMinimap)) isLargeMap = !isLargeMap;
         UpdateMapTransform();
     }
 

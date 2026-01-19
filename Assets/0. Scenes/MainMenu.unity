@@ -130,6 +130,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 830003656953195950, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 830003656953195950, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735138079180323805, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735138079180323805, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735138079180323805, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3944561120331589275, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3944561120331589275, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3944561120331589275, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5365153504069354574, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5365153504069354574, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5497434173076360220, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -145,6 +185,26 @@ PrefabInstance:
     - target: {fileID: 7409320094827531236, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
       propertyPath: m_Name
       value: UICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541366702862686262, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541366702862686262, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093141594251592199, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093141594251592199, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093141594251592199, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9107598503150389712, guid: 55eb9d1bb05f37f4eb639110c11f76dd, type: 3}
       propertyPath: m_Pivot.x

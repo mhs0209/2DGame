@@ -13,7 +13,7 @@ public class ActiveInventory : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && currentActive != null)
+        if (Input.GetKeyDown(GameManager.Instance.useActive) && currentActive != null)
         {
             if (currentActive.currentCharge >= currentActive.activeData.maxCharges)
             {

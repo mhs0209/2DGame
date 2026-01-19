@@ -82,10 +82,10 @@ namespace FreeworkGame
             float x = 0;
             float y = 0;
 
-            if (Input.GetKey(KeyCode.RightArrow)) x += 1;
-            if (Input.GetKey(KeyCode.LeftArrow)) x -= 1;
-            if (Input.GetKey(KeyCode.UpArrow)) y += 1;
-            if (Input.GetKey(KeyCode.DownArrow)) y -= 1;
+            if (Input.GetKey(GameManager.Instance.moveRight)) x += 1;
+            if (Input.GetKey(GameManager.Instance.moveLeft)) x -= 1;
+            if (Input.GetKey(GameManager.Instance.moveUp)) y += 1;
+            if (Input.GetKey(GameManager.Instance.moveDown)) y -= 1;
 
             // 입력을 기반으로 방향 벡터 설정 (아이소메트릭 비율 적용)
             // 기존 코드의 로직을 따라 방향에 따른 애니메이션 종류 및 스케일 설정
@@ -97,7 +97,7 @@ namespace FreeworkGame
                 // 방향에 따른 애니메이션 상태 결정
                 DetermineDirection(x, y);
                 
-                // 걷기/달리기 상태 결정
+                // // 걷기/달리기 상태 결정
                 if (Input.GetKey(KeyCode.Alpha1)) isRun = false;
                 if (Input.GetKey(KeyCode.Alpha2)) isRun = true;
 
@@ -109,7 +109,7 @@ namespace FreeworkGame
                 if (!isPose) SetAni(AniType.idle);
             }
             
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(GameManager.Instance.usePickup))
             {
                 TryPlaceBomb();
             }
