@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  seeRight: 1
+  seeRight: 0
   detectRange: 20
   attackRange: 6
   retreatRange: 5
