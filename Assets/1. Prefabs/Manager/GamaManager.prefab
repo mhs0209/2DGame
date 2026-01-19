@@ -45,3 +45,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 0}
+  settingsPanel: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 6b9b2ab16467f51499cc30e01ab35256, type: 2}
+  moveUp: 273
+  moveDown: 274
+  moveLeft: 276
+  moveRight: 275
+  attackUp: 119
+  attackDown: 115
+  attackLeft: 97
+  attackRight: 100
+  useActive: 32
+  usePickup: 101
+  viewMinimap: 9
+  restartKey: 114
+  settingsKey: 27

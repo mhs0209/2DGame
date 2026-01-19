@@ -2,6 +2,7 @@ using FreeworkGame;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class GameManager : MonoBehaviour
     [Header("UI Panels")]
     public GameObject gameOverPanel;
     public GameObject settingsPanel;
+    
+    [Header("Audio")]
+    public AudioMixer audioMixer;
     
     private float restartHoldTime = 0f;
 
@@ -35,10 +39,16 @@ public class GameManager : MonoBehaviour
         if (Instance == null) {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            LoadAllKeys(); // 게임 시작 시 저장된 키 불러오기
+            
         } else {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        // 핵심: 모든 설정 로드 및 적용
+        LoadAllSettings(); 
     }
 
     private void Update()
@@ -47,51 +57,53 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyDown(settingsKey)) ToggleSettings();
     }
 
-    private void HandleRestartKey()
+    // --- 모든 설정 로드 및 적용 ---
+    public void LoadAllSettings()
     {
-        if (Input.GetKey(restartKey))
-        {
-            restartHoldTime += Time.deltaTime;
-            if (restartHoldTime >= 3.0f)
-            {
-                RestartGame();
-            }
-        }
-        else
-        {
-            restartHoldTime = 0f;
-        }
-    }
-    
-    public void ToggleSettings()
-    {
-        settingsPanel.SetActive(!settingsPanel.activeSelf);
-        Time.timeScale = settingsPanel.activeSelf ? 0f : 1f;
+        // 1. 키세팅 로드
+        LoadAllKeys();
+
+        // 2. 오디오 세팅 로드 및 즉시 적용 (설정창이 꺼져있어도 실행됨)
+        ApplyAudioVolume("MasterVol", PlayerPrefs.GetFloat("MasterVol", 1f));
+        ApplyAudioVolume("BGMVol", PlayerPrefs.GetFloat("BGMVol", 1f));
+        ApplyAudioVolume("SFXVol", PlayerPrefs.GetFloat("SFXVol", 1f));
     }
 
-    // --- 키 저장 및 로드 로직 ---
+    public void ApplyAudioVolume(string parameterName, float volume)
+    {
+        if (audioMixer != null)
+        {
+            // volume(0~1)을 데시벨(-80~0)로 변환
+            float dB = Mathf.Log10(Mathf.Clamp(volume, 0.0001f, 1f)) * 20;
+            audioMixer.SetFloat(parameterName, dB);
+        }
+    }
 
+    // --- 초기화(Reset) 기능 ---
+    public void ResetAllSettings()
+    {
+        // 저장 데이터 완전 삭제
+        PlayerPrefs.DeleteAll();
+
+        // 믹서와 변수들을 다시 기본값으로 로드
+        LoadAllSettings();
+
+        // 현재 설정창이 켜져 있다면 UI 갱신 (슬라이더 및 텍스트)
+        if (settingsPanel.activeSelf)
+        {
+            settingsPanel.GetComponentInChildren<AudioSettingController>()?.RefreshUI();
+            settingsPanel.GetComponentInChildren<KeySettingUI>()?.UpdateAllKeyTexts();
+        }
+        
+        Debug.Log("모든 설정이 초기화되었습니다.");
+    }
+
+    // --- 기존 키 로드 로직 (UpdateKey 포함) ---
     public void UpdateKey(string actionName, KeyCode newKey)
     {
-        switch (actionName)
-        {
-            case "MoveUp": moveUp = newKey; break;
-            case "MoveDown": moveDown = newKey; break;
-            case "MoveLeft": moveLeft = newKey; break;
-            case "MoveRight": moveRight = newKey; break;
-            case "AttackUp": attackUp = newKey; break;
-            case "AttackDown": attackDown = newKey; break;
-            case "AttackLeft": attackLeft = newKey; break;
-            case "AttackRight": attackRight = newKey; break;
-            case "UseActive": useActive = newKey; break;
-            case "UsePickup": usePickup = newKey; break;
-            case "ViewMinimap": viewMinimap = newKey; break;
-            case "Restart": restartKey = newKey; break;
-            case "Settings": settingsKey = newKey; break;
-        }
-        // 문자열로 저장
         PlayerPrefs.SetString(actionName, newKey.ToString());
         PlayerPrefs.Save();
+        LoadAllKeys(); // 변수 업데이트
     }
 
     private void LoadAllKeys()
@@ -115,6 +127,28 @@ public class GameManager : MonoBehaviour
     {
         string keyStr = PlayerPrefs.GetString(actionName, defaultValue.ToString());
         return (KeyCode)Enum.Parse(typeof(KeyCode), keyStr);
+    }
+
+    private void HandleRestartKey()
+    {
+        if (Input.GetKey(restartKey))
+        {
+            restartHoldTime += Time.deltaTime;
+            if (restartHoldTime >= 3.0f)
+            {
+                RestartGame();
+            }
+        }
+        else
+        {
+            restartHoldTime = 0f;
+        }
+    }
+    
+    public void ToggleSettings()
+    {
+        settingsPanel.SetActive(!settingsPanel.activeSelf);
+        Time.timeScale = settingsPanel.activeSelf ? 0f : 1f;
     }
 
     // --- 기존 게임 상태 로직 ---

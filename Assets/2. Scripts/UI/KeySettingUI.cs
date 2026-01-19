@@ -23,8 +23,11 @@ public class KeySettingUI : MonoBehaviour
     private void OnEnable()
     {
         UpdateAllKeyTexts();
+        waitingPanel.SetActive(false);
+        StopAllCoroutines();
+        isRebinding = false;
     }
-
+    
     // 모든 UI 텍스트를 현재 GameManager의 변수값으로 갱신
     public void UpdateAllKeyTexts()
     {
@@ -60,7 +63,7 @@ public class KeySettingUI : MonoBehaviour
                     if (Input.GetKeyDown(k))
                     {
                         // ESC는 취소용으로 사용 (원한다면 변경 가능)
-                        if (k != KeyCode.Escape)
+                        if (k != KeyCode.Backspace)
                         {
                             GameManager.Instance.UpdateKey(actionName, k);
                         }
