@@ -1,7 +1,7 @@
 using UnityEngine;
 using Pathfinding; // A* 라이브러리 필요
 
-public enum AIState { Idle, Chase, Attack, Retreat }
+public enum AIState { Idle, Chase, Attack }
 
 public class MonsterAI : MonoBehaviour
 {
@@ -17,7 +17,7 @@ public class MonsterAI : MonoBehaviour
     [Header("AI Settings")]
     public float detectRange = 10f;
     public float attackRange = 5f;
-    public float retreatRange = 2f;
+    //public float retreatRange = 2f;
 
     [Header("Boss/Pattern Settings")]
     private float patternTimer;      // 에러 해결: 변수 선언
@@ -71,8 +71,8 @@ public class MonsterAI : MonoBehaviour
         float attackRange = stat.range;
         
         if (dist > detectRange) currentState = AIState.Idle;
-        else if (dist <= attackRange && dist > retreatRange) currentState = AIState.Attack;
-        else if (dist <= retreatRange && stat.monsterType == MonsterType.Range) currentState = AIState.Retreat;
+        else if (dist <= attackRange) currentState = AIState.Attack;
+        //else if (dist <= retreatRange && stat.monsterType == MonsterType.Range) currentState = AIState.Retreat;
         else currentState = AIState.Chase;
     }
 
@@ -107,15 +107,15 @@ public class MonsterAI : MonoBehaviour
                 }
                 break;
 
-            case AIState.Retreat:
-                // 도망 로직: 플레이어 반대 방향으로 2만큼 떨어진 '좌표'를 목적지로 설정
-                // 단순히 위로 가지 않도록 Vector2 계산 확인
-                Vector2 retreatTarget = (Vector2)transform.position - (dir * 2f);
-                MoveToTarget(retreatTarget);
-            
-                // 도망치면서 발사
-                GetComponent<MonsterWeapon>()?.Fire(dir);
-                break;
+            // case AIState.Retreat:
+            //     // 도망 로직: 플레이어 반대 방향으로 2만큼 떨어진 '좌표'를 목적지로 설정
+            //     // 단순히 위로 가지 않도록 Vector2 계산 확인
+            //     Vector2 retreatTarget = (Vector2)transform.position - (dir * 2f);
+            //     MoveToTarget(retreatTarget);
+            //
+            //     // 도망치면서 발사
+            //     GetComponent<MonsterWeapon>()?.Fire(dir);
+            //     break;
         }
     }
 

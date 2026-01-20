@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7429055144369213970}
   - component: {fileID: 6285692125375575910}
   - component: {fileID: 8195779140978599763}
+  - component: {fileID: 4733521690237413569}
   m_Layer: 0
   m_Name: Stage01_BossMonster
   m_TagString: Monster
@@ -33,7 +34,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439466166970674115}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.04, y: 0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -171,7 +172,7 @@ MonoBehaviour:
   atk: 1
   atkMult: 1
   delay: 1
-  range: 6
+  range: 3
   speed: 2
   fireShape: 0
   projectileCount: 1
@@ -198,7 +199,6 @@ MonoBehaviour:
   seeRight: 1
   detectRange: 10
   attackRange: 6
-  retreatRange: 5
 --- !u!114 &3386477358413507867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,3 +296,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3629388867934739387, guid: 85430ef3df55b6d48ab6cb6f5f7c6b48, type: 3}
+--- !u!95 &4733521690237413569
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439466166970674115}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 25f7a818644b68042bb0c0c2a28d1550, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

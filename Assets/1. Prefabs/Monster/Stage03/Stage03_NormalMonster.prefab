@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2122464504923397861}
   - component: {fileID: 1190567794570979406}
   - component: {fileID: 9009432638465904495}
+  - component: {fileID: 3814254422506221558}
   m_Layer: 0
   m_Name: Stage03_NormalMonster
   m_TagString: Monster
@@ -195,9 +196,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 1
   seeRight: 1
-  detectRange: 5
+  detectRange: 10
   attackRange: 1
-  retreatRange: 0
 --- !u!114 &2122464504923397861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,3 +282,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
+--- !u!95 &3814254422506221558
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399649709798815142}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 12cfc8b2360c2fc4499d4f6f6607671a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

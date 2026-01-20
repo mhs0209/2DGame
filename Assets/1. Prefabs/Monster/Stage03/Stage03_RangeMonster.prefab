@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5543236368264796672}
   - component: {fileID: 1035245112498796933}
   - component: {fileID: 7369423017922523818}
+  - component: {fileID: 2269214958825804157}
   m_Layer: 0
   m_Name: Stage03_RangeMonster
   m_TagString: Monster
@@ -171,7 +172,7 @@ MonoBehaviour:
   atk: 1
   atkMult: 1
   delay: 3
-  range: 8
+  range: 3
   speed: 2
   fireShape: 1
   projectileCount: 3
@@ -196,9 +197,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 1
   seeRight: 1
-  detectRange: 5
+  detectRange: 10
   attackRange: 1
-  retreatRange: 10
 --- !u!114 &6223532416207222162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,3 +296,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3629388867934739387, guid: 85430ef3df55b6d48ab6cb6f5f7c6b48, type: 3}
+--- !u!95 &2269214958825804157
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451380022881253763}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 8d1d920724ffb8a409ce0e458dc4b7a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

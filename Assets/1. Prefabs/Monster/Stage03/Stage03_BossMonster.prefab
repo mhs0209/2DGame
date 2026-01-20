@@ -172,7 +172,7 @@ MonoBehaviour:
   atk: 1
   atkMult: 1
   delay: 1
-  range: 20
+  range: 3
   speed: 3
   fireShape: 1
   projectileCount: 3
@@ -197,9 +197,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   seeRight: 1
-  detectRange: 20
-  attackRange: 6
-  retreatRange: 5
+  detectRange: 10
+  attackRange: 3
 --- !u!114 &6674725519832878307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,6 +306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2312689867069581174}
   - component: {fileID: 907859537722996970}
+  - component: {fileID: 2638936063802985945}
   m_Layer: 0
   m_Name: Shark_0
   m_TagString: Untagged
@@ -369,7 +369,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 5746764926269108267, guid: d1c8b79577a809444a69dbf02ac0ba09, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -381,3 +381,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2638936063802985945
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7329437318564147030}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d27cfabcb9360f84fb029e648a54a89e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
