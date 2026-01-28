@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fb7f3a74b42f7640a5893b71064b86c, type: 3}
   m_Name: Stage01~02 Boss Room Data
   m_EditorClassIdentifier: 
-  roomID: 0
+  roomID: 1001
   roomType: 1
   roomPrefab: {fileID: 6357370181545346471, guid: bec895d2e255dc34b98d4443541a17bc, type: 3}
   minimapIcon: {fileID: 891942287, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}

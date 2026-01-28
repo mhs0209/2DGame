@@ -14,10 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 0
   itemName: 
-  description: 
-  itemIcon: {fileID: 21300000, guid: e5b0a7a97a8953b40babe3ff17e7fda6, type: 3}
   type: 2
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 6557312315039314136, guid: 69460c209b5a13c428a70135c5dc621a, type: 3}
   maxCharges: 5
   duration: 3
   isDecaying: 0

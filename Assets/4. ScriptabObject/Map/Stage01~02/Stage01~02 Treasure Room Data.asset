@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931002ae9f8b24943bcc594229b96e08, type: 3}
   m_Name: Stage01~02 Treasure Room Data
   m_EditorClassIdentifier: 
-  roomID: 0
+  roomID: 1010
   roomType: 3
   roomPrefab: {fileID: 5814717178472064678, guid: 4629534e93b5a2143b3b58bdd638f1b2, type: 3}
   minimapIcon: {fileID: 833757470, guid: a304a4d492f1e9b4cae12eeddfa6dad8, type: 3}
