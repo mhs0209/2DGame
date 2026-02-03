@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3895bde3a8706a54ea8b977b6f4cbb94, type: 3}
   m_Name: RadialAttack
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 21300000, guid: 723d207193e9ed845bf54af6a4418190, type: 3}
+  itemID: 1004
+  itemName: RadialAttack
   type: 2
   itemPrefab: {fileID: 6616377828266769445, guid: 9bc7e3b9305e78e40ba819e2f6df935c, type: 3}
   maxCharges: 2

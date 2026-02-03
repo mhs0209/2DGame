@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e558fb6db6c07de4295d5fc87e9607e3, type: 3}
   m_Name: LuckySeven
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 0}
+  itemID: 2017
+  itemName: LuckySeven
   type: 1
   itemPrefab: {fileID: 1237659876586326069, guid: d7fd13a1865067644b8472b473949d1c, type: 3}
   modifiers:

@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3895bde3a8706a54ea8b977b6f4cbb94, type: 3}
   m_Name: RoomDamage
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 21300000, guid: f923cc30f91f6d4408ef37ddaed7d315, type: 3}
+  itemID: 1006
+  itemName: RoomDamage
   type: 2
   itemPrefab: {fileID: 5171079468221565109, guid: 1b04989f026a30e4a83b856924879ac0, type: 3}
   maxCharges: 3

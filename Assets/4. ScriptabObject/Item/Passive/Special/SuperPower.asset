@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e558fb6db6c07de4295d5fc87e9607e3, type: 3}
   m_Name: SuperPower
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 0}
+  itemID: 2030
+  itemName: SuperPower
   type: 1
   itemPrefab: {fileID: 5351495845241639051, guid: 7ab26ee1e7e10954385b810eee9441b9, type: 3}
   modifiers:

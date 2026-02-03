@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3895bde3a8706a54ea8b977b6f4cbb94, type: 3}
   m_Name: Reroll
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 21300000, guid: 662badc5a25d7b94b9c5b4d49501e413, type: 3}
+  itemID: 1005
+  itemName: Reroll
   type: 2
   itemPrefab: {fileID: 5255310959129299458, guid: 15532a8235cbdb54b90ab38bff951e61, type: 3}
   maxCharges: 6

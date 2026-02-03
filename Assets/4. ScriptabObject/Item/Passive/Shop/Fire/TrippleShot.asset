@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc47d05d9670ebd44a619c99c2a7d1eb, type: 3}
   m_Name: TrippleShot
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 0}
+  itemID: 2023
+  itemName: TrippleShot
   type: 1
   itemPrefab: {fileID: 5349330595101862726, guid: 80ce32684130cff41a8360cb879777cd, type: 3}
   shapeChange: 1

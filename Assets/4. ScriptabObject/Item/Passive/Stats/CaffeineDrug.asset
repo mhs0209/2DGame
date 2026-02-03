@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e558fb6db6c07de4295d5fc87e9607e3, type: 3}
   m_Name: CaffeineDrug
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 0}
+  itemID: 2003
+  itemName: CaffeineDrug
   type: 1
   itemPrefab: {fileID: 1039411768708217481, guid: 971e9014ce44613489eb7ad345b6958b, type: 3}
   modifiers:

@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666937adb3c45b2489b89ad2a20e460e, type: 3}
   m_Name: 1 Health
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: Health
-  description: 
-  category: 0
-  itemIcon: {fileID: 0}
+  itemID: 3002
+  itemName: 1 Health
   type: 0
   itemPrefab: {fileID: 8705105654712594198, guid: de8b06a505c1b104483b75e623b8221b, type: 3}
   pickupType: 0

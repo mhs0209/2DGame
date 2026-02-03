@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e558fb6db6c07de4295d5fc87e9607e3, type: 3}
   m_Name: Rock
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 0}
+  itemID: 2009
+  itemName: Rock
   type: 1
   itemPrefab: {fileID: 2936323258980106901, guid: 039c03957e493eb42b981dc5f47bc142, type: 3}
   modifiers:

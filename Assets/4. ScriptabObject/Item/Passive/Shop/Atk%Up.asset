@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e558fb6db6c07de4295d5fc87e9607e3, type: 3}
   m_Name: Atk%Up
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 0}
+  itemID: 2014
+  itemName: Atk%Up
   type: 1
   itemPrefab: {fileID: 4768142269013001446, guid: d59dd3f4f2b6f3b4583ed7b6560b8ba4, type: 3}
   modifiers:

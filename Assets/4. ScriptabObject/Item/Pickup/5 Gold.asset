@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666937adb3c45b2489b89ad2a20e460e, type: 3}
   m_Name: 5 Gold
   m_EditorClassIdentifier: 
-  itemID: 0
+  itemID: 3004
   itemName: 5 Gold
-  description: 
-  category: 0
-  itemIcon: {fileID: 0}
   type: 0
   itemPrefab: {fileID: 8894514571849619967, guid: 85a6afe33b93d8a47bea71af50968a3e, type: 3}
   pickupType: 1

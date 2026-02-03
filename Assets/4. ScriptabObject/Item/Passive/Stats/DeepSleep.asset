@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e558fb6db6c07de4295d5fc87e9607e3, type: 3}
   m_Name: DeepSleep
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 0}
+  itemID: 2004
+  itemName: DeepSleep
   type: 1
   itemPrefab: {fileID: 8325159152043980472, guid: 61e5689fe54a1304ab7567c42f0e3bcf, type: 3}
   modifiers:

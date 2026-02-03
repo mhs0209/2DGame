@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3895bde3a8706a54ea8b977b6f4cbb94, type: 3}
   m_Name: BoostStat
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
+  itemID: 1001
+  itemName: BoostStat
   type: 2
   itemPrefab: {fileID: 7940158119350287676, guid: bc03abe4b0ec7d8479d2aabfcfd43231, type: 3}
   maxCharges: 3

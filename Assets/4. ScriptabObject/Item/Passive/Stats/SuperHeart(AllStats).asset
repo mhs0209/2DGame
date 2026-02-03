@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e558fb6db6c07de4295d5fc87e9607e3, type: 3}
   m_Name: SuperHeart(AllStats)
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 0}
+  itemID: 2011
+  itemName: SuperHeart(AllStats)
   type: 1
   itemPrefab: {fileID: 806996352712994855, guid: 963a5803c793b384bb510c4b08023d8c, type: 3}
   modifiers:

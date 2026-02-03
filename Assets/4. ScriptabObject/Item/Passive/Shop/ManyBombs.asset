@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e558fb6db6c07de4295d5fc87e9607e3, type: 3}
   m_Name: ManyBombs
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 0}
+  itemID: 2018
+  itemName: ManyBombs
   type: 1
   itemPrefab: {fileID: 8764715331170393183, guid: 0fee38d4738e4d74baada0f896b40bcc, type: 3}
   modifiers:

@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3895bde3a8706a54ea8b977b6f4cbb94, type: 3}
   m_Name: Heal
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 21300000, guid: 88caea7df41b84640ac2f96779c608cb, type: 3}
+  itemID: 1002
+  itemName: Heal
   type: 2
   itemPrefab: {fileID: 761297376212100762, guid: 47e59ecde80310846879ad4b5150f35c, type: 3}
   maxCharges: 2

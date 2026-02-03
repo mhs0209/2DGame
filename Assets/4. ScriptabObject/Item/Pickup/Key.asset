@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666937adb3c45b2489b89ad2a20e460e, type: 3}
   m_Name: Key
   m_EditorClassIdentifier: 
-  itemID: 0
+  itemID: 3006
   itemName: Key
-  description: 
-  category: 0
-  itemIcon: {fileID: 0}
   type: 0
   itemPrefab: {fileID: 4657406614078668465, guid: f8bfd47085b7ac64d8bb6f99d6adc6c4, type: 3}
   pickupType: 2

@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc47d05d9670ebd44a619c99c2a7d1eb, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 0}
+  itemID: 2031
+  itemName: Shotgun
   type: 1
   itemPrefab: {fileID: 8998467462421772295, guid: 04925f68ebd5b844391d21438fc9502b, type: 3}
   shapeChange: 3

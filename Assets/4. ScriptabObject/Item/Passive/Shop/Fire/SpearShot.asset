@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc47d05d9670ebd44a619c99c2a7d1eb, type: 3}
   m_Name: SpearShot
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 0}
+  itemID: 2022
+  itemName: SpearShot
   type: 1
   itemPrefab: {fileID: 4924589597735250505, guid: 99cd7f8ecbf67a8418015b6c7be24c0d, type: 3}
   shapeChange: 0

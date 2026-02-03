@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e558fb6db6c07de4295d5fc87e9607e3, type: 3}
   m_Name: AllSet
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 0}
+  itemID: 2025
+  itemName: AllSet
   type: 1
   itemPrefab: {fileID: 7203294185973195327, guid: 38ae8599128d1a2478cd598fa3f29393, type: 3}
   modifiers:

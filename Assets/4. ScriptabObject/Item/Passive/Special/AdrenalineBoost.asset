@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e558fb6db6c07de4295d5fc87e9607e3, type: 3}
   m_Name: AdrenalineBoost
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 0}
+  itemID: 2024
+  itemName: AdrenalineBoost
   type: 1
   itemPrefab: {fileID: 8983632440303892517, guid: 351b2e67a49947248955ed0d7c969904, type: 3}
   modifiers:

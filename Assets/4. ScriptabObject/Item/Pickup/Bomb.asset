@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666937adb3c45b2489b89ad2a20e460e, type: 3}
   m_Name: Bomb
   m_EditorClassIdentifier: 
-  itemID: 0
+  itemID: 3005
   itemName: Bomb
-  description: 
-  category: 0
-  itemIcon: {fileID: 0}
   type: 0
   itemPrefab: {fileID: 4351717276026924117, guid: 5291cd7890a4916439e041ca918b0d3c, type: 3}
   pickupType: 3

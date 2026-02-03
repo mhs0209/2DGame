@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e558fb6db6c07de4295d5fc87e9607e3, type: 3}
   m_Name: RangeUp
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 0}
+  itemID: 2008
+  itemName: RangeUp
   type: 1
   itemPrefab: {fileID: 9023916971330622403, guid: 44e1d169e473f074593011c299d72500, type: 3}
   modifiers:

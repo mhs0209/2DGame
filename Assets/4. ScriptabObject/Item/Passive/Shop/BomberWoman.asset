@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e558fb6db6c07de4295d5fc87e9607e3, type: 3}
   m_Name: BomberWoman
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 0}
+  itemID: 2016
+  itemName: BomberWoman
   type: 1
   itemPrefab: {fileID: 8053871306449314833, guid: b7b107baa0578ff4fa550507dfd1482a, type: 3}
   modifiers:

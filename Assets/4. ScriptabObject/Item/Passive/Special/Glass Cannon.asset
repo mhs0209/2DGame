@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e558fb6db6c07de4295d5fc87e9607e3, type: 3}
   m_Name: Glass Cannon
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  description: 
-  itemIcon: {fileID: 0}
+  itemID: 2027
+  itemName: Glass Cannon
   type: 1
   itemPrefab: {fileID: 929475245947891611, guid: 5c4a0c7aa04bb69478be66d12b9f4ec8, type: 3}
   modifiers:
