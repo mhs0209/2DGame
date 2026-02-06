@@ -43,7 +43,7 @@ public class ActiveUI : MonoBehaviour, IInitializable
         chargeSlider.value = current;
         
         // 게이지 꽉 찼을 때 색상 변경 등 연출 추가 가능
-        chargeSlider.fillRect.GetComponent<Image>().color = (current >= max) ? Color.yellow : Color.white;
+        chargeSlider.fillRect.GetComponent<Image>().color = (current >= max) ? Color.green : Color.red;
     }
 
     public void OnLevelInit()

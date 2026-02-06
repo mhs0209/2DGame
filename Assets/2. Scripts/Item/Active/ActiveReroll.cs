@@ -21,23 +21,31 @@ public class ActiveReroll : Active
     private void RerollItem(ItemObject oldItem, RoomController controller)
     {
         List<ItemData> pool = null;
+        int currentPrice = 0;
 
-        if (controller.roomData is ShopMap sData) 
-        {
-            // 상점은 현재 아이템이 픽업인지 장비인지 판별하여 풀 결정 (가격 등으로 판별 가능)
-            // 여기서는 단순화하여 전체 풀을 합치거나 sData.shopItemPool 사용
-            pool = sData.shopItemPool; 
+        // 상점 아이템인 경우 가격 정보를 가져옴
+        if (oldItem.TryGetComponent<ShopItem>(out var shopItem)) {
+            currentPrice = shopItem.price; // 5G 또는 15G
         }
-        else {
-            // 보물, 보스, 노말, 특수방은 모두 itemDropPool을 공통으로 사용
+
+        if (controller.roomData is ShopMap sData) {
+            // 가격이 15G면 장비 풀, 5G면 픽업 풀에서 리롤
+            pool = (currentPrice >= 15) ? sData.shopItemPool : sData.pickupPool;
+        } else {
             pool = controller.roomData.itemDropPool;
         }
 
         if (pool == null || pool.Count == 0) return;
 
-        // 가중치 리롤을 원하시면 위에서 만든 가중치 함수를 쓰시고, 아니면 일반 랜덤
         ItemData newData = pool[Random.Range(0, pool.Count)];
-        Instantiate(newData.itemPrefab, oldItem.transform.position, Quaternion.identity, oldItem.transform.parent);
+    
+        // 생성 후 다시 ShopItem 컴포넌트 설정 (상점이라면)
+        GameObject newItem = Instantiate(newData.itemPrefab, oldItem.transform.position, Quaternion.identity, oldItem.transform.parent);
+        if (currentPrice > 0) {
+            ShopItem newShopLogic = newItem.AddComponent<ShopItem>();
+            newShopLogic.Initialize(currentPrice);
+        }
+    
         Destroy(oldItem.gameObject);
     }
     

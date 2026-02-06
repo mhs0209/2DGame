@@ -16,20 +16,21 @@ MonoBehaviour:
   roomType: 2
   roomPrefab: {fileID: 4243751564863310334, guid: 11a7b46e45189ec41b9ba69dc1c78bfd, type: 3}
   minimapIcon: {fileID: -1997803578, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  itemDropPool: []
   shopItemPool:
-  - {fileID: 3930882462585766663, guid: be986ab7f2b3eb3409db719fdb546f81, type: 3}
-  - {fileID: 5827154277259002057, guid: 1f2136199d86f7f4bbbe81e7ff0fa86d, type: 3}
-  - {fileID: 4768142269013001446, guid: d59dd3f4f2b6f3b4583ed7b6560b8ba4, type: 3}
-  - {fileID: 7111142367656870260, guid: eb84aa2afbd83bc4cbb5495c1b624e27, type: 3}
-  - {fileID: 8053871306449314833, guid: b7b107baa0578ff4fa550507dfd1482a, type: 3}
-  - {fileID: 1237659876586326069, guid: d7fd13a1865067644b8472b473949d1c, type: 3}
-  - {fileID: 8764715331170393183, guid: 0fee38d4738e4d74baada0f896b40bcc, type: 3}
-  - {fileID: 3154949142275068101, guid: d644208fa13f9fd41988f1026aae10b1, type: 3}
-  - {fileID: 8662974475654592371, guid: 33e11c352600acd40ba93aaa476b50d0, type: 3}
-  - {fileID: 3245274530865790539, guid: 218dbca93c6f2dc45b127e8acfeaf749, type: 3}
-  - {fileID: 4924589597735250505, guid: 99cd7f8ecbf67a8418015b6c7be24c0d, type: 3}
-  - {fileID: 5349330595101862726, guid: 80ce32684130cff41a8360cb879777cd, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   pickupPool:
-  - {fileID: 8705105654712594198, guid: 4acd9569d4ef5ce438835cfeb9c6060b, type: 3}
-  - {fileID: 4351717276026924117, guid: 394ff4120e0e57d47bbc33170b390a50, type: 3}
-  - {fileID: 4657406614078668465, guid: 191937383a1875a4ea54bf6ef396695a, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

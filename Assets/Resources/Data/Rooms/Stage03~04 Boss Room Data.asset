@@ -16,15 +16,4 @@ MonoBehaviour:
   roomType: 1
   roomPrefab: {fileID: 83447504951003796, guid: 8d02d47c5c9aa464989190dd0c7b9695, type: 3}
   minimapIcon: {fileID: 891942287, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
-  rewardPool:
-  - {fileID: 568828487779610558, guid: 027668cb74a7fbc4689adbc97b5be03a, type: 3}
-  - {fileID: 4506946141960022650, guid: ce7d4ed94370b7b4ca522884f3e0cef8, type: 3}
-  - {fileID: 1039411768708217481, guid: 971e9014ce44613489eb7ad345b6958b, type: 3}
-  - {fileID: 8325159152043980472, guid: 61e5689fe54a1304ab7567c42f0e3bcf, type: 3}
-  - {fileID: 4485176996824323384, guid: b8ed2e37821534e438829a9249f99528, type: 3}
-  - {fileID: 6738438255376685341, guid: b582298684f6fec4e93ea7ce0ceb3fb5, type: 3}
-  - {fileID: 3595901474293502991, guid: 7c777eef9bc233741af3cc1dbf510da8, type: 3}
-  - {fileID: 9023916971330622403, guid: 44e1d169e473f074593011c299d72500, type: 3}
-  - {fileID: 2936323258980106901, guid: 039c03957e493eb42b981dc5f47bc142, type: 3}
-  - {fileID: 7603628619268925383, guid: b1ac73e7f2cb689478892cb8e54f0734, type: 3}
-  - {fileID: 806996352712994855, guid: 963a5803c793b384bb510c4b08023d8c, type: 3}
+  itemDropPool: []

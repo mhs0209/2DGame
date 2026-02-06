@@ -28,52 +28,81 @@ public class TableDataManager : MonoBehaviour {
         InitializeData();
     }
 
-    public void InitializeData() {
-    // 1. Resources 로드 및 TSV 파싱 (기존 코드 유지)
-    var masterRooms = Resources.LoadAll<BaseRoomData>("Data/Rooms").ToDictionary(r => r.roomID);
-    var masterItems = Resources.LoadAll<ItemData>("Data/Items").ToDictionary(i => i.itemID);
-    List<MapTableData> mapRows = ParseTSV<MapTableData>("MapTable.tsv");
-    List<ItemTableData> itemRows = ParseTSV<ItemTableData>("ItemTable.tsv");
+    public void InitializeData()
+    {
+        // 1. Resources 로드 및 TSV 파싱
+        var masterRooms = Resources.LoadAll<BaseRoomData>("Data/Rooms").ToDictionary(r => r.roomID);
+        var masterItems = Resources.LoadAll<ItemData>("Data/Items").ToDictionary(i => i.itemID);
+        List<MapTableData> mapRows = ParseTSV<MapTableData>("MapTable.tsv");
+        List<ItemTableData> itemRows = ParseTSV<ItemTableData>("ItemTable.tsv");
 
-    // 2. 아이템 마스터 딕셔너리 생성 (GetItemTableData용)
-    itemTableDict.Clear();
-    ClearItemLists();
-    foreach (var row in itemRows) {
-        itemTableDict[row.ID] = row;
-        if (masterItems.TryGetValue(row.ID, out ItemData item)) {
-            if (row.InTreasure) treasureItems.Add(item);
-            if (row.InBoss) bossItems.Add(item);
-            if (row.InShop) shopItems.Add(item);
-            if (row.InSpecial) specialItems.Add(item);
-            if (row.InNormal) normalItems.Add(item);
-        }
-    }
+        // 2. 아이템 마스터 딕셔너리 및 기본 리스트 초기화
+        itemTableDict.Clear();
+        ClearItemLists();
 
-    // 3. 맵 데이터 매칭 및 아이템 풀 주입
-    allRooms.Clear();
-    foreach (var row in mapRows) {
-        if (masterRooms.TryGetValue(row.ID, out BaseRoomData room)) {
-            allRooms.Add(room);
-            mapTableDict[row.ID] = row;
-            room.itemDropPool.Clear();
+        foreach (var row in itemRows)
+        {
+            itemTableDict[row.ID] = row;
+            if (masterItems.TryGetValue(row.ID, out ItemData item))
+            {
+                // 각 카테고리별 리스트 채우기
+                if (row.InTreasure) treasureItems.Add(item);
+                if (row.InBoss) bossItems.Add(item);
+                if (row.InSpecial) specialItems.Add(item);
 
-            // Enum으로 직접 비교 (오타 방지)
-            switch (row.RoomType) {
-                case RoomType.Treasure: room.itemDropPool.AddRange(treasureItems); break;
-                case RoomType.Boss: room.itemDropPool.AddRange(bossItems); break;
-                case RoomType.Special: room.itemDropPool.AddRange(specialItems); break;
-                case RoomType.Normal: room.itemDropPool.AddRange(normalItems); break;
-                case RoomType.Shop:
-                    if (room is ShopMap shopMap) {
-                        shopMap.shopItemPool = new List<ItemData>(shopItems);
-                        shopMap.pickupPool = new List<ItemData>(normalItems);
-                    }
-                    break;
+                // [분류 핵심] 상점용 아이템 리스트 (15G 패시브/액티브)
+                // InShop이 T이면서 InNormal이 F인 경우만 순수 상점템으로 분류
+                if (row.InShop && !row.InNormal) shopItems.Add(item);
+
+                // [분류 핵심] 노말 드랍 및 상점 픽업용 (InNormal이 T인 모든 아이템)
+                if (row.InNormal) normalItems.Add(item);
             }
         }
+
+        // 3. 맵 데이터 매칭 및 아이템 풀 주입
+        allRooms.Clear();
+        foreach (var row in mapRows)
+        {
+            if (masterRooms.TryGetValue(row.ID, out BaseRoomData room))
+            {
+                allRooms.Add(room);
+                mapTableDict[row.ID] = row;
+                room.itemDropPool.Clear();
+
+                switch (row.RoomType)
+                {
+                    case RoomType.Treasure: room.itemDropPool.AddRange(treasureItems); break;
+                    case RoomType.Boss: room.itemDropPool.AddRange(bossItems); break;
+                    case RoomType.Special: room.itemDropPool.AddRange(specialItems); break;
+                    case RoomType.Normal: room.itemDropPool.AddRange(normalItems); break;
+
+                    case RoomType.Shop:
+                        if (room is ShopMap shopMap)
+                        {
+                            // 1. 패시브 아이템 풀 (InShop: T, InNormal: F)
+                            shopMap.shopItemPool = new List<ItemData>(shopItems);
+
+                            // 2. 상점 전용 픽업 풀 (InShop: T, InNormal: T)
+                            // normalItems 중에서 InShop까지 TRUE인 것들만 골라냅니다.
+                            shopMap.pickupPool = itemRows
+                                .Where(r => r.InShop && r.InNormal)
+                                .Select(r => masterItems.ContainsKey(r.ID) ? masterItems[r.ID] : null)
+                                .Where(i => i != null)
+                                .ToList();
+
+                            // 3. 기본 풀 (혹시 모를 리롤/참조 대비)
+                            room.itemDropPool.AddRange(shopMap.shopItemPool);
+                            room.itemDropPool.AddRange(shopMap.pickupPool);
+                        }
+
+                        break;
+                }
+            }
+        }
+
+        Debug.Log(
+            $"[TableDataManager] 로드 완료: 맵 {allRooms.Count}개. 상점 분류(장비:{shopItems.Count}, 픽업:{normalItems.Count})");
     }
-    Debug.Log($"로드 완료: 맵 {allRooms.Count}개. 데이터 주입 성공.");
-}
 
     private void ClearItemLists() {
         treasureItems.Clear(); bossItems.Clear(); shopItems.Clear();
