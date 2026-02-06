@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180f1c3c31e896544a0c6f7dbc12c6bf, type: 3}
+  m_Name: Stage01~02 Normal Room Data 1
+  m_EditorClassIdentifier: 
+  roomID: 5003
+  roomType: 0
+  roomPrefab: {fileID: 8379377125937068608, guid: 7a753f409c97be941ad67960651a4990, type: 3}
+  minimapIcon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  lootTable:
+  - prefab: {fileID: 4996672782179067208, guid: e4a0ecc8e1fdd3046b48e8d58dbd12ad, type: 3}
+    weight: 35
+  - prefab: {fileID: 8894514571849619967, guid: 85a6afe33b93d8a47bea71af50968a3e, type: 3}
+    weight: 10
+  - prefab: {fileID: 4351717276026924117, guid: 5291cd7890a4916439e041ca918b0d3c, type: 3}
+    weight: 10
+  - prefab: {fileID: 8705105654712594198, guid: de8b06a505c1b104483b75e623b8221b, type: 3}
+    weight: 25
+  - prefab: {fileID: 4657406614078668465, guid: f8bfd47085b7ac64d8bb6f99d6adc6c4, type: 3}
+    weight: 5
+  - prefab: {fileID: 8705105654712594198, guid: 0c6a494aefeb7a847895e6f32ab546b1, type: 3}
+    weight: 15

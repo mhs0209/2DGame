@@ -1,8 +1,8 @@
-// MapGenerator.cs
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -47,8 +47,8 @@ public class MapGenerator : MonoBehaviour
 
     void Start()
     {
+        allRoomSO = TableDataManager.Instance.GetRoomsForStage(SceneManager.GetActiveScene().buildIndex);
         GenerateMap();
-        var data = ReadStageDataFromTSV("StageData.tsv");
         // You can now use the 'data' variable which contains the parsed TSV data.
     }
     #endregion
@@ -290,29 +290,6 @@ public class MapGenerator : MonoBehaviour
         return matchingData[Random.Range(0, matchingData.Count)];
     }
     
-    public List<string[]> ReadStageDataFromTSV(string fileName)
-    {
-        List<string[]> data = new List<string[]>();
-        string path = Path.Combine(Application.streamingAssetsPath, fileName);
-
-        if (File.Exists(path))
-        {
-            using (StreamReader reader = new StreamReader(path))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    data.Add(line.Split('\t'));
-                }
-            }
-        }
-        else
-        {
-            Debug.LogError($"File not found: {path}");
-        }
-
-        return data;
-    }
     #endregion
     // =================================================================================
 }
