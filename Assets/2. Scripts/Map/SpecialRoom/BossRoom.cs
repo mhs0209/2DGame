@@ -9,8 +9,8 @@ public class BossRoom : ItemRoom
     {
         if (controller.roomData is BossMap data) {
             // 보상 아이템 생성
-            if (data.rewardPool.Length > 0)
-                Instantiate(data.rewardPool[Random.Range(0, data.rewardPool.Length)], transform.position + Vector3.up, Quaternion.identity);
+            if (data.itemDropPool.Count > 0)
+                Instantiate(data.itemDropPool[Random.Range(0, data.itemDropPool.Count)], transform.position + Vector3.up, Quaternion.identity);
             
             // 포탈 생성
             if (stagePortalPrefab != null)

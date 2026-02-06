@@ -12,5 +12,5 @@ public struct LootEntry
 [CreateAssetMenu(fileName = "Normal Map", menuName = "Map/Normal")]
 public class NormalMap : BaseRoomData 
 {
-    public LootEntry[] lootTable; // 전투 후 픽업 아이템 보상 목록
+    //public LootEntry[] lootTable; // 전투 후 픽업 아이템 보상 목록
 }

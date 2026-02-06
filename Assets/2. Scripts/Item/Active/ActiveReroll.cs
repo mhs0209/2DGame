@@ -20,24 +20,24 @@ public class ActiveReroll : Active
 
     private void RerollItem(ItemObject oldItem, RoomController controller)
     {
-        GameObject[] pool = null;
+        List<ItemData> pool = null;
 
-        // RoomController의 roomData와 baseRoom.type을 활용하여 풀 결정
-        if (controller.roomData is TreasureMap tData) pool = tData.itemPool;
-        else if (controller.roomData is ShopMap sData) pool = sData.shopItemPool;
-        else if (controller.roomData is BossMap bData) pool = bData.rewardPool;
-        
-        // 특수방 처리 (SpecialRoom은 TreasureMap 데이터를 공유한다고 하셨으므로)
-        if (controller.baseRoom.type == RoomType.Special && pool == null)
+        if (controller.roomData is ShopMap sData) 
         {
-            if (controller.roomData is TreasureMap specData) pool = specData.itemPool;
+            // 상점은 현재 아이템이 픽업인지 장비인지 판별하여 풀 결정 (가격 등으로 판별 가능)
+            // 여기서는 단순화하여 전체 풀을 합치거나 sData.shopItemPool 사용
+            pool = sData.shopItemPool; 
+        }
+        else {
+            // 보물, 보스, 노말, 특수방은 모두 itemDropPool을 공통으로 사용
+            pool = controller.roomData.itemDropPool;
         }
 
-        if (pool == null || pool.Length == 0) return;
+        if (pool == null || pool.Count == 0) return;
 
-        // 새 아이템 생성 및 기존 아이템 파괴
-        GameObject newItemPrefab = pool[Random.Range(0, pool.Length)];
-        Instantiate(newItemPrefab, oldItem.transform.position, Quaternion.identity, oldItem.transform.parent);
+        // 가중치 리롤을 원하시면 위에서 만든 가중치 함수를 쓰시고, 아니면 일반 랜덤
+        ItemData newData = pool[Random.Range(0, pool.Count)];
+        Instantiate(newData.itemPrefab, oldItem.transform.position, Quaternion.identity, oldItem.transform.parent);
         Destroy(oldItem.gameObject);
     }
     

@@ -11,7 +11,7 @@ public class TableData : MonoBehaviour
 public class ItemTableData {
     public int ID;
     public string Name;
-    public string ItemType;
+    public ItemType ItemType;
     public bool InTreasure, InBoss, InShop, InSpecial, InNormal;
     public float DropWeight;
 }
@@ -20,6 +20,6 @@ public class ItemTableData {
 public class MapTableData {
     public int ID;
     public string PrefabName;
-    public string RoomType;
+    public RoomType RoomType;
     public int MinStage, MaxStage;
 }

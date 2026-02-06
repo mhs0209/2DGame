@@ -18,6 +18,8 @@ public class TableDataManager : MonoBehaviour {
 
     // 스테이지 필터링용 데이터 저장 (ID, MapTableData)
     private Dictionary<int, MapTableData> mapTableDict = new Dictionary<int, MapTableData>();
+    // ID로 테이블 로우 데이터를 빠르게 찾기 위한 딕셔너리
+    private Dictionary<int, ItemTableData> itemTableDict = new Dictionary<int, ItemTableData>();
 
     void Awake() {
         if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
@@ -27,38 +29,51 @@ public class TableDataManager : MonoBehaviour {
     }
 
     public void InitializeData() {
-        // 1. 모든 SO 로드 (ID 매칭용)
-        var masterRooms = Resources.LoadAll<BaseRoomData>("Data/Rooms").ToDictionary(r => r.roomID);
-        var masterItems = Resources.LoadAll<ItemData>("Data/Items").ToDictionary(i => i.itemID);
+    // 1. Resources 로드 및 TSV 파싱 (기존 코드 유지)
+    var masterRooms = Resources.LoadAll<BaseRoomData>("Data/Rooms").ToDictionary(r => r.roomID);
+    var masterItems = Resources.LoadAll<ItemData>("Data/Items").ToDictionary(i => i.itemID);
+    List<MapTableData> mapRows = ParseTSV<MapTableData>("MapTable.tsv");
+    List<ItemTableData> itemRows = ParseTSV<ItemTableData>("ItemTable.tsv");
 
-        // 2. TSV 파싱 (제시하신 클래스 사용)
-        List<MapTableData> mapRows = ParseTSV<MapTableData>("MapTable.tsv");
-        List<ItemTableData> itemRows = ParseTSV<ItemTableData>("ItemTable.tsv");
-
-        // 3. 맵 데이터 매칭 및 필터 정보 기록
-        allRooms.Clear();
-        mapTableDict.Clear();
-        foreach (var row in mapRows) {
-            if (masterRooms.TryGetValue(row.ID, out BaseRoomData room)) {
-                allRooms.Add(room);
-                mapTableDict[row.ID] = row; // MinStage, MaxStage가 포함된 전체 데이터 보관
-            }
+    // 2. 아이템 마스터 딕셔너리 생성 (GetItemTableData용)
+    itemTableDict.Clear();
+    ClearItemLists();
+    foreach (var row in itemRows) {
+        itemTableDict[row.ID] = row;
+        if (masterItems.TryGetValue(row.ID, out ItemData item)) {
+            if (row.InTreasure) treasureItems.Add(item);
+            if (row.InBoss) bossItems.Add(item);
+            if (row.InShop) shopItems.Add(item);
+            if (row.InSpecial) specialItems.Add(item);
+            if (row.InNormal) normalItems.Add(item);
         }
-
-        // 4. 아이템 데이터 매칭 및 카테고리 분류
-        ClearItemLists();
-        foreach (var row in itemRows) {
-            if (masterItems.TryGetValue(row.ID, out ItemData item)) {
-                if (row.InTreasure) treasureItems.Add(item);
-                if (row.InBoss) bossItems.Add(item);
-                if (row.InShop) shopItems.Add(item);
-                if (row.InSpecial) specialItems.Add(item);
-                if (row.InNormal) normalItems.Add(item);
-            }
-        }
-
-        Debug.Log($"[TableDataManager] 로드 완료. 맵: {allRooms.Count}, 아이템 분류 완료.");
     }
+
+    // 3. 맵 데이터 매칭 및 아이템 풀 주입
+    allRooms.Clear();
+    foreach (var row in mapRows) {
+        if (masterRooms.TryGetValue(row.ID, out BaseRoomData room)) {
+            allRooms.Add(room);
+            mapTableDict[row.ID] = row;
+            room.itemDropPool.Clear();
+
+            // Enum으로 직접 비교 (오타 방지)
+            switch (row.RoomType) {
+                case RoomType.Treasure: room.itemDropPool.AddRange(treasureItems); break;
+                case RoomType.Boss: room.itemDropPool.AddRange(bossItems); break;
+                case RoomType.Special: room.itemDropPool.AddRange(specialItems); break;
+                case RoomType.Normal: room.itemDropPool.AddRange(normalItems); break;
+                case RoomType.Shop:
+                    if (room is ShopMap shopMap) {
+                        shopMap.shopItemPool = new List<ItemData>(shopItems);
+                        shopMap.pickupPool = new List<ItemData>(normalItems);
+                    }
+                    break;
+            }
+        }
+    }
+    Debug.Log($"로드 완료: 맵 {allRooms.Count}개. 데이터 주입 성공.");
+}
 
     private void ClearItemLists() {
         treasureItems.Clear(); bossItems.Clear(); shopItems.Clear();
@@ -93,14 +108,16 @@ public class TableDataManager : MonoBehaviour {
 
                 if (field != null) {
                     string value = data[j].Trim();
+                    // ParseTSV 함수 내부 수정
                     try {
                         if (field.FieldType == typeof(int)) field.SetValue(obj, int.Parse(value));
                         else if (field.FieldType == typeof(bool)) field.SetValue(obj, value.ToUpper() == "TRUE" || value == "1");
                         else if (field.FieldType == typeof(float)) field.SetValue(obj, float.Parse(value));
+                        // --- 추가된 Enum 처리 로직 ---
+                        else if (field.FieldType.IsEnum) field.SetValue(obj, Enum.Parse(field.FieldType, value, true));
+                        // -------------------------
                         else field.SetValue(obj, value);
-                    } catch (Exception e) {
-                        Debug.LogWarning($"[ParseError] {headerName} 파싱 실패: {e.Message}");
-                    }
+                    } catch { /* 스킵 */ }
                 }
             }
             list.Add(obj);
@@ -116,5 +133,12 @@ public class TableDataManager : MonoBehaviour {
             }
             return false;
         }).ToList();
+    }
+    
+    public ItemTableData GetItemTableData(int id) {
+        if (itemTableDict.TryGetValue(id, out ItemTableData data)) {
+            return data;
+        }
+        return null;
     }
 }
