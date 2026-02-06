@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78811f691ab6c7a4baa39f38bcef506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuseTime: 3
+  fuseTime: 2
   explosionRadius: 1.5
   monsterDamage: 10
   playerDamage: 2
