@@ -39,7 +39,7 @@ public abstract class Stat : MonoBehaviour
         // 자식들의 모든 SpriteRenderer를 한 번에 가져옵니다.
         childrenRenderers = GetComponentsInChildren<SpriteRenderer>(true);
     }
-
+    
     public virtual void TakeDamage(float damage)
     {
         if (isInvincible) return;
@@ -49,13 +49,18 @@ public abstract class Stat : MonoBehaviour
         if (health <= 0) Die();
         else
         {
-            // 스위치가 켜져 있는 경우에만 피격 무적 루틴 실행
+            // 피격 시 실행될 시각적 효과 (기본은 내용 없음)
+            OnHitVisual(); 
+
             if (useHitInvincibility)
             {
-                StartCoroutine(HitInvincibleRoutine(damage * invincibilityMult));
+                StartCoroutine(HitInvincibleRoutine(damage * invincibilityMult)); // 예시 시간
             }
         }
     }
+
+    // 자식들이 각자 입맛에 맞게 구현할 "입구"
+    protected virtual void OnHitVisual() { }
     
     // Stat.cs 수정본 일부
     protected IEnumerator HitInvincibleRoutine(float duration)

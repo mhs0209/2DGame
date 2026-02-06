@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 public enum MonsterType { Normal, Range, Named, Boss }
 
@@ -39,7 +40,7 @@ public class MonsterStat : Stat
         speed = originSpeed;
         health = maxHealth;
         isInvincible = false;
-        if(childrenRenderers[0]) childrenRenderers[0].color = new Color(1,1,1, childrenRenderers[0].color.a);
+        SetSpritesColor(Color.white);
     }
 
     private void ApplyStageScaling()
@@ -65,7 +66,7 @@ public class MonsterStat : Stat
         maxHealth *= 1.5f;
         health = maxHealth;
         speed *= 1.2f;
-        if(childrenRenderers[0]) childrenRenderers[0].color = new Color(1f, 0f, 0f,childrenRenderers[0].color.a); // 네임드는 색깔 표시
+        SetSpritesColor(Color.gray);
     }
     
     private void OnCollisionStay2D(Collision2D collision)
@@ -88,5 +89,68 @@ public class MonsterStat : Stat
 
         // [변경] 오브젝트 풀링 대신 즉시 파괴
         Destroy(gameObject);
+    }
+    
+    private Coroutine hitEffectCoroutine;
+
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+
+        if (health > 0)
+        {
+            // 핵심: 기존에 돌고 있던 깜빡이 코루틴을 "확실히" 강제 종료
+            if (hitEffectCoroutine != null) 
+            {
+                StopCoroutine(hitEffectCoroutine);
+            }
+            hitEffectCoroutine = StartCoroutine(HitFlashRoutine());
+        }
+    }
+
+    private IEnumerator HitFlashRoutine()
+    {
+        // 1. 빨간색으로 변경
+        SetSpritesColor(Color.red);
+
+        // 2. 대기 (시간을 0.15f 정도로 살짝 늘려보세요)
+        yield return new WaitForSeconds(0.15f);
+
+        // 3. 원래 색상으로 복구
+        Color recoveryColor = isNamed ? Color.gray : Color.white;
+        SetSpritesColor(recoveryColor);
+
+        hitEffectCoroutine = null;
+    }
+
+    // 중복 코드를 줄이기 위한 헬퍼 함수
+    private void SetSpritesColor(Color targetColor)
+    {
+        if (childrenRenderers == null) return;
+
+        foreach (var sr in childrenRenderers)
+        {
+            if (sr != null)
+            {
+                // .color 대신 .material.color를 수정합니다.
+                // 이렇게 하면 애니메이터의 감시망을 피해서 색을 바꿀 수 있습니다.
+                sr.material.color = targetColor;
+            }
+        }
+    }
+    
+    private void OnDestroy()
+    {
+        // 생성된 머티리얼 인스턴스들을 제거하여 메모리 누수를 방지합니다.
+        if (childrenRenderers != null)
+        {
+            foreach (var sr in childrenRenderers)
+            {
+                if (sr != null && sr.material != null)
+                {
+                    Destroy(sr.material);
+                }
+            }
+        }
     }
 }
