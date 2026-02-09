@@ -37,6 +37,8 @@ public class ActiveInventory : MonoBehaviour
         // 3. 새 아이템 장착 및 쿨타임 갱신
         currentActive = newItem;
         lastSwapTime = Time.time; 
+        // [추가] 현재 장착한 액티브 아이템 기록 (교체 시 덮어씌워짐)
+        RunDataManager.Instance.RecordActive(newItem.activeData);
 
         // 4. 최초 획득 처리
         if (currentActive.isFirstPickup)

@@ -149,6 +149,15 @@ public class GameManager : MonoBehaviour
     {
         settingsPanel.SetActive(!settingsPanel.activeSelf);
         Time.timeScale = settingsPanel.activeSelf ? 0f : 1f;
+        if (settingsPanel.activeSelf)
+        {
+            RunDataManager.Instance.StopTimer();
+        }
+        else
+        {
+            RunDataManager.Instance.StartTimer();
+        }
+        
     }
 
     // --- 기존 게임 상태 로직 ---
@@ -162,6 +171,13 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1f;
+        // 런데이터 초기화
+        if (RunDataManager.Instance != null)
+        {
+            RunDataManager.Instance.ResetData();
+            // 초기화 후 다시 시작할 때 타이머 작동 시작
+            RunDataManager.Instance.StartTimer();
+        }
         if (AniManager.Instance != null) Destroy(AniManager.Instance.gameObject);
         if (InGameUICanvasDDOL.Instance != null) Destroy(InGameUICanvasDDOL.Instance.gameObject);
         SceneManager.LoadScene("Stage01");

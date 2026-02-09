@@ -7,6 +7,8 @@ public class FirePassiveItem : Passive
     public FirePassiveData fireData;
     public override void ApplyEffect(PlayerStat stat)
     {
+        // [추가] 획득 기록
+        RunDataManager.Instance.RecordPassive(fireData);
         // 시너지 로직: 샷건은 다른 모든 멀티 발사를 덮어씀
         if (fireData.shapeChange == FireShape.Shotgun || stat.fireShape == FireShape.Shotgun)
         {
