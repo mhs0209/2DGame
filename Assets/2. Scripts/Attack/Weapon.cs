@@ -5,10 +5,11 @@ public abstract class Weapon : MonoBehaviour
     public GameObject bulletPrefab;
     protected Stat ownerStat;
     protected float lastFireTime;
+    
 
     protected virtual void Awake() => ownerStat = GetComponent<Stat>();
 
-    protected bool CanFire() => Time.time >= lastFireTime + ownerStat.delay;
+    public bool CanFire() => Time.time >= lastFireTime + ownerStat.delay;
 
     public virtual void Fire(Vector2 direction)
     {
