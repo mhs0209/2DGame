@@ -22,6 +22,7 @@ public class ActiveStatBoost : Active
                 StatType.Speed => stat.speed,
                 StatType.Range => stat.range,
                 StatType.Delay => stat.delay,
+                StatType.AtkMult => stat.atkMult,
                 _ => 0f
             };
             originalValues[mod.statType] = val;
@@ -61,6 +62,7 @@ public class ActiveStatBoost : Active
                 StatType.Speed => stat.speed,
                 StatType.Range => stat.range,
                 StatType.Delay => stat.delay,
+                StatType.AtkMult => stat.atkMult,
                 _ => originalValues[mod.statType]
             };
 

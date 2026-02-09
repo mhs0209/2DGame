@@ -30,6 +30,7 @@ public class ShopItem : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerStat pStat = collision.gameObject.GetComponent<PlayerStat>();
+            collision.gameObject.GetComponent<PlayerSoundController>()?.PlayItemGetSound();
             if (pStat.gold >= price)
             {
                 pStat.gold -= price;

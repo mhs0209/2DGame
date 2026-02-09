@@ -149,15 +149,17 @@ public class GameManager : MonoBehaviour
     {
         settingsPanel.SetActive(!settingsPanel.activeSelf);
         Time.timeScale = settingsPanel.activeSelf ? 0f : 1f;
-        if (settingsPanel.activeSelf)
+        if (RunDataManager.Instance != null)
         {
-            RunDataManager.Instance.StopTimer();
+            if (settingsPanel.activeSelf)
+            {
+                RunDataManager.Instance.StopTimer();
+            }
+            else
+            {
+                RunDataManager.Instance.StartTimer();
+            }
         }
-        else
-        {
-            RunDataManager.Instance.StartTimer();
-        }
-        
     }
 
     // --- 기존 게임 상태 로직 ---

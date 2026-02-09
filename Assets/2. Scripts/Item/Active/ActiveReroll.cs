@@ -22,10 +22,17 @@ public class ActiveReroll : Active
     {
         List<ItemData> pool = null;
         int currentPrice = 0;
+        int currentKey = 0;
 
         // 상점 아이템인 경우 가격 정보를 가져옴
         if (oldItem.TryGetComponent<ShopItem>(out var shopItem)) {
             currentPrice = shopItem.price; // 5G 또는 15G
+        }
+        
+        // 상점 아이템인 경우 가격 정보를 가져옴
+        if (oldItem.TryGetComponent<SpecialItem>(out var specialItem))
+        {
+            currentKey = specialItem.requiredKeys;
         }
 
         if (controller.roomData is ShopMap sData) {
@@ -41,9 +48,15 @@ public class ActiveReroll : Active
     
         // 생성 후 다시 ShopItem 컴포넌트 설정 (상점이라면)
         GameObject newItem = Instantiate(newData.itemPrefab, oldItem.transform.position, Quaternion.identity, oldItem.transform.parent);
+        
         if (currentPrice > 0) {
             ShopItem newShopLogic = newItem.AddComponent<ShopItem>();
             newShopLogic.Initialize(currentPrice);
+        }
+        if (currentKey > 0)
+        {
+            SpecialItem newSpecialItem = newItem.AddComponent<SpecialItem>();
+            newSpecialItem.Initialize(currentKey);
         }
     
         Destroy(oldItem.gameObject);

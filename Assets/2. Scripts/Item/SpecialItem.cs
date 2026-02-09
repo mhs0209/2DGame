@@ -34,6 +34,7 @@ public class SpecialItem : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerStat pStat = collision.gameObject.GetComponent<PlayerStat>();
+            collision.gameObject.GetComponent<PlayerSoundController>()?.PlayItemGetSound();
             
             // 골드 대신 열쇠 확인
             if (pStat.keys >= requiredKeys)

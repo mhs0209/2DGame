@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ActiveInventory : MonoBehaviour
 {
@@ -53,6 +54,12 @@ public class ActiveInventory : MonoBehaviour
     {
         // 부모 해제 및 위치 이동
         currentActive.transform.SetParent(null);
+        
+        // 현재 활성화된 씬으로 오브젝트 이동
+        // 이렇게 하면 DDOL 상태인 플레이어에게서 완전히 독립되어 씬 전환 시 파괴됩니다.
+        SceneManager.MoveGameObjectToScene(currentActive.gameObject, SceneManager.GetActiveScene());
+        
+        // 위치 이동 및 아이템 상태 복구
         currentActive.transform.position = targetPos;
 
         // 시각적/물리적 재활성화
