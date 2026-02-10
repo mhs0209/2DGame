@@ -1673,7 +1673,6 @@ MonoBehaviour:
   - {fileID: 1186816561}
   - {fileID: 1642283714}
   - {fileID: 1169698208}
-  leaderboardPanel: {fileID: 1824443038}
 --- !u!1 &1916484170
 GameObject:
   m_ObjectHideFlags: 0

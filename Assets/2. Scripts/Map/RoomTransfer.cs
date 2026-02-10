@@ -6,13 +6,11 @@ public enum DoorDirection { Top, Bottom, Left, Right }
 public class RoomTransfer : MonoBehaviour
 {
     public DoorDirection direction;
-    private static bool isTransferring = false;
+    private static bool isGlobalTransferring = false;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        DoorPhysics myDoor = GetComponent<DoorPhysics>();
-
-        if (collision.CompareTag("Player") && !isTransferring)
+        if (collision.CompareTag("Player") && !isGlobalTransferring)
         {
             TransferPlayer(collision.transform);
         }
@@ -20,7 +18,7 @@ public class RoomTransfer : MonoBehaviour
 
     public void TransferPlayer(Transform player)
     {
-        isTransferring = true;
+        isGlobalTransferring = true;
         float spacing = MapGenerator.Instance.roomSpacing;
     
         // 1. 목표 격자 좌표 계산
@@ -39,7 +37,7 @@ public class RoomTransfer : MonoBehaviour
         }
 
         BaseRoom targetRoom = MapGenerator.Instance.GetRoomAt(targetGrid);
-        if (targetRoom == null) { isTransferring = false; return; }
+        if (targetRoom == null) { isGlobalTransferring = false; return; }
 
         Transform dest = null;
         switch (direction)
@@ -62,8 +60,8 @@ public class RoomTransfer : MonoBehaviour
             targetRoom.OnPlayerEnter();
         }
 
-        Invoke(nameof(ResetTransferFlag), 1.0f);
+        Invoke(nameof(ResetTransferFlag), 0.3f);
     }
 
-    private void ResetTransferFlag() => isTransferring = false;
+    private void ResetTransferFlag() => isGlobalTransferring = false;
 }

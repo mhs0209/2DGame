@@ -33,6 +33,18 @@ public class ShopRoom : ItemRoom
                     shopSpots[i].transform.position + Vector3.up * 0.5f, 
                     Quaternion.identity, shopSpots[i].transform);
                 
+                
+                ObjectSpawnCleaner cleaner = spawned.GetComponent<ObjectSpawnCleaner>();
+
+                if (cleaner != null)
+                {
+                    // 1. 바로 삭제하기
+                    Destroy(cleaner); 
+    
+                    // 2. 혹은 기능을 꺼두기
+                    // breaker.enabled = false; 
+                }
+                
                 ShopItem shopLogic = spawned.AddComponent<ShopItem>();
                 shopLogic.Initialize(isEquipment ? 15 : 5);
             }

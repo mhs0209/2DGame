@@ -6763,7 +6763,7 @@ MonoBehaviour:
   atk: 1
   atkMult: 1
   delay: 1
-  range: 3
+  range: 10
   speed: 4
   fireShape: 2
   projectileCount: 8
@@ -6789,7 +6789,7 @@ MonoBehaviour:
   currentState: 0
   seeRight: 0
   detectRange: 10
-  attackRange: 3
+  attackRange: 10
   attackClip: {fileID: 8300000, guid: c7fc17e461146ca4ca40ca7a5e4c300c, type: 3}
   chaseClip: {fileID: 8300000, guid: df7087e4d8a8bb546bc08ce68632903f, type: 3}
 --- !u!114 &2490105384028437758
