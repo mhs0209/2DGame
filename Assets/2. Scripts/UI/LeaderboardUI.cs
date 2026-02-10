@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using TMPro;
 using System.Linq;
@@ -7,14 +8,11 @@ public class LeaderboardUI : MonoBehaviour
 {
     [Header("UI References")]
     public TextMeshProUGUI[] rankTexts; // 1등부터 5등까지의 텍스트 UI 배열
-    public GameObject leaderboardPanel; // 기록 창 패널
 
     private const string SAVE_KEY = "BestClearTimes";
 
-    // 기록 창을 열 때 호출 (버튼에 연결)
-    public void OpenLeaderboard()
+    public void Start()
     {
-        leaderboardPanel.SetActive(true);
         DisplayBestTimes();
     }
 
