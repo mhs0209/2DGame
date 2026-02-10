@@ -56,8 +56,8 @@ namespace FreeworkGame
         void Update()
         {
             HandleInput();
-            HandleRestart();
-            HandlePose();
+            //HandleRestart();
+            //HandlePose();
         }
 
         void FixedUpdate()
@@ -98,8 +98,8 @@ namespace FreeworkGame
                 DetermineDirection(x, y);
                 
                 // // 걷기/달리기 상태 결정
-                if (Input.GetKey(KeyCode.Alpha1)) isRun = false;
-                if (Input.GetKey(KeyCode.Alpha2)) isRun = true;
+                //if (Input.GetKey(KeyCode.Alpha1)) isRun = false;
+                //if (Input.GetKey(KeyCode.Alpha2)) isRun = true;
 
                 SetAni(isRun ? AniType.run : AniType.walk);
             }
@@ -176,30 +176,30 @@ namespace FreeworkGame
             }
         }
 
-        private void HandlePose()
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                isPose = true;
-                targetType = targetDirectType.forward;
-                SetAni(AniType.win);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                isPose = true;
-                targetType = targetDirectType.forward;
-                SetAni(AniType.lose);
-            }
-        }
+        // private void HandlePose()
+        // {
+        //     if (Input.GetKeyDown(KeyCode.Alpha3))
+        //     {
+        //         isPose = true;
+        //         targetType = targetDirectType.forward;
+        //         SetAni(AniType.win);
+        //     }
+        //     if (Input.GetKeyDown(KeyCode.Alpha4))
+        //     {
+        //         isPose = true;
+        //         targetType = targetDirectType.forward;
+        //         SetAni(AniType.lose);
+        //     }
+        // }
 
-        private void HandleRestart()
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha0))
-            {
-                ResetState();
-                transform.localPosition = new Vector3(11, -8, 0);
-            }
-        }
+        // private void HandleRestart()
+        // {
+        //     if (Input.GetKeyDown(KeyCode.Alpha0))
+        //     {
+        //         ResetState();
+        //         transform.localPosition = new Vector3(11, -8, 0);
+        //     }
+        // }
 
         private void ResetState()
         {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class SettingUICanvasDDOL : MonoBehaviour
 {
     public static SettingUICanvasDDOL Instance;
+    public GameObject startButton;
     
     void Awake()
     {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -19,6 +20,8 @@ public class RunDataManager : MonoBehaviour
     
     public List<ObtainmentData> collectedPassives = new List<ObtainmentData>();
     public ObtainmentData currentActiveItem;
+    
+    private const string SAVE_KEY = "BestClearTimes";
 
     void Awake()
     {
@@ -71,5 +74,32 @@ public class RunDataManager : MonoBehaviour
             itemSprite = sr != null ? sr.sprite : null,
             itemColor = sr != null ? sr.color : Color.white
         };
+    }
+    
+    public void SaveCurrentRunTime()
+    {
+        // 1. 기존 기록 불러오기
+        string savedData = PlayerPrefs.GetString(SAVE_KEY, "");
+        List<float> times = new List<float>();
+
+        if (!string.IsNullOrEmpty(savedData))
+        {
+            times = savedData.Split(',').Select(float.Parse).ToList();
+        }
+
+        // 2. 현재 기록 추가 및 정렬 (오름차순 - 빠른 순)
+        times.Add(elapsedTime);
+        times = times.OrderBy(t => t).Take(5).ToList();
+
+        // 3. 다시 문자열로 변환하여 저장
+        string dataToSave = string.Join(",", times);
+        PlayerPrefs.SetString(SAVE_KEY, dataToSave);
+        PlayerPrefs.Save();
+    }
+
+    public void ClearBestTimes()
+    {
+        PlayerPrefs.DeleteKey(SAVE_KEY);
+        Debug.Log("클리어 기록이 초기화되었습니다.");
     }
 }

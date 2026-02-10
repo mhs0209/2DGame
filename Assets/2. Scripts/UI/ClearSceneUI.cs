@@ -14,6 +14,7 @@ public class ClearSceneUI : MonoBehaviour
     {
         // 결과창 진입 시 타이머는 확실히 정지
         RunDataManager.Instance.StopTimer();
+        RunDataManager.Instance.SaveCurrentRunTime();
         DisplayRunResults();
     }
 
@@ -44,5 +45,13 @@ public class ClearSceneUI : MonoBehaviour
             img.color = item.itemColor;
             img.preserveAspect = true; // 비율 유지
         }
+    }
+    
+    public void OnClickGoToMenu()
+    {
+        // 데이터 초기화 후 메뉴 이동
+        RunDataManager.Instance.ResetData();
+        GameManager.Instance.GoToMenu();
+        SettingUICanvasDDOL.Instance.startButton.SetActive(true);
     }
 }

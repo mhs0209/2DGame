@@ -23,6 +23,8 @@ public class MapGenerator : MonoBehaviour
     public List<BaseRoomData> allRoomSO;
 
     public IReadOnlyDictionary<Vector2Int, RoomType> DungeonMap => dungeonMap;
+    public IReadOnlyDictionary<Vector2Int, BaseRoom> SpawnedRooms => spawnedRooms;
+    
     #endregion
     // =================================================================================
 

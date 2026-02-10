@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
         if (Instance == null) {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            
         } else {
             Destroy(gameObject);
         }
@@ -190,6 +189,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         if (AniManager.Instance != null) Destroy(AniManager.Instance.gameObject);
         if (InGameUICanvasDDOL.Instance != null) Destroy(InGameUICanvasDDOL.Instance.gameObject);
+        if (RunDataManager.Instance != null) Destroy(RunDataManager.Instance.gameObject);
+        if (AdminManager.Instance != null) Destroy(AdminManager.Instance.gameObject);
         SceneManager.LoadScene("MainMenu");
     }
 }
