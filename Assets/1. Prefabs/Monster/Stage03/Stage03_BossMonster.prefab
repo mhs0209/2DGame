@@ -168,12 +168,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a405db5cca5cbc147af6d673b9a28c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 80
-  maxHealth: 80
+  health: 30
+  maxHealth: 30
   atk: 1
   atkMult: 1
   delay: 1
-  range: 3
+  range: 10
   speed: 3
   fireShape: 1
   projectileCount: 3
@@ -199,7 +199,7 @@ MonoBehaviour:
   currentState: 0
   seeRight: 1
   detectRange: 10
-  attackRange: 3
+  attackRange: 10
   attackClip: {fileID: 8300000, guid: c7fc17e461146ca4ca40ca7a5e4c300c, type: 3}
   chaseClip: {fileID: 8300000, guid: df7087e4d8a8bb546bc08ce68632903f, type: 3}
 --- !u!114 &6674725519832878307

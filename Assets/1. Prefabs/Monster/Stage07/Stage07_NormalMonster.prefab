@@ -173,7 +173,7 @@ MonoBehaviour:
   atkMult: 1
   delay: 1
   range: 1
-  speed: 5
+  speed: 4
   fireShape: 0
   projectileCount: 1
   isPiercing: 0

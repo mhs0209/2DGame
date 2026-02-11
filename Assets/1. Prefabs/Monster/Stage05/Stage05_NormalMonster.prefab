@@ -5412,7 +5412,7 @@ MonoBehaviour:
   atkMult: 1
   delay: 1
   range: 1
-  speed: 4
+  speed: 3.5
   fireShape: 0
   projectileCount: 1
   isPiercing: 0

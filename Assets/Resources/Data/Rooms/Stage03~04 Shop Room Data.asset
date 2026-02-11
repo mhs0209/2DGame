@@ -16,21 +16,36 @@ MonoBehaviour:
   roomType: 2
   roomPrefab: {fileID: 6947641391953530941, guid: ee1af57def5f08d4bbf0516a7440dc84, type: 3}
   minimapIcon: {fileID: -1997803578, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
-  itemDropPool: []
+  itemDropPool:
+  - {fileID: 11400000, guid: eac4c323aa647a043b19d95ee5b82972, type: 2}
+  - {fileID: 11400000, guid: 10929521f6f00e1409962466299e50a7, type: 2}
+  - {fileID: 11400000, guid: 801b1b56c104d034f87e5d9715b34c55, type: 2}
+  - {fileID: 11400000, guid: 3f7f6663e32ac314eb4c1ab1e3875dc4, type: 2}
+  - {fileID: 11400000, guid: c107ba46cb3b4214598a48b24429e726, type: 2}
+  - {fileID: 11400000, guid: e0bbc93ecb0370a48a799135445d37bc, type: 2}
+  - {fileID: 11400000, guid: 100705bab519c8944b5c16edb7102b69, type: 2}
+  - {fileID: 11400000, guid: 0994e20bc7fdbbc41ac8ccc18b83dbee, type: 2}
+  - {fileID: 11400000, guid: 7b234c5f56fd50f458711957f5829ed5, type: 2}
+  - {fileID: 11400000, guid: d85bb9c95e6f4ad428512e920585247a, type: 2}
+  - {fileID: 11400000, guid: 773bf822e3e118541b74385189c25bb5, type: 2}
+  - {fileID: 11400000, guid: 85deeadeecb7b994897759ef18909fe4, type: 2}
+  - {fileID: 11400000, guid: 4b7b876bca35fa044b2cf1fd1b1e2c68, type: 2}
+  - {fileID: 11400000, guid: 5a1e0e186a415af4b8d0af992658decd, type: 2}
+  - {fileID: 11400000, guid: 49491613c43298c468f0e0cf53390fa2, type: 2}
   shopItemPool:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: eac4c323aa647a043b19d95ee5b82972, type: 2}
+  - {fileID: 11400000, guid: 10929521f6f00e1409962466299e50a7, type: 2}
+  - {fileID: 11400000, guid: 801b1b56c104d034f87e5d9715b34c55, type: 2}
+  - {fileID: 11400000, guid: 3f7f6663e32ac314eb4c1ab1e3875dc4, type: 2}
+  - {fileID: 11400000, guid: c107ba46cb3b4214598a48b24429e726, type: 2}
+  - {fileID: 11400000, guid: e0bbc93ecb0370a48a799135445d37bc, type: 2}
+  - {fileID: 11400000, guid: 100705bab519c8944b5c16edb7102b69, type: 2}
+  - {fileID: 11400000, guid: 0994e20bc7fdbbc41ac8ccc18b83dbee, type: 2}
+  - {fileID: 11400000, guid: 7b234c5f56fd50f458711957f5829ed5, type: 2}
+  - {fileID: 11400000, guid: d85bb9c95e6f4ad428512e920585247a, type: 2}
+  - {fileID: 11400000, guid: 773bf822e3e118541b74385189c25bb5, type: 2}
+  - {fileID: 11400000, guid: 85deeadeecb7b994897759ef18909fe4, type: 2}
   pickupPool:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 4b7b876bca35fa044b2cf1fd1b1e2c68, type: 2}
+  - {fileID: 11400000, guid: 5a1e0e186a415af4b8d0af992658decd, type: 2}
+  - {fileID: 11400000, guid: 49491613c43298c468f0e0cf53390fa2, type: 2}

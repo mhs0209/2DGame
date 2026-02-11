@@ -115,7 +115,7 @@ public class MapGenerator : MonoBehaviour
     {
         // 보스방과 특수방은 가장 먼 곳으로 (true)
         PlaceSpecialRoomStrict(RoomType.Boss, true);
-        if (Random.Range(0, 100) < 90) PlaceSpecialRoomStrict(RoomType.Special, true);
+        if (Random.Range(0, 100) < 20) PlaceSpecialRoomStrict(RoomType.Special, true);
 
         // 상점과 보물방은 랜덤한 위치에 (false)
         PlaceSpecialRoomStrict(RoomType.Shop, false);

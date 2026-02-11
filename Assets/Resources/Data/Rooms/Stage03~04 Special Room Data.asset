@@ -16,5 +16,13 @@ MonoBehaviour:
   roomType: 4
   roomPrefab: {fileID: 3283552973013343471, guid: a1bc44b0975f49e4b973ebb9315e8530, type: 3}
   minimapIcon: {fileID: 21300000, guid: 873e6fccc3f4bee42a53f278d56f97eb, type: 3}
-  itemDropPool: []
+  itemDropPool:
+  - {fileID: 11400000, guid: 068bfb4924d62cf4bba12852324d857b, type: 2}
+  - {fileID: 11400000, guid: cf78309b3f3e4084386bd210a5f5700c, type: 2}
+  - {fileID: 11400000, guid: 44f876b870a6eb84b9efe766d1a84ab2, type: 2}
+  - {fileID: 11400000, guid: b410c2bc769037442a1eb2d9ceba1659, type: 2}
+  - {fileID: 11400000, guid: 082fe70f7b90def488ba50887b53491b, type: 2}
+  - {fileID: 11400000, guid: 231158ea1c4e29f429e732c9eaf49b0b, type: 2}
+  - {fileID: 11400000, guid: 282bc4ddc0cdb3540ad89f3f4ec168f7, type: 2}
+  - {fileID: 11400000, guid: 96c23ccdd50ca484d848faeb4dcdcae3, type: 2}
   pedestalPrefab: {fileID: 7759998093410289461, guid: 5dffa486e74d62445a6a8366c7f61ba8, type: 3}

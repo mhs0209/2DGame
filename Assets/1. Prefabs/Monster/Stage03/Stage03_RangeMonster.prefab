@@ -199,7 +199,7 @@ MonoBehaviour:
   currentState: 1
   seeRight: 1
   detectRange: 10
-  attackRange: 1
+  attackRange: 3
   attackClip: {fileID: 8300000, guid: c7fc17e461146ca4ca40ca7a5e4c300c, type: 3}
   chaseClip: {fileID: 8300000, guid: df7087e4d8a8bb546bc08ce68632903f, type: 3}
 --- !u!114 &6223532416207222162

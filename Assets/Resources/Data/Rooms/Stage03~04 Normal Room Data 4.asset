@@ -16,4 +16,10 @@ MonoBehaviour:
   roomType: 0
   roomPrefab: {fileID: 7893116994721499007, guid: 3ec69c5eb14b5694ba6a190e36e236d6, type: 3}
   minimapIcon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  itemDropPool: []
+  itemDropPool:
+  - {fileID: 11400000, guid: 2706726475f8ff847af57db066cd9954, type: 2}
+  - {fileID: 11400000, guid: 4b7b876bca35fa044b2cf1fd1b1e2c68, type: 2}
+  - {fileID: 11400000, guid: 0863f17bc30f1ed40ba264647c68b8f5, type: 2}
+  - {fileID: 11400000, guid: 04e320efd17e3ed4bad82cf284777b8e, type: 2}
+  - {fileID: 11400000, guid: 5a1e0e186a415af4b8d0af992658decd, type: 2}
+  - {fileID: 11400000, guid: 49491613c43298c468f0e0cf53390fa2, type: 2}

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomID: 5012
   roomType: 5
-  roomPrefab: {fileID: 7726883389955657285, guid: 010c82b309a03e840a87e01fd7a9d5ee, type: 3}
+  roomPrefab: {fileID: 6369982893722470817, guid: 010c82b309a03e840a87e01fd7a9d5ee, type: 3}
   minimapIcon: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
   itemDropPool: []
