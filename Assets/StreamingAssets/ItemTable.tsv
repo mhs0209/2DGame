@@ -1,44 +1,44 @@
-ID	Name	ItemType	InTreasure	InBoss	InShop	InSpecial	InNormal	DropWeight							active=10	passive=20	pickup=30						
-1001	BoostStat	Active	TRUE	FALSE	FALSE	FALSE	FALSE	0															
-1002	Heal	Active	TRUE	FALSE	FALSE	FALSE	FALSE	0															
-1003	Invincible	Active	TRUE	FALSE	FALSE	FALSE	FALSE	0															
-1004	RadialAttack	Active	TRUE	FALSE	FALSE	FALSE	FALSE	0															
-1005	Reroll	Active	TRUE	FALSE	FALSE	FALSE	FALSE	0															
-1006	RoomDamage	Active	TRUE	FALSE	FALSE	FALSE	FALSE	0															
-2001	Accellaration	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0															
-2002	AtkUp	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0															
-2003	CaffeineDrug	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0															
-2004	DeepSleep	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0															
-2005	DelayDown	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0															
-2006	Devil's contract	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0															
-2007	Food	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0															
-2008	RangeUp	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0															
-2009	Rock	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0															
-2010	SpeedUp	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0															
-2011	SuperHeart(AllStats)	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0															
-2012	25$	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0															
-2013	99$	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0															
-2014	Atk%Up	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0															
-2015	AtkSet	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0															
-2016	BomberWoman	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0															
-2017	LuckySeven	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0															
-2018	ManyBombs	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0															
-2019	ManyKeys	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0															
-2020	MasterKey	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0															
-2021	DoubleShot	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0															
-2022	SpearShot	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0															
-2023	TrippleShot	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0															
-2024	AdrenalineBoost	Passive	FALSE	FALSE	FALSE	TRUE	FALSE	0															
-2025	AllSet	Passive	FALSE	FALSE	FALSE	TRUE	FALSE	0															
-2026	Flash	Passive	FALSE	FALSE	FALSE	TRUE	FALSE	0															
-2027	Glass Cannon	Passive	FALSE	FALSE	FALSE	TRUE	FALSE	0															
-2028	HealthBoost	Passive	FALSE	FALSE	FALSE	TRUE	FALSE	0															
-2029	PowerUp	Passive	FALSE	FALSE	FALSE	TRUE	FALSE	0															
-2030	SuperPower	Passive	FALSE	FALSE	FALSE	TRUE	FALSE	0															
-2031	Shotgun	Passive	FALSE	FALSE	FALSE	TRUE	FALSE	0															
-3001	1 Gold	Pickup	FALSE	FALSE	FALSE	FALSE	TRUE	35															
-3002	1 Health	Pickup	FALSE	FALSE	TRUE	FALSE	TRUE	25															
-3003	2 Health	Pickup	FALSE	FALSE	FALSE	FALSE	TRUE	15															
-3004	5 Gold	Pickup	FALSE	FALSE	FALSE	FALSE	TRUE	10															
-3005	Bomb	Pickup	FALSE	FALSE	TRUE	FALSE	TRUE	5															
-3006	Key	Pickup	FALSE	FALSE	TRUE	FALSE	TRUE	10															
+ID	Name	ItemType	InTreasure	InBoss	InShop	InSpecial	InNormal	DropWeight							active=10	passive=20	pickup=30
+1001	BoostStat	Active	TRUE	FALSE	FALSE	FALSE	FALSE	0									
+1002	Heal	Active	TRUE	FALSE	FALSE	FALSE	FALSE	0									
+1003	Invincible	Active	TRUE	FALSE	FALSE	FALSE	FALSE	0									
+1004	RadialAttack	Active	TRUE	FALSE	FALSE	FALSE	FALSE	0									
+1005	Reroll	Active	TRUE	FALSE	FALSE	FALSE	FALSE	0									
+1006	RoomDamage	Active	TRUE	FALSE	FALSE	FALSE	FALSE	0									
+2001	Accellaration	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0									
+2002	AtkUp	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0									
+2003	CaffeineDrug	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0									
+2004	DeepSleep	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0									
+2005	DelayDown	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0									
+2006	Devil's contract	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0									
+2007	Food	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0									
+2008	RangeUp	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0									
+2009	Rock	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0									
+2010	SpeedUp	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0									
+2011	SuperHeart(AllStats)	Passive	TRUE	TRUE	FALSE	FALSE	FALSE	0									
+2012	25$	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0									
+2013	99$	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0									
+2014	Atk%Up	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0									
+2015	AtkSet	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0									
+2016	BomberWoman	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0									
+2017	LuckySeven	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0									
+2018	ManyBombs	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0									
+2019	ManyKeys	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0									
+2020	MasterKey	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0									
+2021	DoubleShot	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0									
+2022	SpearShot	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0									
+2023	TrippleShot	Passive	FALSE	FALSE	TRUE	FALSE	FALSE	0									
+2024	AdrenalineBoost	Passive	FALSE	FALSE	FALSE	TRUE	FALSE	0									
+2025	AllSet	Passive	FALSE	FALSE	FALSE	TRUE	FALSE	0									
+2026	Flash	Passive	FALSE	FALSE	FALSE	TRUE	FALSE	0									
+2027	Glass Cannon	Passive	FALSE	FALSE	FALSE	TRUE	FALSE	0									
+2028	HealthBoost	Passive	FALSE	FALSE	FALSE	TRUE	FALSE	0									
+2029	PowerUp	Passive	FALSE	FALSE	FALSE	TRUE	FALSE	0									
+2030	SuperPower	Passive	FALSE	FALSE	FALSE	TRUE	FALSE	0									
+2031	Shotgun	Passive	FALSE	FALSE	FALSE	TRUE	FALSE	0									
+3001	1 Gold	Pickup	FALSE	FALSE	FALSE	FALSE	TRUE	35									
+3002	1 Health	Pickup	FALSE	FALSE	FALSE	FALSE	TRUE	25									
+3003	2 Health	Pickup	FALSE	FALSE	TRUE	FALSE	TRUE	15									
+3004	5 Gold	Pickup	FALSE	FALSE	FALSE	FALSE	TRUE	10									
+3005	Bomb	Pickup	FALSE	FALSE	TRUE	FALSE	TRUE	5									
+3006	Key	Pickup	FALSE	FALSE	TRUE	FALSE	TRUE	10									
