@@ -17,3 +17,4 @@ MonoBehaviour:
   roomPrefab: {fileID: 1529818876792880726, guid: 629f3e8b3357c844cab2a22a7554b3df, type: 3}
   minimapIcon: {fileID: 891942287, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
   itemDropPool: []
+  stagePortalPrefab: {fileID: 5147909626668972415, guid: 95f23d63db1e8c84985d51edff847d25, type: 3}

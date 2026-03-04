@@ -59,6 +59,8 @@ public class BaseRoom : MonoBehaviour
         // 문이 활성화된 후 그 위치를 기반으로 포인트 생성
         GenerateSpawnPoints();
     }
+    
+    private Vector2Int[] neighbors = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
 
     public virtual void OnPlayerEnter()
     {
@@ -66,19 +68,14 @@ public class BaseRoom : MonoBehaviour
         if (MinimapManager.Instance != null)
         {
             MinimapManager.Instance.UpdateRoomIcon(gridPos, true);
-            Vector2Int[] neighbors = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
             foreach (var dir in neighbors)
             {
                 MinimapManager.Instance.UpdateRoomIcon(gridPos + dir, false);
             }
         }
-
         // 2. 방 로직 실행
         var controller = GetComponent<RoomController>();
-        if (controller != null)
-        {
-            controller.ActivateRoomLogic();
-        }
+        if (controller != null) controller.ActivateRoomLogic();
     }
 
     private void SetDoorState(DoorSet doorSet, bool exists)

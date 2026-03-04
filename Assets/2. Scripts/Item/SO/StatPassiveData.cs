@@ -4,4 +4,5 @@ using UnityEngine;
 public class StatPassiveData : ItemData
 {
     public StatModifier[] modifiers;
+    private void OnEnable() => type = ItemType.Passive;
 }

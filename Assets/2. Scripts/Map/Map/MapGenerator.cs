@@ -166,7 +166,8 @@ public class MapGenerator : MonoBehaviour
             if (findFarthest)
             {
                 // 가장 먼 곳 찾기 (보스, 특수이벤트용)
-                chosenPos = candidates.OrderByDescending(p => Vector2Int.Distance(p, Vector2Int.zero)).First();
+                chosenPos = candidates.OrderByDescending(p => 
+                    Vector2Int.Distance(p, Vector2Int.zero)).First();
             }
             else
             {
@@ -199,7 +200,7 @@ public class MapGenerator : MonoBehaviour
                     RoomController neighbor = neighborObj.GetComponent<RoomController>();
                     if (neighbor == null) continue;
 
-                    // 옆방이 특수방이라면 양쪽 문 마킹
+                    // 옆방이 특수방이라면 문 마킹
                     if (IsSpecialRoom(neighbor.baseRoom.type))
                     {
                         var myDoor = currentRoom.GetDoorPhysics(d);
@@ -235,9 +236,7 @@ public class MapGenerator : MonoBehaviour
                 neighborCount++;
             }
         }
-
-        // 인접한 방이 딱 1개일 때만 생성 허용 (뭉침 방지 핵심)
-        // 인접한 방이 2개 이상이라는 뜻은 이미 그 자리가 다른 방들 사이에 끼어있다는 뜻입니다.
+        // 인접한 방이 딱 1개일 때만 생성 허용 (뭉침 방지)
         return neighborCount == 1;
     }
 

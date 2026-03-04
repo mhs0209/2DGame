@@ -6,4 +6,5 @@ public class FirePassiveData : ItemData
     public FireShape shapeChange;
     public int addProjectileCount;
     public bool setPiercing;
+    private void OnEnable() => type = ItemType.Passive;
 }

@@ -30,9 +30,22 @@ public class TableDataManager : MonoBehaviour {
 
     public void InitializeData()
     {
-        // 1. Resources 로드 및 TSV 파싱
-        var masterRooms = Resources.LoadAll<BaseRoomData>("Data/Rooms").ToDictionary(r => r.roomID);
-        var masterItems = Resources.LoadAll<ItemData>("Data/Items").ToDictionary(i => i.itemID);
+        // --- 1. 안전한 마스터 데이터 로드 ---
+        var masterRooms = new Dictionary<int, BaseRoomData>();
+        foreach (var r in Resources.LoadAll<BaseRoomData>("Data/Rooms")) {
+            if (r.roomID == 0) { Debug.LogError($"[ID Error] {r.name}의 ID가 0입니다. ID를 설정해주세요."); continue; }
+            if (masterRooms.ContainsKey(r.roomID)) { Debug.LogError($"[Duplicate Error] 중복 ID 감지: {r.roomID} ({r.name})"); continue; }
+            masterRooms.Add(r.roomID, r);
+        }
+
+        var masterItems = new Dictionary<int, ItemData>();
+        foreach (var i in Resources.LoadAll<ItemData>("Data/Items")) {
+            if (i.itemID == 0) { Debug.LogError($"[ID Error] {i.name}의 ID가 0입니다."); continue; }
+            if (masterItems.ContainsKey(i.itemID)) { Debug.LogError($"[Duplicate Error] 중복 ID 감지: {i.itemID} ({i.name})"); continue; }
+            masterItems.Add(i.itemID, i);
+        }
+        
+        // --- 2. TSV 파싱 ---
         List<MapTableData> mapRows = ParseTSV<MapTableData>("MapTable.tsv");
         List<ItemTableData> itemRows = ParseTSV<ItemTableData>("ItemTable.tsv");
 
@@ -94,14 +107,14 @@ public class TableDataManager : MonoBehaviour {
                             room.itemDropPool.AddRange(shopMap.shopItemPool);
                             room.itemDropPool.AddRange(shopMap.pickupPool);
                         }
-
                         break;
                 }
             }
+            else
+            {
+                Debug.LogWarning($"[DataMapping Missing] 맵 테이블의 ID {row.ID}에 해당하는 SO 파일을 찾을 수 없습니다!");
+            }
         }
-
-        Debug.Log(
-            $"[TableDataManager] 로드 완료: 맵 {allRooms.Count}개. 상점 분류(장비:{shopItems.Count}, 픽업:{normalItems.Count})");
     }
 
     private void ClearItemLists() {
@@ -137,16 +150,21 @@ public class TableDataManager : MonoBehaviour {
 
                 if (field != null) {
                     string value = data[j].Trim();
-                    // ParseTSV 함수 내부 수정
-                    try {
+                    try
+                    {
                         if (field.FieldType == typeof(int)) field.SetValue(obj, int.Parse(value));
-                        else if (field.FieldType == typeof(bool)) field.SetValue(obj, value.ToUpper() == "TRUE" || value == "1");
+                        else if (field.FieldType == typeof(bool))
+                            field.SetValue(obj, value.ToUpper() == "TRUE" || value == "1");
                         else if (field.FieldType == typeof(float)) field.SetValue(obj, float.Parse(value));
-                        // --- 추가된 Enum 처리 로직 ---
+                        // --- Enum 처리 로직 ---
                         else if (field.FieldType.IsEnum) field.SetValue(obj, Enum.Parse(field.FieldType, value, true));
                         // -------------------------
                         else field.SetValue(obj, value);
-                    } catch { /* 스킵 */ }
+                    }
+                    catch
+                    {
+                        Debug.Log("TSV 파싱 에러");
+                    }
                 }
             }
             list.Add(obj);

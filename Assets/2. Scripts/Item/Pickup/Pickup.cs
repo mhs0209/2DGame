@@ -3,10 +3,9 @@ using UnityEngine;
 public class Pickup : ItemObject
 {
     public PickupItemData data; // SO 데이터 연결
-
     public override void OnPickup(GameObject player)
     {
-        // PlayerManager나 Inventory 스크립트가 있다고 가정하고 수치 변경
+        // PlayerStat에 픽업 수치도 포함되기 때문에 PlayerStat에 접근
         PlayerStat stats = player.GetComponent<PlayerStat>(); 
         if (stats == null) return;
 

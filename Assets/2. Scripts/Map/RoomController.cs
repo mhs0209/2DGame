@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 
-public enum RoomState { Empty, Battle, Locked, Cleared }
+public enum RoomState { Empty, Battle, Cleared }
 
 public class RoomController : MonoBehaviour
 {
@@ -71,7 +71,7 @@ public class RoomController : MonoBehaviour
 
     private IEnumerator TempLockRoutine(float duration)
     {
-        // 모든 문 잠금 (빨간색 벽)
+        // 모든 문 잠금
         foreach (var door in doorMap.Values)
         {
             if (door != null) door.SetLock(true);

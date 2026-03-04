@@ -5,5 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Boss Map", menuName = "Map/Boss")]
 public class BossMap : BaseRoomData 
 {
-    //public GameObject[] rewardPool;   // 보스 처치 후 보상 아이템
+    [Header("Stage Transition")]
+    public GameObject stagePortalPrefab; // 다음 스테이지 이동 포탈 프리팹
 }

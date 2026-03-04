@@ -3,7 +3,6 @@ using UnityEngine;
 public abstract class ItemObject : MonoBehaviour
 {
     public abstract void OnPickup(GameObject player);
-
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

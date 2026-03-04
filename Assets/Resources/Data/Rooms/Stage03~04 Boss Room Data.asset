@@ -28,3 +28,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 082fd25b5d87aa4429990aebec1a2869, type: 2}
   - {fileID: 11400000, guid: 00cc3dbb67f22a64abe164070b20db77, type: 2}
   - {fileID: 11400000, guid: 23ed41563825e9f48bb5a1d0f6554fdd, type: 2}
+  stagePortalPrefab: {fileID: 5147909626668972415, guid: 95f23d63db1e8c84985d51edff847d25, type: 3}

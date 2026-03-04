@@ -10,6 +10,6 @@ public abstract class BaseRoomData : ScriptableObject
     public GameObject roomPrefab;
     public Sprite minimapIcon;
     
-    // 이 배열(리스트)을 테이블을 통해 자동으로 채울 것입니다.
+    // 테이블을 통해 자동으로 채워짐.
     public List<ItemData> itemDropPool = new List<ItemData>(); 
 }

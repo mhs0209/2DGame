@@ -8,6 +8,5 @@ public class PickupItemData : ItemData
     public enum PickupType { Health, Gold, Key, Bomb }
     public PickupType pickupType;
     public int value; // 회복량 또는 획득 수량
-
     private void OnEnable() => type = ItemType.Pickup;
 }
